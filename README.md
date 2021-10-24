@@ -23,7 +23,7 @@
        
        4.按钮最多可显示 4 行，共 32 个按钮，多于 32 个的配置会被忽视。
   
-       4.ini文件配置简例：
+       5.ini文件配置简例：
        #############################################
        #[Button_01] - [Button_32] 最大支持32个按钮，32个以上的忽视
        [Button_XX]
@@ -45,3 +45,6 @@
       Program_Name=D:\Eclipse_4.21\eclipse.exe
       Program_Type=exe
       Program_Param=-clean
+
+      6.默认显示的Reboot，Shutdown，不要随便点！！！！！！
+      
