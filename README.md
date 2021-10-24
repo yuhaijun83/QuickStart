@@ -1,11 +1,9 @@
 # QuickStart
 把常用的程序、命令集成在一起的快捷启动软件。
 
-
 【开发环境】：
 
        Windows 10 Professional 21H1 + Visusl Studio 2019 Enterprise + .Net FrameWork 3.5
-
 
 【运行要求】：
  
