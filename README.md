@@ -24,27 +24,27 @@
        4.按钮最多可显示 4 行，共 32 个按钮，多于 32 个的配置会被忽视。
   
        5.ini文件配置简例：
-       #############################################
-       #[Button_01] - [Button_32] 最大支持32个按钮，32个以上的忽视
-       [Button_XX]
-       #按钮显示名称
-       Button_Name=
-       #按钮可视否【1：可视；1 以外不可视；默认：空 不显示】
-       Button_Visible=
-       #启动程序的完整路径和程序名
-       Program_Name=
-       #程序启动的类型【exe：exe可执行程序；cmd：cmd命令或者*.cmd可执行程序；默认：exe】
-       Program_Type=
-       #程序的启动参数
-       Program_Param=
-       #############################################
+        #############################################
+        #[Button_01] - [Button_32] 最大支持32个按钮，32个以上的忽视
+        [Button_XX]
+        #按钮显示名称
+        Button_Name=
+        #按钮可视否【1：可视；1 以外不可视；默认：空 不显示】
+        Button_Visible=
+        #启动程序的完整路径和程序名
+        Program_Name=
+        #程序启动的类型【exe：exe可执行程序；cmd：cmd命令或者*.cmd可执行程序；默认：exe】
+        Program_Type=
+        #程序的启动参数
+        Program_Param=
+        #############################################
 
-      [Button_01]
-      Button_Name=Eclipse_v4.21
-      Button_Visible=1
-      Program_Name=D:\Eclipse_4.21\eclipse.exe
-      Program_Type=exe
-      Program_Param=-clean
+        [Button_01]
+        Button_Name=Eclipse_v4.21
+        Button_Visible=1
+        Program_Name=D:\Eclipse_4.21\eclipse.exe
+        Program_Type=exe
+        Program_Param=-clean
 
       6.默认显示的Reboot，Shutdown，不要随便点！！！！！！
       
