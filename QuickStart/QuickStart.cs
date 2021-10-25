@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace QuickStart
@@ -14,6 +15,9 @@ namespace QuickStart
         private const int BUTTON_MAX_SIZE = 32;
 
         private const string INI_FILE_NAME = "QuickStart.ini";
+
+        private const string System_Info = "System_Info";
+        private const string MainForm_Opacity = "MainForm_Opacity";
 
         private const string Button_Name = "Button_Name";
         private const string Button_Visible = "Button_Visible";
@@ -31,7 +35,7 @@ namespace QuickStart
         private void mainForm_Load(object sender, EventArgs e)
         {
             this.InitConfig();
-            this.InitFormSize();
+            this.InitForm();
             this.InitButton();
         }
 
@@ -261,8 +265,24 @@ namespace QuickStart
 
         }
 
-        private void InitFormSize()
+        private void InitForm()
         {
+            string strIniFilePath = System.Environment.CurrentDirectory + "\\" + INI_FILE_NAME;
+            String strMainForm_Opacity = OperateIniFile.ReadIniData(System_Info, MainForm_Opacity, "", strIniFilePath);
+            strMainForm_Opacity = strMainForm_Opacity.Replace("%", "").Replace("％", "");
+            double dMainForm_Opacity = 100;
+            if (!"".Equals(strMainForm_Opacity))
+            {
+                try
+                {
+                    dMainForm_Opacity = double.Parse(strMainForm_Opacity);
+                } catch
+                {
+                    ;
+                }
+            }
+            this.Opacity = dMainForm_Opacity;
+
             // 12, 64 13, 64 13, 64 ,13 = 243
             int isize = lstConfig.Count();
             if (isize <= 8)

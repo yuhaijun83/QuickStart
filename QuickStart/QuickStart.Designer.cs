@@ -376,6 +376,7 @@ namespace QuickStart
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "mainForm";
+            this.Opacity = 0D;
             this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mainForm_FormClosed);
             this.Load += new System.EventHandler(this.mainForm_Load);

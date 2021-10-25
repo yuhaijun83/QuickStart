@@ -75,7 +75,7 @@ namespace QuickStart
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 15);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Build 21.10";
+            this.label2.Text = "Build 21.11";
             // 
             // linkLabel_GitHub
             // 
@@ -102,6 +102,7 @@ namespace QuickStart
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "aboutForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

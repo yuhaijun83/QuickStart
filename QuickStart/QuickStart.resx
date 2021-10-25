@@ -843,6 +843,27 @@
   <metadata name="contextMenuStripMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>185, 17</value>
   </metadata>
+  <data name="toolStripMenuItem_DisplayMainForm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 24</value>
+  </data>
+  <data name="toolStripMenuItem_DisplayMainForm.Text" xml:space="preserve">
+    <value>Display</value>
+  </data>
+  <data name="toolStripMenuItem_About.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 24</value>
+  </data>
+  <data name="toolStripMenuItem_About.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 6</value>
+  </data>
+  <data name="toolStripMenuItem_Exit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 24</value>
+  </data>
+  <data name="toolStripMenuItem_Exit.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
   <data name="contextMenuStripMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 82</value>
   </data>
@@ -2520,27 +2541,6 @@
   </data>
   <data name="notifyIconMain.Text" xml:space="preserve">
     <value>QuickStart</value>
-  </data>
-  <data name="toolStripMenuItem_DisplayMainForm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 24</value>
-  </data>
-  <data name="toolStripMenuItem_DisplayMainForm.Text" xml:space="preserve">
-    <value>Display</value>
-  </data>
-  <data name="toolStripMenuItem_About.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 24</value>
-  </data>
-  <data name="toolStripMenuItem_About.Text" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 6</value>
-  </data>
-  <data name="toolStripMenuItem_Exit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 24</value>
-  </data>
-  <data name="toolStripMenuItem_Exit.Text" xml:space="preserve">
-    <value>Exit</value>
   </data>
   <metadata name="button_25.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -4460,8 +4460,11 @@
         AADwDwAA8A8AAPgfAAD4HwAA
 </value>
   </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>QuickStart  -- Build 21.10</value>
+    <value>QuickStart  -- Build 21.11</value>
   </data>
   <data name="&gt;&gt;notifyIconMain.Name" xml:space="preserve">
     <value>notifyIconMain</value>
