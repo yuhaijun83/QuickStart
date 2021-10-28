@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -12,7 +13,7 @@ namespace QuickStart
 {
     public partial class mainForm : Form
     {
-        private const int BUTTON_MAX_SIZE = 32;
+        private const int BUTTON_MAX_SIZE = 40;
 
         private const string INI_FILE_NAME = "QuickStart.ini";
 
@@ -24,6 +25,10 @@ namespace QuickStart
         private const string Program_Name = "Program_Name";
         private const string Program_Type = "Program_Type";
         private const string Program_Param = "Program_Param";
+
+        private int iStopMode = 0; // 0:NO 1:X 2:Y 3:T
+        private int iStopMode_T = 2;
+        private int iStopMode_XY = 5;
 
         private static List<IniConfig> lstConfig = new List<IniConfig>();
 
@@ -199,24 +204,68 @@ namespace QuickStart
             this.button_common(lstConfig[31]);
         }
 
-        private void mainForm_SizeChanged(object sender, EventArgs e)
+        private void button_33_Click(object sender, EventArgs e)
         {
-            this.mixMainFormToTaskbar();
+            this.button_common(lstConfig[32]);
         }
 
-        private void mainForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void button_34_Click(object sender, EventArgs e)
         {
-            this.mixMainFormToTaskbar();
+            this.button_common(lstConfig[33]);
         }
 
-        private void notifyIconMain_DoubleClick(object sender, EventArgs e)
+        private void button_35_Click(object sender, EventArgs e)
         {
-            this.maxMainFormFormTaskbar();
+            this.button_common(lstConfig[34]);
         }
 
-        private void toolStripMenuItem_DisplayMainForm_Click(object sender, EventArgs e)
+        private void button_36_Click(object sender, EventArgs e)
         {
-            this.maxMainFormFormTaskbar();
+            this.button_common(lstConfig[35]);
+        }
+
+        private void button_37_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[36]);
+        }
+
+        private void button_38_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[37]);
+        }
+
+        private void button_39_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[38]);
+        }
+
+        private void button_40_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[39]);
+        }
+
+        private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult =
+                MessageBox.Show("Do you really want to quit?", "Warn", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (dialogResult == DialogResult.Yes)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void toolStripMenuItem_Exit_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult =
+                MessageBox.Show("Do you really want to quit?", "Warn", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Environment.Exit(0);
+            }
         }
 
         private void toolStripMenuItem_About_Click(object sender, EventArgs e)
@@ -225,9 +274,14 @@ namespace QuickStart
             objAboutForm.ShowDialog();
         }
 
-        private void toolStripMenuItem_Exit_Click(object sender, EventArgs e)
+        private void mainForm_Move(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            this.iStopMode = 0;
+        }
+
+        private void timerMain_Tick(object sender, EventArgs e)
+        {
+            this.toSetStopMode();
         }
 
         #region Me
@@ -269,8 +323,7 @@ namespace QuickStart
         {
             string strIniFilePath = System.Environment.CurrentDirectory + "\\" + INI_FILE_NAME;
             String strMainForm_Opacity = OperateIniFile.ReadIniData(System_Info, MainForm_Opacity, "", strIniFilePath);
-            strMainForm_Opacity = strMainForm_Opacity.Replace("%", "").Replace("％", "");
-            double dMainForm_Opacity = 100;
+            double dMainForm_Opacity = 1;
             if (!"".Equals(strMainForm_Opacity))
             {
                 try
@@ -294,12 +347,13 @@ namespace QuickStart
             } else if (17 <= isize && isize <= 24)
             {
                 this.Size = new Size(769, 243);
-            }
-            else if (25 <= isize && isize <= 32)
+            } else if (25 <= isize && isize <= 32)
             {
-                this.Size = new Size(769, 313);
-            }
-            else
+                this.Size = new Size(769, 312);
+            } else if (33 <= isize && isize <= 40)
+            {
+                this.Size = new Size(769, 381);
+            } else
             {
                 this.Size = new Size(769, 104);
             }
@@ -443,6 +497,39 @@ namespace QuickStart
                         this.button_32.Visible = true;
                         break;
 
+                    case 33:
+                        this.button_33.Text = lstConfig[i - 1].Button_Name;
+                        this.button_33.Visible = true;
+                        break;
+                    case 34:
+                        this.button_34.Text = lstConfig[i - 1].Button_Name;
+                        this.button_34.Visible = true;
+                        break;
+                    case 35:
+                        this.button_35.Text = lstConfig[i - 1].Button_Name;
+                        this.button_35.Visible = true;
+                        break;
+                    case 36:
+                        this.button_36.Text = lstConfig[i - 1].Button_Name;
+                        this.button_36.Visible = true;
+                        break;
+                    case 37:
+                        this.button_37.Text = lstConfig[i - 1].Button_Name;
+                        this.button_37.Visible = true;
+                        break;
+                    case 38:
+                        this.button_38.Text = lstConfig[i - 1].Button_Name;
+                        this.button_38.Visible = true;
+                        break;
+                    case 39:
+                        this.button_39.Text = lstConfig[i - 1].Button_Name;
+                        this.button_39.Visible = true;
+                        break;
+                    case 40:
+                        this.button_40.Text = lstConfig[i - 1].Button_Name;
+                        this.button_40.Visible = true;
+                        break;
+
                     default:
                         break;
                 }
@@ -459,7 +546,7 @@ namespace QuickStart
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ini.Program_Name + "\n\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ini.Program_Name + " " + ini.Program_Param + "\n\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else if ("cmd".Equals(ini.Program_Type))
@@ -478,27 +565,62 @@ namespace QuickStart
             }
         }
 
-        private void mixMainFormToTaskbar()
+        private void toSetStopMode()
         {
-            if (WindowState == FormWindowState.Minimized)
+
+            if (MouseButtons == MouseButtons.Left)
             {
-                this.ShowInTaskbar = false;
-                this.notifyIconMain.Visible = true;
+                return;
+            }
+
+            int x = MousePosition.X, y = MousePosition.Y;
+
+            if (x > (this.Location.X - iStopMode_XY)
+                &&
+                x < (this.Location.X + this.Width + iStopMode_XY)
+                &&
+                y > (this.Location.Y - iStopMode_XY)
+                &&
+                y < (this.Location.Y + this.Height + iStopMode_XY))
+            {
+
+                if (this.iStopMode == 1)
+                {
+                    this.Location = new Point(iStopMode_T, this.Location.Y);
+                }
+                else if (this.iStopMode == 2)
+                {
+                    this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - this.Width - iStopMode_T, this.Location.Y);
+                }
+                else if (this.iStopMode == 3)
+                {
+                    this.Location = new Point(this.Location.X, iStopMode_T);
+                }
+            }
+            else
+            {
+                if (this.Location.Y <= iStopMode_T)
+                {
+                    this.Location = new Point(this.Location.X, iStopMode_T - this.Height);
+                    this.iStopMode = 3;
+                }
+                else if (this.Location.X <= iStopMode_T)
+                {
+                    this.Location = new Point(iStopMode_T - this.Width, this.Location.Y);
+                    this.iStopMode = 1;
+                }
+                else if (this.Location.X >= Screen.PrimaryScreen.WorkingArea.Width - this.Width - iStopMode_T)
+                {
+                    this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - iStopMode_T, this.Location.Y);
+                    this.iStopMode = 2;
+                }
+                else
+                {
+                    this.iStopMode = 0;
+                }
             }
         }
 
-        private void maxMainFormFormTaskbar()
-        {
-            if (WindowState == FormWindowState.Minimized)
-            {
-                WindowState = FormWindowState.Normal;
-                this.Activate();
-
-                this.ShowInTaskbar = true;
-                this.notifyIconMain.Visible = false;
-            }
-
-        }
         #endregion Me
     }
 }
