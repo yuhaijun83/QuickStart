@@ -55,5 +55,36 @@ namespace QuickStart
             }
         }
         #endregion
+
+        #region
+        [DllImport("kernel32")]
+        private static extern bool WritePrivateProfileString(byte[] section, byte[] key, byte[] val, string filePath);
+        [DllImport("kernel32")]
+        private static extern int GetPrivateProfileString(byte[] section, byte[] key, byte[] def, byte[] retVal, int size, string filePath);
+        #endregion
+
+        #region
+        private static byte[] getBytes(string s, string encodingName)
+        {
+            return null == s ? null : Encoding.GetEncoding(encodingName).GetBytes(s);
+        }
+        #endregion
+
+        #region
+        public static string ReadIniData(string section, string key, string def, string fileName, string encodingName = "utf-8", int size = 1024)
+        {
+            byte[] buffer = new byte[size];
+            int count = GetPrivateProfileString(getBytes(section, encodingName), getBytes(key, encodingName), getBytes(def, encodingName), buffer, size, fileName);
+            return Encoding.GetEncoding(encodingName).GetString(buffer, 0, count).Trim();
+        }
+        #endregion
+
+        #region
+        public static bool WriteIniData(string section, string key, string value, string fileName, string encodingName = "utf-8")
+        {
+            return WritePrivateProfileString(getBytes(section, encodingName), getBytes(key, encodingName), getBytes(value, encodingName), fileName);
+        }
+        #endregion
+
     }
 }

@@ -55,11 +55,6 @@ namespace QuickStart
             this.button_22 = new System.Windows.Forms.Button();
             this.button_23 = new System.Windows.Forms.Button();
             this.button_24 = new System.Windows.Forms.Button();
-            this.notifyIconMain = new System.Windows.Forms.NotifyIcon(this.components);
-            this.contextMenuStripMain = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem_About = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.button_25 = new System.Windows.Forms.Button();
             this.button_26 = new System.Windows.Forms.Button();
             this.button_27 = new System.Windows.Forms.Button();
@@ -68,7 +63,6 @@ namespace QuickStart
             this.button_30 = new System.Windows.Forms.Button();
             this.button_31 = new System.Windows.Forms.Button();
             this.button_32 = new System.Windows.Forms.Button();
-            this.timerMain = new System.Windows.Forms.Timer(this.components);
             this.button_33 = new System.Windows.Forms.Button();
             this.button_34 = new System.Windows.Forms.Button();
             this.button_35 = new System.Windows.Forms.Button();
@@ -77,6 +71,20 @@ namespace QuickStart
             this.button_38 = new System.Windows.Forms.Button();
             this.button_39 = new System.Windows.Forms.Button();
             this.button_40 = new System.Windows.Forms.Button();
+            this.timerMain = new System.Windows.Forms.Timer(this.components);
+            this.notifyIconMain = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStripMain = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem_Display = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Language = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_LanguageChineseSimplified = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_LanguageChineseTraditional = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_LanguageEnglish = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_LanguageJapanese = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_LanguageKorean = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem_About = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -248,38 +256,6 @@ namespace QuickStart
             this.button_24.UseVisualStyleBackColor = true;
             this.button_24.Click += new System.EventHandler(this.button_24_Click);
             // 
-            // notifyIconMain
-            // 
-            this.notifyIconMain.ContextMenuStrip = this.contextMenuStripMain;
-            resources.ApplyResources(this.notifyIconMain, "notifyIconMain");
-            // 
-            // contextMenuStripMain
-            // 
-            this.contextMenuStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem_About,
-            this.toolStripSeparator1,
-            this.toolStripMenuItem_Exit});
-            this.contextMenuStripMain.Name = "contextMenuStripMain";
-            resources.ApplyResources(this.contextMenuStripMain, "contextMenuStripMain");
-            // 
-            // toolStripMenuItem_About
-            // 
-            this.toolStripMenuItem_About.Name = "toolStripMenuItem_About";
-            resources.ApplyResources(this.toolStripMenuItem_About, "toolStripMenuItem_About");
-            this.toolStripMenuItem_About.Click += new System.EventHandler(this.toolStripMenuItem_About_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            // 
-            // toolStripMenuItem_Exit
-            // 
-            this.toolStripMenuItem_Exit.Name = "toolStripMenuItem_Exit";
-            resources.ApplyResources(this.toolStripMenuItem_Exit, "toolStripMenuItem_Exit");
-            this.toolStripMenuItem_Exit.Click += new System.EventHandler(this.toolStripMenuItem_Exit_Click);
-            // 
             // button_25
             // 
             resources.ApplyResources(this.button_25, "button_25");
@@ -335,11 +311,6 @@ namespace QuickStart
             this.button_32.Name = "button_32";
             this.button_32.UseVisualStyleBackColor = true;
             this.button_32.Click += new System.EventHandler(this.button_32_Click);
-            // 
-            // timerMain
-            // 
-            this.timerMain.Enabled = true;
-            this.timerMain.Tick += new System.EventHandler(this.timerMain_Tick);
             // 
             // button_33
             // 
@@ -397,33 +368,125 @@ namespace QuickStart
             this.button_40.UseVisualStyleBackColor = true;
             this.button_40.Click += new System.EventHandler(this.button_40_Click);
             // 
+            // timerMain
+            // 
+            this.timerMain.Enabled = true;
+            this.timerMain.Tick += new System.EventHandler(this.timerMain_Tick);
+            // 
+            // notifyIconMain
+            // 
+            this.notifyIconMain.ContextMenuStrip = this.contextMenuStripMain;
+            resources.ApplyResources(this.notifyIconMain, "notifyIconMain");
+            // 
+            // contextMenuStripMain
+            // 
+            this.contextMenuStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem_Display,
+            this.toolStripMenuItem_Language,
+            this.toolStripSeparator2,
+            this.toolStripMenuItem_About,
+            this.toolStripSeparator1,
+            this.toolStripMenuItem_Exit});
+            this.contextMenuStripMain.Name = "contextMenuStripMain";
+            resources.ApplyResources(this.contextMenuStripMain, "contextMenuStripMain");
+            // 
+            // toolStripMenuItem_Display
+            // 
+            this.toolStripMenuItem_Display.Name = "toolStripMenuItem_Display";
+            resources.ApplyResources(this.toolStripMenuItem_Display, "toolStripMenuItem_Display");
+            this.toolStripMenuItem_Display.Click += new System.EventHandler(this.toolStripMenuItem_Display_Click);
+            // 
+            // toolStripMenuItem_Language
+            // 
+            this.toolStripMenuItem_Language.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem_LanguageChineseSimplified,
+            this.toolStripMenuItem_LanguageChineseTraditional,
+            this.toolStripMenuItem_LanguageEnglish,
+            this.toolStripMenuItem_LanguageJapanese,
+            this.toolStripMenuItem_LanguageKorean});
+            this.toolStripMenuItem_Language.Name = "toolStripMenuItem_Language";
+            resources.ApplyResources(this.toolStripMenuItem_Language, "toolStripMenuItem_Language");
+            // 
+            // toolStripMenuItem_LanguageChineseSimplified
+            // 
+            this.toolStripMenuItem_LanguageChineseSimplified.Name = "toolStripMenuItem_LanguageChineseSimplified";
+            resources.ApplyResources(this.toolStripMenuItem_LanguageChineseSimplified, "toolStripMenuItem_LanguageChineseSimplified");
+            this.toolStripMenuItem_LanguageChineseSimplified.Click += new System.EventHandler(this.toolStripMenuItem_LanguageChineseSimplified_Click);
+            // 
+            // toolStripMenuItem_LanguageChineseTraditional
+            // 
+            this.toolStripMenuItem_LanguageChineseTraditional.Name = "toolStripMenuItem_LanguageChineseTraditional";
+            resources.ApplyResources(this.toolStripMenuItem_LanguageChineseTraditional, "toolStripMenuItem_LanguageChineseTraditional");
+            this.toolStripMenuItem_LanguageChineseTraditional.Click += new System.EventHandler(this.toolStripMenuItem_LanguageChineseTraditional_Click);
+            // 
+            // toolStripMenuItem_LanguageEnglish
+            // 
+            this.toolStripMenuItem_LanguageEnglish.Name = "toolStripMenuItem_LanguageEnglish";
+            resources.ApplyResources(this.toolStripMenuItem_LanguageEnglish, "toolStripMenuItem_LanguageEnglish");
+            this.toolStripMenuItem_LanguageEnglish.Click += new System.EventHandler(this.toolStripMenuItem_LanguageEnglish_Click);
+            // 
+            // toolStripMenuItem_LanguageJapanese
+            // 
+            this.toolStripMenuItem_LanguageJapanese.Name = "toolStripMenuItem_LanguageJapanese";
+            resources.ApplyResources(this.toolStripMenuItem_LanguageJapanese, "toolStripMenuItem_LanguageJapanese");
+            this.toolStripMenuItem_LanguageJapanese.Click += new System.EventHandler(this.toolStripMenuItem_LanguageJapanese_Click);
+            // 
+            // toolStripMenuItem_LanguageKorean
+            // 
+            this.toolStripMenuItem_LanguageKorean.Name = "toolStripMenuItem_LanguageKorean";
+            resources.ApplyResources(this.toolStripMenuItem_LanguageKorean, "toolStripMenuItem_LanguageKorean");
+            this.toolStripMenuItem_LanguageKorean.Click += new System.EventHandler(this.toolStripMenuItem_LanguageKorean_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            // 
+            // toolStripMenuItem_About
+            // 
+            this.toolStripMenuItem_About.Name = "toolStripMenuItem_About";
+            resources.ApplyResources(this.toolStripMenuItem_About, "toolStripMenuItem_About");
+            this.toolStripMenuItem_About.Click += new System.EventHandler(this.toolStripMenuItem_About_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // toolStripMenuItem_Exit
+            // 
+            this.toolStripMenuItem_Exit.Name = "toolStripMenuItem_Exit";
+            resources.ApplyResources(this.toolStripMenuItem_Exit, "toolStripMenuItem_Exit");
+            this.toolStripMenuItem_Exit.Click += new System.EventHandler(this.toolStripMenuItem_Exit_Click);
+            // 
             // mainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.Controls.Add(this.button_40);
-            this.Controls.Add(this.button_32);
             this.Controls.Add(this.button_39);
-            this.Controls.Add(this.button_31);
-            this.Controls.Add(this.button_24);
             this.Controls.Add(this.button_38);
-            this.Controls.Add(this.button_30);
-            this.Controls.Add(this.button_23);
             this.Controls.Add(this.button_37);
-            this.Controls.Add(this.button_29);
-            this.Controls.Add(this.button_22);
             this.Controls.Add(this.button_36);
-            this.Controls.Add(this.button_28);
-            this.Controls.Add(this.button_21);
             this.Controls.Add(this.button_35);
-            this.Controls.Add(this.button_27);
-            this.Controls.Add(this.button_20);
             this.Controls.Add(this.button_34);
-            this.Controls.Add(this.button_26);
-            this.Controls.Add(this.button_19);
             this.Controls.Add(this.button_33);
+            this.Controls.Add(this.button_32);
+            this.Controls.Add(this.button_31);
+            this.Controls.Add(this.button_30);
+            this.Controls.Add(this.button_29);
+            this.Controls.Add(this.button_28);
+            this.Controls.Add(this.button_27);
+            this.Controls.Add(this.button_26);
             this.Controls.Add(this.button_25);
+            this.Controls.Add(this.button_24);
+            this.Controls.Add(this.button_23);
+            this.Controls.Add(this.button_22);
+            this.Controls.Add(this.button_21);
+            this.Controls.Add(this.button_20);
+            this.Controls.Add(this.button_19);
             this.Controls.Add(this.button_18);
             this.Controls.Add(this.button_17);
             this.Controls.Add(this.button_16);
@@ -483,11 +546,6 @@ namespace QuickStart
         private System.Windows.Forms.Button button_22;
         private System.Windows.Forms.Button button_23;
         private System.Windows.Forms.Button button_24;
-        private System.Windows.Forms.NotifyIcon notifyIconMain;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripMain;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_About;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Exit;
         private System.Windows.Forms.Button button_25;
         private System.Windows.Forms.Button button_26;
         private System.Windows.Forms.Button button_27;
@@ -496,7 +554,6 @@ namespace QuickStart
         private System.Windows.Forms.Button button_30;
         private System.Windows.Forms.Button button_31;
         private System.Windows.Forms.Button button_32;
-        private System.Windows.Forms.Timer timerMain;
         private System.Windows.Forms.Button button_33;
         private System.Windows.Forms.Button button_34;
         private System.Windows.Forms.Button button_35;
@@ -505,6 +562,20 @@ namespace QuickStart
         private System.Windows.Forms.Button button_38;
         private System.Windows.Forms.Button button_39;
         private System.Windows.Forms.Button button_40;
+        private System.Windows.Forms.Timer timerMain;
+        private System.Windows.Forms.NotifyIcon notifyIconMain;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripMain;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Display;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Language;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_LanguageChineseSimplified;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_LanguageChineseTraditional;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_LanguageEnglish;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_LanguageJapanese;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_LanguageKorean;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_About;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Exit;
     }
 }
 

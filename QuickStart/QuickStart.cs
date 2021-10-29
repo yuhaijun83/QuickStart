@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuickStart.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,7 @@ namespace QuickStart
 
         private const string System_Info = "System_Info";
         private const string MainForm_Opacity = "MainForm_Opacity";
+        private const string MainForm_Language = "MainForm_Language";
 
         private const string Button_Name = "Button_Name";
         private const string Button_Visible = "Button_Visible";
@@ -29,11 +31,24 @@ namespace QuickStart
         private int iStopMode = 0; // 0:NO 1:X 2:Y 3:T
         private int iStopMode_T = 2;
         private int iStopMode_XY = 5;
+        
+        private string strIniFilePath = System.Environment.CurrentDirectory + "\\" + INI_FILE_NAME;
+        private string win_Language = MultilingualConfig.Language_en_US;
 
         private static List<IniConfig> lstConfig = new List<IniConfig>();
 
         public mainForm()
         {
+            this.win_Language = OperateIniFile.ReadIniData(System_Info, MainForm_Language, MultilingualConfig.Language_en_US, strIniFilePath);
+
+            if (!MultilingualConfig.Language_zh_CN.Equals(this.win_Language) && !MultilingualConfig.Language_zh_TW.Equals(this.win_Language) 
+                && !MultilingualConfig.Language_en_US.Equals(this.win_Language) && !MultilingualConfig.Language_ja_JP.Equals(this.win_Language) 
+                && !MultilingualConfig.Language_ko_KR.Equals(this.win_Language))
+            {
+                this.win_Language = MultilingualConfig.Language_en_US;
+                OperateIniFile.WriteIniData(System_Info, MainForm_Language, this.win_Language, strIniFilePath);
+            }
+
             InitializeComponent();
         }
 
@@ -246,8 +261,41 @@ namespace QuickStart
 
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            string strTitle = "【Warn】";
+            string strQuestion = "Do you really want to exit the program?!";
+            switch (this.win_Language)
+            {
+                case MultilingualConfig.Language_zh_CN:
+                    strTitle = "【警告】";
+                    strQuestion = "你丫真的要退出程序吗？！";
+                    break;
+
+                case MultilingualConfig.Language_zh_TW:
+                    strTitle = "【警告】";
+                    strQuestion = "你丫真的要退出程序嗎？！";
+                    break;
+
+                case MultilingualConfig.Language_en_US:
+                    strTitle = "【Warn】";
+                    strQuestion = "Do you really want to exit the program?!";
+                    break;
+
+                case MultilingualConfig.Language_ja_JP:
+                    strTitle = "【警告】";
+                    strQuestion = "本当にプログラムを終了しますか？！";
+                    break;
+
+                case MultilingualConfig.Language_ko_KR:
+                    strTitle = "【경고하다】";
+                    strQuestion = "프로그램을 종료하시겠습니까？！";
+                    break;
+
+                default:
+                    break;
+            }
+
             DialogResult dialogResult =
-                MessageBox.Show("Do you really want to quit?", "Warn", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                MessageBox.Show(strQuestion, strTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (dialogResult == DialogResult.Yes)
             {
                 e.Cancel = false;
@@ -260,8 +308,41 @@ namespace QuickStart
 
         private void toolStripMenuItem_Exit_Click(object sender, EventArgs e)
         {
+            string strTitle = "【Warn】";
+            string strQuestion = "Do you really want to exit the program?!";
+            switch (this.win_Language)
+            {
+                case MultilingualConfig.Language_zh_CN:
+                    strTitle = "【警告】";
+                    strQuestion = "你丫真的要退出程序吗？！";
+                    break;
+
+                case MultilingualConfig.Language_zh_TW:
+                    strTitle = "【警告】";
+                    strQuestion = "你丫真的要退出程序嗎？！";
+                    break;
+
+                case MultilingualConfig.Language_en_US:
+                    strTitle = "【Warn】";
+                    strQuestion = "Do you really want to exit the program?!";
+                    break;
+
+                case MultilingualConfig.Language_ja_JP:
+                    strTitle = "【警告】";
+                    strQuestion = "本当にプログラムを終了しますか？！";
+                    break;
+
+                case MultilingualConfig.Language_ko_KR:
+                    strTitle = "【경고하다】";
+                    strQuestion = "프로그램을 종료하시겠습니까？！";
+                    break;
+
+                default:
+                    break;
+            }
+
             DialogResult dialogResult =
-                MessageBox.Show("Do you really want to quit?", "Warn", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                MessageBox.Show(strQuestion, strTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (dialogResult == DialogResult.Yes)
             {
                 Environment.Exit(0);
@@ -270,7 +351,7 @@ namespace QuickStart
 
         private void toolStripMenuItem_About_Click(object sender, EventArgs e)
         {
-            aboutForm objAboutForm = new aboutForm();
+            aboutForm objAboutForm = new aboutForm(this.win_Language);
             objAboutForm.ShowDialog();
         }
 
@@ -284,12 +365,81 @@ namespace QuickStart
             this.toSetStopMode();
         }
 
+        private void toolStripMenuItem_Display_Click(object sender, EventArgs e)
+        {
+            this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width / 4, Screen.PrimaryScreen.WorkingArea.Height / 4);
+            this.Activate();
+        }
+
+        private void toolStripMenuItem_LanguageChineseSimplified_Click(object sender, EventArgs e)
+        {
+            this.toolStripMenuItem_LanguageChineseSimplified.Checked = true;
+            this.toolStripMenuItem_LanguageChineseTraditional.Checked = false;
+            this.toolStripMenuItem_LanguageEnglish.Checked = false;
+            this.toolStripMenuItem_LanguageJapanese.Checked = false;
+            this.toolStripMenuItem_LanguageKorean.Checked = false;
+
+            this.win_Language = MultilingualConfig.Language_zh_CN;
+            OperateIniFile.WriteIniData(System_Info, MainForm_Language, this.win_Language, strIniFilePath);
+            this.setMainFormLanguage();
+        }
+
+        private void toolStripMenuItem_LanguageChineseTraditional_Click(object sender, EventArgs e)
+        {
+            this.toolStripMenuItem_LanguageChineseSimplified.Checked = false;
+            this.toolStripMenuItem_LanguageChineseTraditional.Checked = true;
+            this.toolStripMenuItem_LanguageEnglish.Checked = false;
+            this.toolStripMenuItem_LanguageJapanese.Checked = false;
+            this.toolStripMenuItem_LanguageKorean.Checked = false;
+
+            this.win_Language = MultilingualConfig.Language_zh_TW;
+            OperateIniFile.WriteIniData(System_Info, MainForm_Language, this.win_Language, strIniFilePath);
+            this.setMainFormLanguage();
+        }
+
+        private void toolStripMenuItem_LanguageEnglish_Click(object sender, EventArgs e)
+        {
+            this.toolStripMenuItem_LanguageChineseSimplified.Checked = false;
+            this.toolStripMenuItem_LanguageChineseTraditional.Checked = false;
+            this.toolStripMenuItem_LanguageEnglish.Checked = true;
+            this.toolStripMenuItem_LanguageJapanese.Checked = false;
+            this.toolStripMenuItem_LanguageKorean.Checked = false;
+
+            this.win_Language = MultilingualConfig.Language_en_US;
+            OperateIniFile.WriteIniData(System_Info, MainForm_Language, this.win_Language, strIniFilePath);
+            this.setMainFormLanguage();
+        }
+
+        private void toolStripMenuItem_LanguageJapanese_Click(object sender, EventArgs e)
+        {
+            this.toolStripMenuItem_LanguageChineseSimplified.Checked = false;
+            this.toolStripMenuItem_LanguageChineseTraditional.Checked = false;
+            this.toolStripMenuItem_LanguageEnglish.Checked = false;
+            this.toolStripMenuItem_LanguageJapanese.Checked = true;
+            this.toolStripMenuItem_LanguageKorean.Checked = false;
+
+            this.win_Language = MultilingualConfig.Language_ja_JP;
+            OperateIniFile.WriteIniData(System_Info, MainForm_Language, this.win_Language, strIniFilePath);
+            this.setMainFormLanguage();
+        }
+
+        private void toolStripMenuItem_LanguageKorean_Click(object sender, EventArgs e)
+        {
+            this.toolStripMenuItem_LanguageChineseSimplified.Checked = false;
+            this.toolStripMenuItem_LanguageChineseTraditional.Checked = false;
+            this.toolStripMenuItem_LanguageEnglish.Checked = false;
+            this.toolStripMenuItem_LanguageJapanese.Checked = false;
+            this.toolStripMenuItem_LanguageKorean.Checked = true;
+
+            this.win_Language = MultilingualConfig.Language_ko_KR;
+            OperateIniFile.WriteIniData(System_Info, MainForm_Language, this.win_Language, strIniFilePath);
+            this.setMainFormLanguage();
+        }
+
         #region Me
 
         private void InitConfig()
         {
-            string strIniFilePath = System.Environment.CurrentDirectory + "\\" + INI_FILE_NAME;
-
             string strSection = null;
             IniConfig ini = null;
 
@@ -306,13 +456,13 @@ namespace QuickStart
                     strSection = "Button_" + i.ToString();
                 }
 
-                ini.Button_Name = OperateIniFile.ReadIniData(strSection, Button_Name, "", strIniFilePath);
+                ini.Button_Name = OperateIniFile.ReadIniData(strSection, Button_Name, "", strIniFilePath, "utf-8", 1024);
                 ini.Button_Visible = OperateIniFile.ReadIniData(strSection, Button_Visible, "0", strIniFilePath);
                 if (!"1".Equals(ini.Button_Visible)) { continue; }
-                ini.Program_Name = OperateIniFile.ReadIniData(strSection, Program_Name, "", strIniFilePath);
-                ini.Program_Type = OperateIniFile.ReadIniData(strSection, Program_Type, "exe", strIniFilePath);
+                ini.Program_Name = OperateIniFile.ReadIniData(strSection, Program_Name, "", strIniFilePath, "utf-8", 1024);
+                ini.Program_Type = OperateIniFile.ReadIniData(strSection, Program_Type, "exe", strIniFilePath).ToLower();
                 if ("".Equals(ini.Program_Type)) { ini.Program_Type = "exe"; }
-                ini.Program_Param = OperateIniFile.ReadIniData(strSection, Program_Param, "", strIniFilePath);
+                ini.Program_Param = OperateIniFile.ReadIniData(strSection, Program_Param, "", strIniFilePath, "utf-8", 1024);
 
                 lstConfig.Add(ini);
             }
@@ -321,14 +471,19 @@ namespace QuickStart
 
         private void InitForm()
         {
-            string strIniFilePath = System.Environment.CurrentDirectory + "\\" + INI_FILE_NAME;
-            String strMainForm_Opacity = OperateIniFile.ReadIniData(System_Info, MainForm_Opacity, "", strIniFilePath);
-            double dMainForm_Opacity = 1;
+            this.Text = "QuickStart  -- " + Properties.Resources.Program_Build_Version_Text;
+
+            String strMainForm_Opacity = OperateIniFile.ReadIniData(System_Info, MainForm_Opacity, "100", strIniFilePath);
+            double dMainForm_Opacity = 1D;
             if (!"".Equals(strMainForm_Opacity))
             {
                 try
                 {
-                    dMainForm_Opacity = double.Parse(strMainForm_Opacity);
+                    dMainForm_Opacity = double.Parse(strMainForm_Opacity) / 100;
+                    if (dMainForm_Opacity > 1D)
+                    {
+                        dMainForm_Opacity = 1D;
+                    }
                 } catch
                 {
                     ;
@@ -357,6 +512,34 @@ namespace QuickStart
             {
                 this.Size = new Size(769, 104);
             }
+
+            switch (this.win_Language)
+            {
+                case MultilingualConfig.Language_zh_CN:
+                    this.toolStripMenuItem_LanguageChineseSimplified.Checked = true;
+                    break;
+
+                case MultilingualConfig.Language_zh_TW:
+                    this.toolStripMenuItem_LanguageChineseTraditional.Checked = true;
+                    break;
+
+                case MultilingualConfig.Language_en_US:
+                    this.toolStripMenuItem_LanguageEnglish.Checked = true;
+                    break;
+
+                case MultilingualConfig.Language_ja_JP:
+                    this.toolStripMenuItem_LanguageJapanese.Checked = true;
+                    break;
+
+                case MultilingualConfig.Language_ko_KR:
+                    this.toolStripMenuItem_LanguageKorean.Checked = true;
+                    break;
+
+                default:
+                    break;
+            }
+
+            this.setMainFormLanguage();
         }
 
         private void InitButton()
@@ -538,6 +721,39 @@ namespace QuickStart
 
         private void button_common(IniConfig ini)
         {
+            string strTitle = "【Error】";
+            string strQuestion = "The Program Startup Type Configuration Error！";
+            switch (this.win_Language)
+            {
+                case MultilingualConfig.Language_zh_CN:
+                    strTitle = "【错误】";
+                    strQuestion = "程序启动类型配置错误！";
+                    break;
+
+                case MultilingualConfig.Language_zh_TW:
+                    strTitle = "【錯誤】";
+                    strQuestion = "程序啓動類型配置錯誤！";
+                    break;
+
+                case MultilingualConfig.Language_en_US:
+                    strTitle = "【Error】";
+                    strQuestion = "The Program Startup Type Configuration Error！";
+                    break;
+
+                case MultilingualConfig.Language_ja_JP:
+                    strTitle = "【異常】";
+                    strQuestion = "プログラム起動タイプ設定エラー！";
+                    break;
+
+                case MultilingualConfig.Language_ko_KR:
+                    strTitle = "【경고하다】";
+                    strQuestion = "프로그램 시작 유형 구성 오류！";
+                    break;
+
+                default:
+                    break;
+            }
+
             if ("exe".Equals(ini.Program_Type))
             {
                 try
@@ -546,7 +762,7 @@ namespace QuickStart
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ini.Program_Name + " " + ini.Program_Param + "\n\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ini.Program_Name + " " + ini.Program_Param + "\n\n" + ex.Message, strTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else if ("cmd".Equals(ini.Program_Type))
@@ -556,12 +772,12 @@ namespace QuickStart
                     RunCommand.RunCmd(ini.Program_Name, ini.Program_Param);
                 } catch (Exception ex)
                 {
-                    MessageBox.Show(ini.Program_Name + " " + ini.Program_Param + "\n\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ini.Program_Name + " " + ini.Program_Param + "\n\n" + ex.Message, strTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Program Start Type Error！\n【" + ini.Program_Type + "】", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(strQuestion + "\n【" + ini.Program_Type + "】", strTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -618,6 +834,75 @@ namespace QuickStart
                 {
                     this.iStopMode = 0;
                 }
+            }
+        }
+
+        private void setMainFormLanguage()
+        {
+            switch (this.win_Language)
+            {
+                case MultilingualConfig.Language_zh_CN:
+                    this.toolStripMenuItem_Display.Text = Resources.Resource_zh_CN.toolStripMenuItem_Display_Text;
+                    this.toolStripMenuItem_Language.Text = Resources.Resource_zh_CN.toolStripMenuItem_Language_Text;
+                    this.toolStripMenuItem_LanguageChineseSimplified.Text = Resources.Resource_zh_CN.toolStripMenuItem_LanguageChineseSimplified_Text;
+                    this.toolStripMenuItem_LanguageChineseTraditional.Text = Resources.Resource_zh_CN.toolStripMenuItem_LanguageChineseTraditional_Text;
+                    this.toolStripMenuItem_LanguageEnglish.Text = Resources.Resource_zh_CN.toolStripMenuItem_LanguageEnglish_Text;
+                    this.toolStripMenuItem_LanguageJapanese.Text = Resources.Resource_zh_CN.toolStripMenuItem_LanguageJapanese_Text;
+                    this.toolStripMenuItem_LanguageKorean.Text = Resources.Resource_zh_CN.toolStripMenuItem_LanguageKorean_Text;
+                    this.toolStripMenuItem_About.Text = Resources.Resource_zh_CN.toolStripMenuItem_About_Text;
+                    this.toolStripMenuItem_Exit.Text = Resources.Resource_zh_CN.toolStripMenuItem_Exit_Text;
+                    break;
+
+                case MultilingualConfig.Language_zh_TW:
+                    this.toolStripMenuItem_Display.Text = Resources.Resource_zh_TW.toolStripMenuItem_Display_Text;
+                    this.toolStripMenuItem_Language.Text = Resources.Resource_zh_TW.toolStripMenuItem_Language_Text;
+                    this.toolStripMenuItem_LanguageChineseSimplified.Text = Resources.Resource_zh_TW.toolStripMenuItem_LanguageChineseSimplified_Text;
+                    this.toolStripMenuItem_LanguageChineseTraditional.Text = Resources.Resource_zh_TW.toolStripMenuItem_LanguageChineseTraditional_Text;
+                    this.toolStripMenuItem_LanguageEnglish.Text = Resources.Resource_zh_TW.toolStripMenuItem_LanguageEnglish_Text;
+                    this.toolStripMenuItem_LanguageJapanese.Text = Resources.Resource_zh_TW.toolStripMenuItem_LanguageJapanese_Text;
+                    this.toolStripMenuItem_LanguageKorean.Text = Resources.Resource_zh_TW.toolStripMenuItem_LanguageKorean_Text;
+                    this.toolStripMenuItem_About.Text = Resources.Resource_zh_TW.toolStripMenuItem_About_Text;
+                    this.toolStripMenuItem_Exit.Text = Resources.Resource_zh_TW.toolStripMenuItem_Exit_Text;
+                    break;
+
+                case MultilingualConfig.Language_en_US:
+                    this.toolStripMenuItem_Display.Text = Resources.Resource_en_US.toolStripMenuItem_Display_Text;
+                    this.toolStripMenuItem_Language.Text = Resources.Resource_en_US.toolStripMenuItem_Language_Text;
+                    this.toolStripMenuItem_LanguageChineseSimplified.Text = Resources.Resource_en_US.toolStripMenuItem_LanguageChineseSimplified_Text;
+                    this.toolStripMenuItem_LanguageChineseTraditional.Text = Resources.Resource_en_US.toolStripMenuItem_LanguageChineseTraditional_Text;
+                    this.toolStripMenuItem_LanguageEnglish.Text = Resources.Resource_en_US.toolStripMenuItem_LanguageEnglish_Text;
+                    this.toolStripMenuItem_LanguageJapanese.Text = Resources.Resource_en_US.toolStripMenuItem_LanguageJapanese_Text;
+                    this.toolStripMenuItem_LanguageKorean.Text = Resources.Resource_en_US.toolStripMenuItem_LanguageKorean_Text;
+                    this.toolStripMenuItem_About.Text = Resources.Resource_en_US.toolStripMenuItem_About_Text;
+                    this.toolStripMenuItem_Exit.Text = Resources.Resource_en_US.toolStripMenuItem_Exit_Text;
+                    break;
+
+                case MultilingualConfig.Language_ja_JP:
+                    this.toolStripMenuItem_Display.Text = Resources.Resource_ja_JP.toolStripMenuItem_Display_Text;
+                    this.toolStripMenuItem_Language.Text = Resources.Resource_ja_JP.toolStripMenuItem_Language_Text;
+                    this.toolStripMenuItem_LanguageChineseSimplified.Text = Resources.Resource_ja_JP.toolStripMenuItem_LanguageChineseSimplified_Text;
+                    this.toolStripMenuItem_LanguageChineseTraditional.Text = Resources.Resource_ja_JP.toolStripMenuItem_LanguageChineseTraditional_Text;
+                    this.toolStripMenuItem_LanguageEnglish.Text = Resources.Resource_ja_JP.toolStripMenuItem_LanguageEnglish_Text;
+                    this.toolStripMenuItem_LanguageJapanese.Text = Resources.Resource_ja_JP.toolStripMenuItem_LanguageJapanese_Text;
+                    this.toolStripMenuItem_LanguageKorean.Text = Resources.Resource_ja_JP.toolStripMenuItem_LanguageKorean_Text;
+                    this.toolStripMenuItem_About.Text = Resources.Resource_ja_JP.toolStripMenuItem_About_Text;
+                    this.toolStripMenuItem_Exit.Text = Resources.Resource_ja_JP.toolStripMenuItem_Exit_Text;
+                    break;
+
+                case MultilingualConfig.Language_ko_KR:
+                    this.toolStripMenuItem_Display.Text = Resources.Resource_ko_KR.toolStripMenuItem_Display_Text;
+                    this.toolStripMenuItem_Language.Text = Resources.Resource_ko_KR.toolStripMenuItem_Language_Text;
+                    this.toolStripMenuItem_LanguageChineseSimplified.Text = Resources.Resource_ko_KR.toolStripMenuItem_LanguageChineseSimplified_Text;
+                    this.toolStripMenuItem_LanguageChineseTraditional.Text = Resources.Resource_ko_KR.toolStripMenuItem_LanguageChineseTraditional_Text;
+                    this.toolStripMenuItem_LanguageEnglish.Text = Resources.Resource_ko_KR.toolStripMenuItem_LanguageEnglish_Text;
+                    this.toolStripMenuItem_LanguageJapanese.Text = Resources.Resource_ko_KR.toolStripMenuItem_LanguageJapanese_Text;
+                    this.toolStripMenuItem_LanguageKorean.Text = Resources.Resource_ko_KR.toolStripMenuItem_LanguageKorean_Text;
+                    this.toolStripMenuItem_About.Text = Resources.Resource_ko_KR.toolStripMenuItem_About_Text;
+                    this.toolStripMenuItem_Exit.Text = Resources.Resource_ko_KR.toolStripMenuItem_Exit_Text;
+                    break;
+
+                default:
+                    break;
             }
         }
 

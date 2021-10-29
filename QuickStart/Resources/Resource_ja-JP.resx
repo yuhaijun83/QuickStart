@@ -117,7 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Program_Build_Version_Text" xml:space="preserve">
-    <value>Build v22.01</value>
+  <data name="aboutForm_BtnClose.Text" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="aboutForm_Title.Text" xml:space="preserve">
+    <value>バージョン情報</value>
+  </data>
+  <data name="toolStripMenuItem_About.Text" xml:space="preserve">
+    <value>バージョン情報</value>
+  </data>
+  <data name="toolStripMenuItem_Display.Text" xml:space="preserve">
+    <value>表示</value>
+  </data>
+  <data name="toolStripMenuItem_Exit.Text" xml:space="preserve">
+    <value>終了</value>
+  </data>
+  <data name="toolStripMenuItem_Language.Text" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageChineseSimplified.Text" xml:space="preserve">
+    <value>簡体字中国語</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageChineseTraditional.Text" xml:space="preserve">
+    <value>繁体字中国語</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageEnglish.Text" xml:space="preserve">
+    <value>英語</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageJapanese.Text" xml:space="preserve">
+    <value>日本語</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageKorean.Text" xml:space="preserve">
+    <value>韓国語</value>
   </data>
 </root>
