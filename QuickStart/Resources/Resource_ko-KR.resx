@@ -117,37 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="aboutForm_BtnClose.Text" xml:space="preserve">
+  <data name="aboutForm_BtnClose_Text" xml:space="preserve">
     <value>닫다</value>
   </data>
-  <data name="aboutForm_Title.Text" xml:space="preserve">
+  <data name="aboutForm_Title_Text" xml:space="preserve">
     <value>소개</value>
   </data>
-  <data name="toolStripMenuItem_About.Text" xml:space="preserve">
+  <data name="toolStripMenuItem_About_Text" xml:space="preserve">
     <value>소개</value>
   </data>
-  <data name="toolStripMenuItem_Display.Text" xml:space="preserve">
+  <data name="toolStripMenuItem_Display_Text" xml:space="preserve">
     <value>디스플레이</value>
   </data>
-  <data name="toolStripMenuItem_Exit.Text" xml:space="preserve">
+  <data name="toolStripMenuItem_Exit_Text" xml:space="preserve">
     <value>그만두 다</value>
   </data>
-  <data name="toolStripMenuItem_Language.Text" xml:space="preserve">
-    <value>언어</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageChineseSimplified.Text" xml:space="preserve">
+  <data name="toolStripMenuItem_LanguageChineseSimplified_Text" xml:space="preserve">
     <value>중국어 간체</value>
   </data>
-  <data name="toolStripMenuItem_LanguageChineseTraditional.Text" xml:space="preserve">
+  <data name="toolStripMenuItem_LanguageChineseTraditional_Text" xml:space="preserve">
     <value>중국어 번체</value>
   </data>
-  <data name="toolStripMenuItem_LanguageEnglish.Text" xml:space="preserve">
+  <data name="toolStripMenuItem_LanguageEnglish_Text" xml:space="preserve">
     <value>영어</value>
   </data>
-  <data name="toolStripMenuItem_LanguageJapanese.Text" xml:space="preserve">
+  <data name="toolStripMenuItem_LanguageJapanese_Text" xml:space="preserve">
     <value>일본어</value>
   </data>
-  <data name="toolStripMenuItem_LanguageKorean.Text" xml:space="preserve">
+  <data name="toolStripMenuItem_LanguageKorean_Text" xml:space="preserve">
     <value>한국인</value>
+  </data>
+  <data name="toolStripMenuItem_Language_Text" xml:space="preserve">
+    <value>언어</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_Text" xml:space="preserve">
+    <value>불투명</value>
   </data>
 </root>

@@ -28,6 +28,12 @@ namespace QuickStart
         private const string Program_Type = "Program_Type";
         private const string Program_Param = "Program_Param";
 
+        private const int WM_SYSCOMMAND = 0x112;
+        private const int SC_CLOSE = 0xF060;
+        private const int SC_MINIMIZE = 0xF020;
+        private const int SC_MAXIMIZE = 0xF030;
+        private const int SC_NORMAL = 0xF120;
+
         private int iStopMode = 0; // 0:NO 1:X 2:Y 3:T
         private int iStopMode_T = 2;
         private int iStopMode_XY = 5;
@@ -39,21 +45,13 @@ namespace QuickStart
 
         public mainForm()
         {
-            this.win_Language = OperateIniFile.ReadIniData(System_Info, MainForm_Language, MultilingualConfig.Language_en_US, strIniFilePath);
-
-            if (!MultilingualConfig.Language_zh_CN.Equals(this.win_Language) && !MultilingualConfig.Language_zh_TW.Equals(this.win_Language) 
-                && !MultilingualConfig.Language_en_US.Equals(this.win_Language) && !MultilingualConfig.Language_ja_JP.Equals(this.win_Language) 
-                && !MultilingualConfig.Language_ko_KR.Equals(this.win_Language))
-            {
-                this.win_Language = MultilingualConfig.Language_en_US;
-                OperateIniFile.WriteIniData(System_Info, MainForm_Language, this.win_Language, strIniFilePath);
-            }
-
             InitializeComponent();
         }
 
         private void mainForm_Load(object sender, EventArgs e)
         {
+            this.InitLanguage();
+            this.InitOpacity();
             this.InitConfig();
             this.InitForm();
             this.InitButton();
@@ -367,8 +365,62 @@ namespace QuickStart
 
         private void toolStripMenuItem_Display_Click(object sender, EventArgs e)
         {
-            this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width / 4, Screen.PrimaryScreen.WorkingArea.Height / 4);
-            this.Activate();
+            this.toShowMainForm();
+        }
+
+        private void notifyIconMain_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.toShowMainForm();
+        }
+
+        private void toolStripMenuItem_Opacity_10_Click(object sender, EventArgs e)
+        {
+            this.toSetOpacity("10");
+        }
+
+        private void toolStripMenuItem_Opacity_20_Click(object sender, EventArgs e)
+        {
+            this.toSetOpacity("20");
+        }
+
+        private void toolStripMenuItem_Opacity_30_Click(object sender, EventArgs e)
+        {
+            this.toSetOpacity("30");
+        }
+
+        private void toolStripMenuItem_Opacity_40_Click(object sender, EventArgs e)
+        {
+            this.toSetOpacity("40");
+        }
+
+        private void toolStripMenuItem_Opacity_50_Click(object sender, EventArgs e)
+        {
+            this.toSetOpacity("50");
+        }
+
+        private void toolStripMenuItem_Opacity_60_Click(object sender, EventArgs e)
+        {
+            this.toSetOpacity("60");
+        }
+
+        private void toolStripMenuItem_Opacity_70_Click(object sender, EventArgs e)
+        {
+            this.toSetOpacity("70");
+        }
+
+        private void toolStripMenuItem_Opacity_80_Click(object sender, EventArgs e)
+        {
+            this.toSetOpacity("80");
+        }
+
+        private void toolStripMenuItem_Opacity_90_Click(object sender, EventArgs e)
+        {
+            this.toSetOpacity("90");
+        }
+
+        private void toolStripMenuItem_Opacity_100_Click(object sender, EventArgs e)
+        {
+            this.toSetOpacity("100");
         }
 
         private void toolStripMenuItem_LanguageChineseSimplified_Click(object sender, EventArgs e)
@@ -437,6 +489,94 @@ namespace QuickStart
         }
 
         #region Me
+        private void InitLanguage()
+        {
+            this.win_Language = OperateIniFile.ReadIniData(System_Info, MainForm_Language, "", strIniFilePath);
+
+            if (!MultilingualConfig.Language_zh_CN.Equals(this.win_Language) && !MultilingualConfig.Language_zh_TW.Equals(this.win_Language)
+                && !MultilingualConfig.Language_en_US.Equals(this.win_Language) && !MultilingualConfig.Language_ja_JP.Equals(this.win_Language)
+                && !MultilingualConfig.Language_ko_KR.Equals(this.win_Language))
+            {
+                this.win_Language = MultilingualConfig.Language_en_US;
+                OperateIniFile.WriteIniData(System_Info, MainForm_Language, this.win_Language, strIniFilePath);
+            }
+        }
+
+        private void InitOpacity()
+        {
+            string strMainForm_Opacity = OperateIniFile.ReadIniData(System_Info, MainForm_Opacity, "", strIniFilePath);
+            double dMainForm_Opacity = 1D;
+
+            if ("".Equals(strMainForm_Opacity))
+            {
+                this.toSetOpacity("100");
+            } 
+            else
+            {
+                try
+                {
+                    dMainForm_Opacity = double.Parse(strMainForm_Opacity) / 100;
+                    if (dMainForm_Opacity < 0D)
+                    {
+
+                        this.toSetOpacity("10");
+                    }
+                    else if (dMainForm_Opacity > 1D)
+                    {
+
+                        this.toSetOpacity("100");
+                    } else
+                    {
+                        this.Opacity = dMainForm_Opacity;
+                    }
+                }
+                catch
+                {
+                    this.toSetOpacity("100");
+                }
+            }
+
+            if (dMainForm_Opacity <= 0.1D)
+            {
+                this.toolStripMenuItem_Opacity_10.Checked = true;
+            }
+            else if (dMainForm_Opacity <= 0.2D)
+            {
+                this.toolStripMenuItem_Opacity_20.Checked = true;
+            }
+            else if (dMainForm_Opacity <= 0.3D)
+            {
+                this.toolStripMenuItem_Opacity_30.Checked = true;
+            }
+            else if (dMainForm_Opacity <= 0.4D)
+            {
+                this.toolStripMenuItem_Opacity_40.Checked = true;
+            }
+            else if (dMainForm_Opacity <= 0.5D)
+            {
+                this.toolStripMenuItem_Opacity_50.Checked = true;
+            }
+            else if (dMainForm_Opacity <= 0.6D)
+            {
+                this.toolStripMenuItem_Opacity_60.Checked = true;
+            }
+            else if (dMainForm_Opacity <= 0.7D)
+            {
+                this.toolStripMenuItem_Opacity_70.Checked = true;
+            }
+            else if (dMainForm_Opacity <= 0.8D)
+            {
+                this.toolStripMenuItem_Opacity_80.Checked = true;
+            }
+            else if (dMainForm_Opacity <= 0.9D)
+            {
+                this.toolStripMenuItem_Opacity_90.Checked = true;
+            }
+            else if (dMainForm_Opacity <= 1D)
+            {
+                this.toolStripMenuItem_Opacity_100.Checked = true;
+            }
+        }
 
         private void InitConfig()
         {
@@ -471,25 +611,7 @@ namespace QuickStart
 
         private void InitForm()
         {
-            this.Text = "QuickStart  -- " + Properties.Resources.Program_Build_Version_Text;
-
-            String strMainForm_Opacity = OperateIniFile.ReadIniData(System_Info, MainForm_Opacity, "100", strIniFilePath);
-            double dMainForm_Opacity = 1D;
-            if (!"".Equals(strMainForm_Opacity))
-            {
-                try
-                {
-                    dMainForm_Opacity = double.Parse(strMainForm_Opacity) / 100;
-                    if (dMainForm_Opacity > 1D)
-                    {
-                        dMainForm_Opacity = 1D;
-                    }
-                } catch
-                {
-                    ;
-                }
-            }
-            this.Opacity = dMainForm_Opacity;
+            this.Text = "QuickStart  " + Properties.Resources.Program_Build_Version_Text;
 
             // 12, 64 13, 64 13, 64 ,13 = 243
             int isize = lstConfig.Count();
@@ -540,6 +662,7 @@ namespace QuickStart
             }
 
             this.setMainFormLanguage();
+            this.toSetMainFormLocation();
         }
 
         private void InitButton()
@@ -803,14 +926,21 @@ namespace QuickStart
                 if (this.iStopMode == 1)
                 {
                     this.Location = new Point(iStopMode_T, this.Location.Y);
+                    this.TopMost = true;
                 }
                 else if (this.iStopMode == 2)
                 {
                     this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - this.Width - iStopMode_T, this.Location.Y);
+                    this.TopMost = true;
                 }
                 else if (this.iStopMode == 3)
                 {
                     this.Location = new Point(this.Location.X, iStopMode_T);
+                    this.TopMost = true;
+                }
+                else
+                {
+                    this.TopMost = false;
                 }
             }
             else
@@ -835,6 +965,79 @@ namespace QuickStart
                     this.iStopMode = 0;
                 }
             }
+
+        }
+
+        private void toSetOpacity(string strPersent)
+        {
+            this.toolStripMenuItem_Opacity_10.Checked = false;
+            this.toolStripMenuItem_Opacity_20.Checked = false;
+            this.toolStripMenuItem_Opacity_30.Checked = false;
+            this.toolStripMenuItem_Opacity_40.Checked = false;
+            this.toolStripMenuItem_Opacity_50.Checked = false;
+            this.toolStripMenuItem_Opacity_60.Checked = false;
+            this.toolStripMenuItem_Opacity_70.Checked = false;
+            this.toolStripMenuItem_Opacity_80.Checked = false;
+            this.toolStripMenuItem_Opacity_90.Checked = false;
+            this.toolStripMenuItem_Opacity_100.Checked = false;
+
+            switch (strPersent)
+            {
+                case "10":
+                    this.Opacity = 0.1D;
+                    this.toolStripMenuItem_Opacity_10.Checked = true;
+                    break;
+
+                case "20":
+                    this.Opacity = 0.2D;
+                    this.toolStripMenuItem_Opacity_20.Checked = true;
+                    break;
+
+                case "30":
+                    this.Opacity = 0.3D;
+                    this.toolStripMenuItem_Opacity_30.Checked = true;
+                    break;
+
+                case "40":
+                    this.Opacity = 0.4D;
+                    this.toolStripMenuItem_Opacity_40.Checked = true;
+                    break;
+
+                case "50":
+                    this.Opacity = 0.5D;
+                    this.toolStripMenuItem_Opacity_50.Checked = true;
+                    break;
+
+                case "60":
+                    this.Opacity = 0.6D;
+                    this.toolStripMenuItem_Opacity_60.Checked = true;
+                    break;
+
+                case "70":
+                    this.Opacity = 0.7D;
+                    this.toolStripMenuItem_Opacity_70.Checked = true;
+                    break;
+
+                case "80":
+                    this.Opacity = 0.8D;
+                    this.toolStripMenuItem_Opacity_80.Checked = true;
+                    break;
+
+                case "90":
+                    this.Opacity = 0.9D;
+                    this.toolStripMenuItem_Opacity_90.Checked = true;
+                    break;
+
+                case "100":
+                    this.Opacity = 1D;
+                    this.toolStripMenuItem_Opacity_100.Checked = true;
+                    break;
+
+                default:
+                    break;
+            }
+
+            OperateIniFile.WriteIniData(System_Info, MainForm_Opacity, strPersent, strIniFilePath);
         }
 
         private void setMainFormLanguage()
@@ -843,6 +1046,7 @@ namespace QuickStart
             {
                 case MultilingualConfig.Language_zh_CN:
                     this.toolStripMenuItem_Display.Text = Resources.Resource_zh_CN.toolStripMenuItem_Display_Text;
+                    this.toolStripMenuItem_Opacity.Text = Resources.Resource_zh_CN.toolStripMenuItem_Opacity_Text;
                     this.toolStripMenuItem_Language.Text = Resources.Resource_zh_CN.toolStripMenuItem_Language_Text;
                     this.toolStripMenuItem_LanguageChineseSimplified.Text = Resources.Resource_zh_CN.toolStripMenuItem_LanguageChineseSimplified_Text;
                     this.toolStripMenuItem_LanguageChineseTraditional.Text = Resources.Resource_zh_CN.toolStripMenuItem_LanguageChineseTraditional_Text;
@@ -855,6 +1059,7 @@ namespace QuickStart
 
                 case MultilingualConfig.Language_zh_TW:
                     this.toolStripMenuItem_Display.Text = Resources.Resource_zh_TW.toolStripMenuItem_Display_Text;
+                    this.toolStripMenuItem_Opacity.Text = Resources.Resource_zh_TW.toolStripMenuItem_Opacity_Text;
                     this.toolStripMenuItem_Language.Text = Resources.Resource_zh_TW.toolStripMenuItem_Language_Text;
                     this.toolStripMenuItem_LanguageChineseSimplified.Text = Resources.Resource_zh_TW.toolStripMenuItem_LanguageChineseSimplified_Text;
                     this.toolStripMenuItem_LanguageChineseTraditional.Text = Resources.Resource_zh_TW.toolStripMenuItem_LanguageChineseTraditional_Text;
@@ -867,6 +1072,7 @@ namespace QuickStart
 
                 case MultilingualConfig.Language_en_US:
                     this.toolStripMenuItem_Display.Text = Resources.Resource_en_US.toolStripMenuItem_Display_Text;
+                    this.toolStripMenuItem_Opacity.Text = Resources.Resource_en_US.toolStripMenuItem_Opacity_Text;
                     this.toolStripMenuItem_Language.Text = Resources.Resource_en_US.toolStripMenuItem_Language_Text;
                     this.toolStripMenuItem_LanguageChineseSimplified.Text = Resources.Resource_en_US.toolStripMenuItem_LanguageChineseSimplified_Text;
                     this.toolStripMenuItem_LanguageChineseTraditional.Text = Resources.Resource_en_US.toolStripMenuItem_LanguageChineseTraditional_Text;
@@ -879,6 +1085,7 @@ namespace QuickStart
 
                 case MultilingualConfig.Language_ja_JP:
                     this.toolStripMenuItem_Display.Text = Resources.Resource_ja_JP.toolStripMenuItem_Display_Text;
+                    this.toolStripMenuItem_Opacity.Text = Resources.Resource_ja_JP.toolStripMenuItem_Opacity_Text;
                     this.toolStripMenuItem_Language.Text = Resources.Resource_ja_JP.toolStripMenuItem_Language_Text;
                     this.toolStripMenuItem_LanguageChineseSimplified.Text = Resources.Resource_ja_JP.toolStripMenuItem_LanguageChineseSimplified_Text;
                     this.toolStripMenuItem_LanguageChineseTraditional.Text = Resources.Resource_ja_JP.toolStripMenuItem_LanguageChineseTraditional_Text;
@@ -891,6 +1098,7 @@ namespace QuickStart
 
                 case MultilingualConfig.Language_ko_KR:
                     this.toolStripMenuItem_Display.Text = Resources.Resource_ko_KR.toolStripMenuItem_Display_Text;
+                    this.toolStripMenuItem_Opacity.Text = Resources.Resource_ko_KR.toolStripMenuItem_Opacity_Text;
                     this.toolStripMenuItem_Language.Text = Resources.Resource_ko_KR.toolStripMenuItem_Language_Text;
                     this.toolStripMenuItem_LanguageChineseSimplified.Text = Resources.Resource_ko_KR.toolStripMenuItem_LanguageChineseSimplified_Text;
                     this.toolStripMenuItem_LanguageChineseTraditional.Text = Resources.Resource_ko_KR.toolStripMenuItem_LanguageChineseTraditional_Text;
@@ -904,6 +1112,41 @@ namespace QuickStart
                 default:
                     break;
             }
+        }
+
+        private void toShowMainForm()
+        {
+            this.WindowState = FormWindowState.Normal;
+            this.TopMost = false;
+
+            this.toSetMainFormLocation();
+            this.Activate();
+        }
+
+        private void toSetMainFormLocation()
+        {
+            this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width / 4, Screen.PrimaryScreen.WorkingArea.Height / 4);
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_SYSCOMMAND)
+            {
+                if (m.WParam.ToInt32() == SC_MINIMIZE)
+                {
+                    ;
+                }
+                else if (m.WParam.ToInt32() == SC_NORMAL)
+                {
+                    this.toShowMainForm();
+                }
+                else if (m.WParam.ToInt32() == SC_MAXIMIZE)
+                {
+                    ;
+                }
+
+            }
+            base.WndProc(ref m);
         }
 
         #endregion Me

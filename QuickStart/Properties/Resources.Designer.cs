@@ -61,7 +61,7 @@ namespace QuickStart.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Build v22.01 的本地化字符串。
+        ///   查找类似 Build v22.02 的本地化字符串。
         /// </summary>
         internal static string Program_Build_Version_Text {
             get {

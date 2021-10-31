@@ -75,6 +75,17 @@ namespace QuickStart
             this.notifyIconMain = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStripMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem_Display = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Opacity = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Opacity_10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Opacity_20 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Opacity_30 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Opacity_40 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Opacity_50 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Opacity_60 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Opacity_70 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Opacity_80 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Opacity_90 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Opacity_100 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Language = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_LanguageChineseSimplified = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_LanguageChineseTraditional = new System.Windows.Forms.ToolStripMenuItem();
@@ -377,12 +388,14 @@ namespace QuickStart
             // 
             this.notifyIconMain.ContextMenuStrip = this.contextMenuStripMain;
             resources.ApplyResources(this.notifyIconMain, "notifyIconMain");
+            this.notifyIconMain.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIconMain_MouseDoubleClick);
             // 
             // contextMenuStripMain
             // 
             this.contextMenuStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem_Display,
+            this.toolStripMenuItem_Opacity,
             this.toolStripMenuItem_Language,
             this.toolStripSeparator2,
             this.toolStripMenuItem_About,
@@ -396,6 +409,82 @@ namespace QuickStart
             this.toolStripMenuItem_Display.Name = "toolStripMenuItem_Display";
             resources.ApplyResources(this.toolStripMenuItem_Display, "toolStripMenuItem_Display");
             this.toolStripMenuItem_Display.Click += new System.EventHandler(this.toolStripMenuItem_Display_Click);
+            // 
+            // toolStripMenuItem_Opacity
+            // 
+            this.toolStripMenuItem_Opacity.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem_Opacity_10,
+            this.toolStripMenuItem_Opacity_20,
+            this.toolStripMenuItem_Opacity_30,
+            this.toolStripMenuItem_Opacity_40,
+            this.toolStripMenuItem_Opacity_50,
+            this.toolStripMenuItem_Opacity_60,
+            this.toolStripMenuItem_Opacity_70,
+            this.toolStripMenuItem_Opacity_80,
+            this.toolStripMenuItem_Opacity_90,
+            this.toolStripMenuItem_Opacity_100});
+            this.toolStripMenuItem_Opacity.Name = "toolStripMenuItem_Opacity";
+            resources.ApplyResources(this.toolStripMenuItem_Opacity, "toolStripMenuItem_Opacity");
+            // 
+            // toolStripMenuItem_Opacity_10
+            // 
+            this.toolStripMenuItem_Opacity_10.Name = "toolStripMenuItem_Opacity_10";
+            resources.ApplyResources(this.toolStripMenuItem_Opacity_10, "toolStripMenuItem_Opacity_10");
+            this.toolStripMenuItem_Opacity_10.Click += new System.EventHandler(this.toolStripMenuItem_Opacity_10_Click);
+            // 
+            // toolStripMenuItem_Opacity_20
+            // 
+            this.toolStripMenuItem_Opacity_20.Name = "toolStripMenuItem_Opacity_20";
+            resources.ApplyResources(this.toolStripMenuItem_Opacity_20, "toolStripMenuItem_Opacity_20");
+            this.toolStripMenuItem_Opacity_20.Click += new System.EventHandler(this.toolStripMenuItem_Opacity_20_Click);
+            // 
+            // toolStripMenuItem_Opacity_30
+            // 
+            this.toolStripMenuItem_Opacity_30.Name = "toolStripMenuItem_Opacity_30";
+            resources.ApplyResources(this.toolStripMenuItem_Opacity_30, "toolStripMenuItem_Opacity_30");
+            this.toolStripMenuItem_Opacity_30.Click += new System.EventHandler(this.toolStripMenuItem_Opacity_30_Click);
+            // 
+            // toolStripMenuItem_Opacity_40
+            // 
+            this.toolStripMenuItem_Opacity_40.Name = "toolStripMenuItem_Opacity_40";
+            resources.ApplyResources(this.toolStripMenuItem_Opacity_40, "toolStripMenuItem_Opacity_40");
+            this.toolStripMenuItem_Opacity_40.Click += new System.EventHandler(this.toolStripMenuItem_Opacity_40_Click);
+            // 
+            // toolStripMenuItem_Opacity_50
+            // 
+            this.toolStripMenuItem_Opacity_50.Name = "toolStripMenuItem_Opacity_50";
+            resources.ApplyResources(this.toolStripMenuItem_Opacity_50, "toolStripMenuItem_Opacity_50");
+            this.toolStripMenuItem_Opacity_50.Click += new System.EventHandler(this.toolStripMenuItem_Opacity_50_Click);
+            // 
+            // toolStripMenuItem_Opacity_60
+            // 
+            this.toolStripMenuItem_Opacity_60.Name = "toolStripMenuItem_Opacity_60";
+            resources.ApplyResources(this.toolStripMenuItem_Opacity_60, "toolStripMenuItem_Opacity_60");
+            this.toolStripMenuItem_Opacity_60.Click += new System.EventHandler(this.toolStripMenuItem_Opacity_60_Click);
+            // 
+            // toolStripMenuItem_Opacity_70
+            // 
+            this.toolStripMenuItem_Opacity_70.Name = "toolStripMenuItem_Opacity_70";
+            resources.ApplyResources(this.toolStripMenuItem_Opacity_70, "toolStripMenuItem_Opacity_70");
+            this.toolStripMenuItem_Opacity_70.Click += new System.EventHandler(this.toolStripMenuItem_Opacity_70_Click);
+            // 
+            // toolStripMenuItem_Opacity_80
+            // 
+            this.toolStripMenuItem_Opacity_80.Name = "toolStripMenuItem_Opacity_80";
+            resources.ApplyResources(this.toolStripMenuItem_Opacity_80, "toolStripMenuItem_Opacity_80");
+            this.toolStripMenuItem_Opacity_80.Click += new System.EventHandler(this.toolStripMenuItem_Opacity_80_Click);
+            // 
+            // toolStripMenuItem_Opacity_90
+            // 
+            this.toolStripMenuItem_Opacity_90.Name = "toolStripMenuItem_Opacity_90";
+            resources.ApplyResources(this.toolStripMenuItem_Opacity_90, "toolStripMenuItem_Opacity_90");
+            this.toolStripMenuItem_Opacity_90.Click += new System.EventHandler(this.toolStripMenuItem_Opacity_90_Click);
+            // 
+            // toolStripMenuItem_Opacity_100
+            // 
+            this.toolStripMenuItem_Opacity_100.Name = "toolStripMenuItem_Opacity_100";
+            resources.ApplyResources(this.toolStripMenuItem_Opacity_100, "toolStripMenuItem_Opacity_100");
+            this.toolStripMenuItem_Opacity_100.Click += new System.EventHandler(this.toolStripMenuItem_Opacity_100_Click);
             // 
             // toolStripMenuItem_Language
             // 
@@ -507,11 +596,8 @@ namespace QuickStart
             this.Controls.Add(this.button_01);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "mainForm";
             this.Opacity = 0D;
-            this.ShowInTaskbar = false;
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
             this.Load += new System.EventHandler(this.mainForm_Load);
             this.Move += new System.EventHandler(this.mainForm_Move);
@@ -576,6 +662,17 @@ namespace QuickStart
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_About;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Exit;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Opacity;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Opacity_20;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Opacity_40;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Opacity_50;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Opacity_60;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Opacity_70;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Opacity_80;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Opacity_90;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Opacity_100;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Opacity_10;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Opacity_30;
     }
 }
 

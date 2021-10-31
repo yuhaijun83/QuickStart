@@ -1452,6 +1452,72 @@
   <data name="toolStripMenuItem_Display.Text" xml:space="preserve">
     <value>Display</value>
   </data>
+  <data name="toolStripMenuItem_Opacity_10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_10.Text" xml:space="preserve">
+    <value>10%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_20.Text" xml:space="preserve">
+    <value>20%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_30.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_30.Text" xml:space="preserve">
+    <value>30%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_40.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_40.Text" xml:space="preserve">
+    <value>40%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_50.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_50.Text" xml:space="preserve">
+    <value>50%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_60.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_60.Text" xml:space="preserve">
+    <value>60%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_70.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_70.Text" xml:space="preserve">
+    <value>70%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_80.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_80.Text" xml:space="preserve">
+    <value>80%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_90.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_90.Text" xml:space="preserve">
+    <value>90%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_100.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_100.Text" xml:space="preserve">
+    <value>100%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 24</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity.Text" xml:space="preserve">
+    <value>Opacity</value>
+  </data>
   <data name="toolStripMenuItem_LanguageChineseSimplified.Size" type="System.Drawing.Size, System.Drawing">
     <value>237, 26</value>
   </data>
@@ -1507,7 +1573,7 @@
     <value>Exit</value>
   </data>
   <data name="contextMenuStripMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 112</value>
+    <value>150, 136</value>
   </data>
   <data name="&gt;&gt;contextMenuStripMain.Name" xml:space="preserve">
     <value>contextMenuStripMain</value>
@@ -4872,7 +4938,7 @@
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>QuickStart  -- Build XX.XX</value>
+    <value>QuickStart  Build XX.XX</value>
   </data>
   <data name="&gt;&gt;timerMain.Name" xml:space="preserve">
     <value>timerMain</value>
@@ -4890,6 +4956,72 @@
     <value>toolStripMenuItem_Display</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Display.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Opacity</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_10.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Opacity_10</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_20.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Opacity_20</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_30.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Opacity_30</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_30.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_40.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Opacity_40</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_40.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_50.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Opacity_50</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_50.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_60.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Opacity_60</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_60.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_70.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Opacity_70</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_70.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_80.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Opacity_80</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_80.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_90.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Opacity_90</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_90.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_100.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Opacity_100</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Opacity_100.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Language.Name" xml:space="preserve">

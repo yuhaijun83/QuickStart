@@ -65,7 +65,7 @@ namespace QuickStart.Resources {
         /// </summary>
         internal static string aboutForm_BtnClose_Text {
             get {
-                return ResourceManager.GetString("aboutForm_BtnClose.Text", resourceCulture);
+                return ResourceManager.GetString("aboutForm_BtnClose_Text", resourceCulture);
             }
         }
         
@@ -74,7 +74,7 @@ namespace QuickStart.Resources {
         /// </summary>
         internal static string aboutForm_Title_Text {
             get {
-                return ResourceManager.GetString("aboutForm_Title.Text", resourceCulture);
+                return ResourceManager.GetString("aboutForm_Title_Text", resourceCulture);
             }
         }
         
@@ -83,7 +83,7 @@ namespace QuickStart.Resources {
         /// </summary>
         internal static string toolStripMenuItem_About_Text {
             get {
-                return ResourceManager.GetString("toolStripMenuItem_About.Text", resourceCulture);
+                return ResourceManager.GetString("toolStripMenuItem_About_Text", resourceCulture);
             }
         }
         
@@ -92,7 +92,7 @@ namespace QuickStart.Resources {
         /// </summary>
         internal static string toolStripMenuItem_Display_Text {
             get {
-                return ResourceManager.GetString("toolStripMenuItem_Display.Text", resourceCulture);
+                return ResourceManager.GetString("toolStripMenuItem_Display_Text", resourceCulture);
             }
         }
         
@@ -101,7 +101,7 @@ namespace QuickStart.Resources {
         /// </summary>
         internal static string toolStripMenuItem_Exit_Text {
             get {
-                return ResourceManager.GetString("toolStripMenuItem_Exit.Text", resourceCulture);
+                return ResourceManager.GetString("toolStripMenuItem_Exit_Text", resourceCulture);
             }
         }
         
@@ -110,7 +110,7 @@ namespace QuickStart.Resources {
         /// </summary>
         internal static string toolStripMenuItem_Language_Text {
             get {
-                return ResourceManager.GetString("toolStripMenuItem_Language.Text", resourceCulture);
+                return ResourceManager.GetString("toolStripMenuItem_Language_Text", resourceCulture);
             }
         }
         
@@ -119,7 +119,7 @@ namespace QuickStart.Resources {
         /// </summary>
         internal static string toolStripMenuItem_LanguageChineseSimplified_Text {
             get {
-                return ResourceManager.GetString("toolStripMenuItem_LanguageChineseSimplified.Text", resourceCulture);
+                return ResourceManager.GetString("toolStripMenuItem_LanguageChineseSimplified_Text", resourceCulture);
             }
         }
         
@@ -128,7 +128,7 @@ namespace QuickStart.Resources {
         /// </summary>
         internal static string toolStripMenuItem_LanguageChineseTraditional_Text {
             get {
-                return ResourceManager.GetString("toolStripMenuItem_LanguageChineseTraditional.Text", resourceCulture);
+                return ResourceManager.GetString("toolStripMenuItem_LanguageChineseTraditional_Text", resourceCulture);
             }
         }
         
@@ -137,7 +137,7 @@ namespace QuickStart.Resources {
         /// </summary>
         internal static string toolStripMenuItem_LanguageEnglish_Text {
             get {
-                return ResourceManager.GetString("toolStripMenuItem_LanguageEnglish.Text", resourceCulture);
+                return ResourceManager.GetString("toolStripMenuItem_LanguageEnglish_Text", resourceCulture);
             }
         }
         
@@ -146,7 +146,7 @@ namespace QuickStart.Resources {
         /// </summary>
         internal static string toolStripMenuItem_LanguageJapanese_Text {
             get {
-                return ResourceManager.GetString("toolStripMenuItem_LanguageJapanese.Text", resourceCulture);
+                return ResourceManager.GetString("toolStripMenuItem_LanguageJapanese_Text", resourceCulture);
             }
         }
         
@@ -155,7 +155,16 @@ namespace QuickStart.Resources {
         /// </summary>
         internal static string toolStripMenuItem_LanguageKorean_Text {
             get {
-                return ResourceManager.GetString("toolStripMenuItem_LanguageKorean.Text", resourceCulture);
+                return ResourceManager.GetString("toolStripMenuItem_LanguageKorean_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Opacity 的本地化字符串。
+        /// </summary>
+        internal static string toolStripMenuItem_Opacity_Text {
+            get {
+                return ResourceManager.GetString("toolStripMenuItem_Opacity_Text", resourceCulture);
             }
         }
     }
