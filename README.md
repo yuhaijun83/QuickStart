@@ -3,11 +3,11 @@
 
 【开发环境】：
 
-       Windows 10 Professional 21H1 + Visusl Studio 2019 Enterprise + .Net FrameWork 3.5
+       Windows 10 Enterprise (Jp) 21H2 + Visusl Studio 2022 Enterprise + .Net FrameWork 3.5/.Net FrameWork 4.8
 
 【运行要求】：
  
-       需安装 .Net FrameWork 3.5 或者更高版本
+       需安装 .Net FrameWork 3.5 或者更高版本 （建议安装.Net FrameWork 4.8，且运行 QuickStart_FW48.exe 编译版）
 
        Download Url: https://www.microsoft.com/en-us/download/details.aspx?id=21
 
@@ -22,8 +22,10 @@
        4.按钮最多可显示 8 行，共 40 个按钮，多于 40 个的配置会被忽视。
 
        5.对简体中文、繁体中文、日本语、韩国语、英语等五种语言文字提供支持
+       
+       6.为操作方便，提供类似于QQ窗体的屏幕靠边停靠功能
   
-       6.ini文件配置简例：
+       7.ini文件配置简例：
         #############################################
         #[Button_01] - [Button_40] 最大支持40个按钮，40个以上的忽视
         [Button_XX]
@@ -46,7 +48,7 @@
         Program_Type=exe
         Program_Param=-clean
 
-      7.默认显示的Reboot，Shutdown，请不要随便点！！！！！！
+      8.默认显示的Reboot，Shutdown，请不要随便点！！！！！！
       
 【版本更新】：
       
@@ -72,3 +74,8 @@
       5.v22.02
         新增窗体不透明度的菜单设置。可在任务栏托盘区【不透明度】菜单设置
         恢复v21.11以前版本删除的窗体最小化按钮
+      
+      6.v22.03
+        窗体屏幕靠边停靠功能增加开关，设置为关的时候，窗体停靠功能即时失效，无需重启程序
+        为兼容新老系统及断网状态的运行需要，同时提供.Net FrameWork 3.5/.Net FrameWork 4.8的编译版
+        修改按钮显示方式，由[Button_01]~[Button_40]顺序显示改为按配置文件顺序读取
