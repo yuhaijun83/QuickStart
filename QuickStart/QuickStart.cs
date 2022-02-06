@@ -14,6 +14,10 @@ namespace QuickStart
 {
     public partial class mainForm : Form
     {
+        // 35, 48
+        //private const string BUILD_VERSION_FW = "35";
+        private const string BUILD_VERSION_FW = "48";
+
         private const int BUTTON_MAX_SIZE = 40;
 
         private const string INI_FILE_NAME = "QuickStart.ini";
@@ -21,6 +25,7 @@ namespace QuickStart
         private const string System_Info = "System_Info";
         private const string MainForm_Opacity = "MainForm_Opacity";
         private const string MainForm_Language = "MainForm_Language";
+        private const string MainForm_Timer = "MainForm_Timer";
 
         private const string Button_Name = "Button_Name";
         private const string Button_Visible = "Button_Visible";
@@ -55,6 +60,7 @@ namespace QuickStart
             this.InitConfig();
             this.InitForm();
             this.InitButton();
+            this.InitTimer();
         }
 
         private void button_01_Click(object sender, EventArgs e)
@@ -488,6 +494,22 @@ namespace QuickStart
             this.setMainFormLanguage();
         }
 
+        private void toolStripMenuItem_Timer_On_Click(object sender, EventArgs e)
+        {
+            this.toolStripMenuItem_Timer_On.Checked = true;
+            this.toolStripMenuItem_Timer_Off.Checked = false;
+            this.timerMain.Enabled = true;
+            OperateIniFile.WriteIniData(System_Info, MainForm_Timer, "On", strIniFilePath);
+        }
+
+        private void toolStripMenuItem_Timer_Off_Click(object sender, EventArgs e)
+        {
+            this.toolStripMenuItem_Timer_On.Checked = false;
+            this.toolStripMenuItem_Timer_Off.Checked = true;
+            this.timerMain.Enabled = false;
+            OperateIniFile.WriteIniData(System_Info, MainForm_Timer, "Off", strIniFilePath);
+        }
+
         #region Me
         private void InitLanguage()
         {
@@ -578,12 +600,40 @@ namespace QuickStart
             }
         }
 
+        private void InitTimer()
+        {
+            string strMainForm_Timer = OperateIniFile.ReadIniData(System_Info, MainForm_Timer, "", strIniFilePath);
+            if (strMainForm_Timer == "")
+            {
+                strMainForm_Timer = "On";
+                OperateIniFile.WriteIniData(System_Info, MainForm_Timer, strMainForm_Timer, strIniFilePath);
+            }
+
+            switch (strMainForm_Timer.ToUpper())
+            {
+                case "ON":
+                    this.toolStripMenuItem_Timer_On.Checked = true;
+                    this.toolStripMenuItem_Timer_Off.Checked = false;
+                    this.timerMain.Enabled = true;
+                    break;
+
+                case "OFF":
+                    this.toolStripMenuItem_Timer_On.Checked = false;
+                    this.toolStripMenuItem_Timer_Off.Checked = true;
+                    this.timerMain.Enabled = false;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
         private void InitConfig()
         {
             string strSection = null;
             IniConfig ini = null;
 
-            for (int i = 1; i <= BUTTON_MAX_SIZE; i++)
+/*            for (int i = 1; i <= BUTTON_MAX_SIZE; i++)
             {
                 ini = new IniConfig();
 
@@ -605,6 +655,28 @@ namespace QuickStart
                 ini.Program_Param = OperateIniFile.ReadIniData(strSection, Program_Param, "", strIniFilePath, "utf-8", 1024);
 
                 lstConfig.Add(ini);
+            }*/
+
+            StreamReader streamReader = new StreamReader(strIniFilePath, Encoding.UTF8);
+            string content;
+            while ((content = streamReader.ReadLine()) != null)
+            {
+                if (content.StartsWith("[Button_"))
+                {
+                    ini = new IniConfig();
+                    strSection = content.Replace("[", "").Replace("]", "");
+
+                    ini.Button_Name = OperateIniFile.ReadIniData(strSection, Button_Name, "", strIniFilePath, "utf-8", 1024);
+                    ini.Button_Visible = OperateIniFile.ReadIniData(strSection, Button_Visible, "0", strIniFilePath);
+                    if (!"1".Equals(ini.Button_Visible)) { continue; }
+                    ini.Program_Name = OperateIniFile.ReadIniData(strSection, Program_Name, "", strIniFilePath, "utf-8", 1024);
+                    ini.Program_Type = OperateIniFile.ReadIniData(strSection, Program_Type, "exe", strIniFilePath).ToLower();
+                    if ("".Equals(ini.Program_Type)) { ini.Program_Type = "exe"; }
+                    ini.Program_Param = OperateIniFile.ReadIniData(strSection, Program_Param, "", strIniFilePath, "utf-8", 1024);
+
+                    lstConfig.Add(ini);
+                }
+
             }
 
         }
@@ -613,26 +685,64 @@ namespace QuickStart
         {
             this.Text = "QuickStart  " + Properties.Resources.Program_Build_Version_Text;
 
-            // 12, 64 13, 64 13, 64 ,13 = 243
             int isize = lstConfig.Count();
-            if (isize <= 8)
+
+            if (BUILD_VERSION_FW.Equals("35"))
             {
-                this.Size = new Size(769, 104);
-            } else if (9 <= isize && isize  <= 16)
+                int iWidth = 769;
+                if (isize <= 8)
+                {
+                    this.Size = new Size(iWidth, 104);
+                }
+                else if (9 <= isize && isize <= 16)
+                {
+                    this.Size = new Size(iWidth, 174);
+                }
+                else if (17 <= isize && isize <= 24)
+                {
+                    this.Size = new Size(iWidth, 243);
+                }
+                else if (25 <= isize && isize <= 32)
+                {
+                    this.Size = new Size(iWidth, 312);
+                }
+                else if (33 <= isize && isize <= 40)
+                {
+                    this.Size = new Size(iWidth, 381);
+                }
+                else
+                {
+                    this.Size = new Size(iWidth, 104);
+                }
+
+            } else if (BUILD_VERSION_FW.Equals("48"))
             {
-                this.Size = new Size(769, 174);
-            } else if (17 <= isize && isize <= 24)
-            {
-                this.Size = new Size(769, 243);
-            } else if (25 <= isize && isize <= 32)
-            {
-                this.Size = new Size(769, 312);
-            } else if (33 <= isize && isize <= 40)
-            {
-                this.Size = new Size(769, 381);
-            } else
-            {
-                this.Size = new Size(769, 104);
+                int iWidth = 779;
+
+                if (isize <= 8)
+                {
+                    this.Size = new Size(iWidth, 115);
+                }
+                else if (9 <= isize && isize <= 16)
+                {
+                    this.Size = new Size(iWidth, 183);
+                }
+                else if (17 <= isize && isize <= 24)
+                {
+                    this.Size = new Size(iWidth, 252);
+                }
+                else if (25 <= isize && isize <= 32)
+                {
+                    this.Size = new Size(iWidth, 321);
+                }
+                else if (33 <= isize && isize <= 40)
+                {
+                    this.Size = new Size(iWidth, 389);
+                }
+                else
+                {
+                    this.Size = new Size(iWidth, 115);
+                }
             }
 
             switch (this.win_Language)
@@ -1046,6 +1156,9 @@ namespace QuickStart
             {
                 case MultilingualConfig.Language_zh_CN:
                     this.toolStripMenuItem_Display.Text = Resources.Resource_zh_CN.toolStripMenuItem_Display_Text;
+                    this.toolStripMenuItem_Timer.Text = Resources.Resource_zh_CN.toolStripMenuItem_Timer_Text;
+                    this.toolStripMenuItem_Timer_On.Text = Resources.Resource_zh_CN.toolStripMenuItem_TimerOn_Text;
+                    this.toolStripMenuItem_Timer_Off.Text = Resources.Resource_zh_CN.toolStripMenuItem_TimerOff_Text;
                     this.toolStripMenuItem_Opacity.Text = Resources.Resource_zh_CN.toolStripMenuItem_Opacity_Text;
                     this.toolStripMenuItem_Language.Text = Resources.Resource_zh_CN.toolStripMenuItem_Language_Text;
                     this.toolStripMenuItem_LanguageChineseSimplified.Text = Resources.Resource_zh_CN.toolStripMenuItem_LanguageChineseSimplified_Text;
@@ -1059,6 +1172,9 @@ namespace QuickStart
 
                 case MultilingualConfig.Language_zh_TW:
                     this.toolStripMenuItem_Display.Text = Resources.Resource_zh_TW.toolStripMenuItem_Display_Text;
+                    this.toolStripMenuItem_Timer.Text = Resources.Resource_zh_TW.toolStripMenuItem_Timer_Text;
+                    this.toolStripMenuItem_Timer_On.Text = Resources.Resource_zh_TW.toolStripMenuItem_TimerOn_Text;
+                    this.toolStripMenuItem_Timer_Off.Text = Resources.Resource_zh_TW.toolStripMenuItem_TimerOff_Text;
                     this.toolStripMenuItem_Opacity.Text = Resources.Resource_zh_TW.toolStripMenuItem_Opacity_Text;
                     this.toolStripMenuItem_Language.Text = Resources.Resource_zh_TW.toolStripMenuItem_Language_Text;
                     this.toolStripMenuItem_LanguageChineseSimplified.Text = Resources.Resource_zh_TW.toolStripMenuItem_LanguageChineseSimplified_Text;
@@ -1072,6 +1188,9 @@ namespace QuickStart
 
                 case MultilingualConfig.Language_en_US:
                     this.toolStripMenuItem_Display.Text = Resources.Resource_en_US.toolStripMenuItem_Display_Text;
+                    this.toolStripMenuItem_Timer.Text = Resources.Resource_en_US.toolStripMenuItem_Timer_Text;
+                    this.toolStripMenuItem_Timer_On.Text = Resources.Resource_en_US.toolStripMenuItem_TimerOn_Text;
+                    this.toolStripMenuItem_Timer_Off.Text = Resources.Resource_en_US.toolStripMenuItem_TimerOff_Text;
                     this.toolStripMenuItem_Opacity.Text = Resources.Resource_en_US.toolStripMenuItem_Opacity_Text;
                     this.toolStripMenuItem_Language.Text = Resources.Resource_en_US.toolStripMenuItem_Language_Text;
                     this.toolStripMenuItem_LanguageChineseSimplified.Text = Resources.Resource_en_US.toolStripMenuItem_LanguageChineseSimplified_Text;
@@ -1085,6 +1204,9 @@ namespace QuickStart
 
                 case MultilingualConfig.Language_ja_JP:
                     this.toolStripMenuItem_Display.Text = Resources.Resource_ja_JP.toolStripMenuItem_Display_Text;
+                    this.toolStripMenuItem_Timer.Text = Resources.Resource_ja_JP.toolStripMenuItem_Timer_Text;
+                    this.toolStripMenuItem_Timer_On.Text = Resources.Resource_ja_JP.toolStripMenuItem_TimerOn_Text;
+                    this.toolStripMenuItem_Timer_Off.Text = Resources.Resource_ja_JP.toolStripMenuItem_TimerOff_Text;
                     this.toolStripMenuItem_Opacity.Text = Resources.Resource_ja_JP.toolStripMenuItem_Opacity_Text;
                     this.toolStripMenuItem_Language.Text = Resources.Resource_ja_JP.toolStripMenuItem_Language_Text;
                     this.toolStripMenuItem_LanguageChineseSimplified.Text = Resources.Resource_ja_JP.toolStripMenuItem_LanguageChineseSimplified_Text;
@@ -1098,6 +1220,9 @@ namespace QuickStart
 
                 case MultilingualConfig.Language_ko_KR:
                     this.toolStripMenuItem_Display.Text = Resources.Resource_ko_KR.toolStripMenuItem_Display_Text;
+                    this.toolStripMenuItem_Timer.Text = Resources.Resource_ko_KR.toolStripMenuItem_Timer_Text;
+                    this.toolStripMenuItem_Timer_On.Text = Resources.Resource_ko_KR.toolStripMenuItem_TimerOn_Text;
+                    this.toolStripMenuItem_Timer_Off.Text = Resources.Resource_ko_KR.toolStripMenuItem_TimerOff_Text;
                     this.toolStripMenuItem_Opacity.Text = Resources.Resource_ko_KR.toolStripMenuItem_Opacity_Text;
                     this.toolStripMenuItem_Language.Text = Resources.Resource_ko_KR.toolStripMenuItem_Language_Text;
                     this.toolStripMenuItem_LanguageChineseSimplified.Text = Resources.Resource_ko_KR.toolStripMenuItem_LanguageChineseSimplified_Text;
@@ -1150,5 +1275,6 @@ namespace QuickStart
         }
 
         #endregion Me
+
     }
 }

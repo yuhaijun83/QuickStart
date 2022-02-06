@@ -112,26 +112,26 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="button_01.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_01.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_01.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 8</value>
+    <value>9, 10</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="button_01.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_01.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="button_01.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -142,7 +142,7 @@
     <value>button_01</value>
   </data>
   <data name="&gt;&gt;button_01.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_01.Parent" xml:space="preserve">
     <value>$this</value>
@@ -150,20 +150,20 @@
   <data name="&gt;&gt;button_01.ZOrder" xml:space="preserve">
     <value>40</value>
   </data>
-  <metadata name="button_02.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_02.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_02.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_02.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 8</value>
+    <value>166, 10</value>
   </data>
   <data name="button_02.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_02.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_02.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -175,7 +175,7 @@
     <value>button_02</value>
   </data>
   <data name="&gt;&gt;button_02.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_02.Parent" xml:space="preserve">
     <value>$this</value>
@@ -183,20 +183,20 @@
   <data name="&gt;&gt;button_02.ZOrder" xml:space="preserve">
     <value>39</value>
   </data>
-  <metadata name="button_03.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_03.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_03.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_03.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 8</value>
+    <value>324, 10</value>
   </data>
   <data name="button_03.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_03.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_03.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -208,7 +208,7 @@
     <value>button_03</value>
   </data>
   <data name="&gt;&gt;button_03.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_03.Parent" xml:space="preserve">
     <value>$this</value>
@@ -216,20 +216,20 @@
   <data name="&gt;&gt;button_03.ZOrder" xml:space="preserve">
     <value>38</value>
   </data>
-  <metadata name="button_04.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_04.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_04.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_04.Location" type="System.Drawing.Point, System.Drawing">
-    <value>385, 8</value>
+    <value>481, 10</value>
   </data>
   <data name="button_04.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_04.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_04.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -241,7 +241,7 @@
     <value>button_04</value>
   </data>
   <data name="&gt;&gt;button_04.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_04.Parent" xml:space="preserve">
     <value>$this</value>
@@ -249,20 +249,20 @@
   <data name="&gt;&gt;button_04.ZOrder" xml:space="preserve">
     <value>37</value>
   </data>
-  <metadata name="button_05.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_05.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_05.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_05.Location" type="System.Drawing.Point, System.Drawing">
-    <value>511, 8</value>
+    <value>639, 10</value>
   </data>
   <data name="button_05.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_05.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_05.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -274,7 +274,7 @@
     <value>button_05</value>
   </data>
   <data name="&gt;&gt;button_05.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_05.Parent" xml:space="preserve">
     <value>$this</value>
@@ -282,20 +282,20 @@
   <data name="&gt;&gt;button_05.ZOrder" xml:space="preserve">
     <value>36</value>
   </data>
-  <metadata name="button_06.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_06.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_06.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_06.Location" type="System.Drawing.Point, System.Drawing">
-    <value>637, 8</value>
+    <value>796, 10</value>
   </data>
   <data name="button_06.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_06.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_06.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -307,7 +307,7 @@
     <value>button_06</value>
   </data>
   <data name="&gt;&gt;button_06.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_06.Parent" xml:space="preserve">
     <value>$this</value>
@@ -315,20 +315,20 @@
   <data name="&gt;&gt;button_06.ZOrder" xml:space="preserve">
     <value>35</value>
   </data>
-  <metadata name="button_07.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_07.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_07.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_07.Location" type="System.Drawing.Point, System.Drawing">
-    <value>763, 8</value>
+    <value>954, 10</value>
   </data>
   <data name="button_07.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_07.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_07.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -340,7 +340,7 @@
     <value>button_07</value>
   </data>
   <data name="&gt;&gt;button_07.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_07.Parent" xml:space="preserve">
     <value>$this</value>
@@ -348,20 +348,20 @@
   <data name="&gt;&gt;button_07.ZOrder" xml:space="preserve">
     <value>34</value>
   </data>
-  <metadata name="button_08.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_08.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_08.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_08.Location" type="System.Drawing.Point, System.Drawing">
-    <value>889, 8</value>
+    <value>1111, 10</value>
   </data>
   <data name="button_08.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_08.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_08.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -373,7 +373,7 @@
     <value>button_08</value>
   </data>
   <data name="&gt;&gt;button_08.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_08.Parent" xml:space="preserve">
     <value>$this</value>
@@ -381,20 +381,20 @@
   <data name="&gt;&gt;button_08.ZOrder" xml:space="preserve">
     <value>33</value>
   </data>
-  <metadata name="button_09.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_09.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_09.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_09.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 94</value>
+    <value>9, 113</value>
   </data>
   <data name="button_09.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_09.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_09.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -406,7 +406,7 @@
     <value>button_09</value>
   </data>
   <data name="&gt;&gt;button_09.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_09.Parent" xml:space="preserve">
     <value>$this</value>
@@ -414,20 +414,20 @@
   <data name="&gt;&gt;button_09.ZOrder" xml:space="preserve">
     <value>32</value>
   </data>
-  <metadata name="button_10.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_10.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 94</value>
+    <value>166, 113</value>
   </data>
   <data name="button_10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_10.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -439,7 +439,7 @@
     <value>button_10</value>
   </data>
   <data name="&gt;&gt;button_10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_10.Parent" xml:space="preserve">
     <value>$this</value>
@@ -447,20 +447,20 @@
   <data name="&gt;&gt;button_10.ZOrder" xml:space="preserve">
     <value>31</value>
   </data>
-  <metadata name="button_11.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_11.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 94</value>
+    <value>324, 113</value>
   </data>
   <data name="button_11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_11.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -472,7 +472,7 @@
     <value>button_11</value>
   </data>
   <data name="&gt;&gt;button_11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_11.Parent" xml:space="preserve">
     <value>$this</value>
@@ -480,20 +480,20 @@
   <data name="&gt;&gt;button_11.ZOrder" xml:space="preserve">
     <value>30</value>
   </data>
-  <metadata name="button_12.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_12.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>385, 94</value>
+    <value>481, 113</value>
   </data>
   <data name="button_12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_12.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -505,7 +505,7 @@
     <value>button_12</value>
   </data>
   <data name="&gt;&gt;button_12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_12.Parent" xml:space="preserve">
     <value>$this</value>
@@ -513,20 +513,20 @@
   <data name="&gt;&gt;button_12.ZOrder" xml:space="preserve">
     <value>29</value>
   </data>
-  <metadata name="button_13.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_13.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>511, 94</value>
+    <value>639, 113</value>
   </data>
   <data name="button_13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_13.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -538,7 +538,7 @@
     <value>button_13</value>
   </data>
   <data name="&gt;&gt;button_13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_13.Parent" xml:space="preserve">
     <value>$this</value>
@@ -546,20 +546,20 @@
   <data name="&gt;&gt;button_13.ZOrder" xml:space="preserve">
     <value>28</value>
   </data>
-  <metadata name="button_14.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_14.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>637, 94</value>
+    <value>796, 113</value>
   </data>
   <data name="button_14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_14.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -571,7 +571,7 @@
     <value>button_14</value>
   </data>
   <data name="&gt;&gt;button_14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_14.Parent" xml:space="preserve">
     <value>$this</value>
@@ -579,20 +579,20 @@
   <data name="&gt;&gt;button_14.ZOrder" xml:space="preserve">
     <value>27</value>
   </data>
-  <metadata name="button_15.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_15.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>763, 94</value>
+    <value>954, 113</value>
   </data>
   <data name="button_15.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_15.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -604,7 +604,7 @@
     <value>button_15</value>
   </data>
   <data name="&gt;&gt;button_15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_15.Parent" xml:space="preserve">
     <value>$this</value>
@@ -612,20 +612,20 @@
   <data name="&gt;&gt;button_15.ZOrder" xml:space="preserve">
     <value>26</value>
   </data>
-  <metadata name="button_16.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_16.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>889, 94</value>
+    <value>1111, 113</value>
   </data>
   <data name="button_16.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_16.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -637,7 +637,7 @@
     <value>button_16</value>
   </data>
   <data name="&gt;&gt;button_16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_16.Parent" xml:space="preserve">
     <value>$this</value>
@@ -645,20 +645,20 @@
   <data name="&gt;&gt;button_16.ZOrder" xml:space="preserve">
     <value>25</value>
   </data>
-  <metadata name="button_17.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_17.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 180</value>
+    <value>9, 216</value>
   </data>
   <data name="button_17.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_17.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -670,7 +670,7 @@
     <value>button_17</value>
   </data>
   <data name="&gt;&gt;button_17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_17.Parent" xml:space="preserve">
     <value>$this</value>
@@ -678,20 +678,20 @@
   <data name="&gt;&gt;button_17.ZOrder" xml:space="preserve">
     <value>24</value>
   </data>
-  <metadata name="button_18.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_18.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 180</value>
+    <value>166, 216</value>
   </data>
   <data name="button_18.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_18.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -703,7 +703,7 @@
     <value>button_18</value>
   </data>
   <data name="&gt;&gt;button_18.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_18.Parent" xml:space="preserve">
     <value>$this</value>
@@ -711,20 +711,20 @@
   <data name="&gt;&gt;button_18.ZOrder" xml:space="preserve">
     <value>23</value>
   </data>
-  <metadata name="button_19.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_19.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_19.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 180</value>
+    <value>324, 216</value>
   </data>
   <data name="button_19.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_19.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -736,7 +736,7 @@
     <value>button_19</value>
   </data>
   <data name="&gt;&gt;button_19.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_19.Parent" xml:space="preserve">
     <value>$this</value>
@@ -744,20 +744,20 @@
   <data name="&gt;&gt;button_19.ZOrder" xml:space="preserve">
     <value>22</value>
   </data>
-  <metadata name="button_20.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_20.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>385, 180</value>
+    <value>481, 216</value>
   </data>
   <data name="button_20.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_20.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -769,7 +769,7 @@
     <value>button_20</value>
   </data>
   <data name="&gt;&gt;button_20.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_20.Parent" xml:space="preserve">
     <value>$this</value>
@@ -777,20 +777,20 @@
   <data name="&gt;&gt;button_20.ZOrder" xml:space="preserve">
     <value>21</value>
   </data>
-  <metadata name="button_21.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_21.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>511, 180</value>
+    <value>639, 216</value>
   </data>
   <data name="button_21.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_21.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -802,7 +802,7 @@
     <value>button_21</value>
   </data>
   <data name="&gt;&gt;button_21.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_21.Parent" xml:space="preserve">
     <value>$this</value>
@@ -810,20 +810,20 @@
   <data name="&gt;&gt;button_21.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
-  <metadata name="button_22.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_22.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_22.Location" type="System.Drawing.Point, System.Drawing">
-    <value>637, 180</value>
+    <value>796, 216</value>
   </data>
   <data name="button_22.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_22.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -835,7 +835,7 @@
     <value>button_22</value>
   </data>
   <data name="&gt;&gt;button_22.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_22.Parent" xml:space="preserve">
     <value>$this</value>
@@ -843,20 +843,20 @@
   <data name="&gt;&gt;button_22.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
-  <metadata name="button_23.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_23.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_23.Location" type="System.Drawing.Point, System.Drawing">
-    <value>763, 180</value>
+    <value>954, 216</value>
   </data>
   <data name="button_23.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_23.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -868,7 +868,7 @@
     <value>button_23</value>
   </data>
   <data name="&gt;&gt;button_23.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_23.Parent" xml:space="preserve">
     <value>$this</value>
@@ -876,20 +876,20 @@
   <data name="&gt;&gt;button_23.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
-  <metadata name="button_24.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_24.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_24.Location" type="System.Drawing.Point, System.Drawing">
-    <value>889, 180</value>
+    <value>1111, 216</value>
   </data>
   <data name="button_24.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_24.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -901,7 +901,7 @@
     <value>button_24</value>
   </data>
   <data name="&gt;&gt;button_24.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_24.Parent" xml:space="preserve">
     <value>$this</value>
@@ -909,20 +909,20 @@
   <data name="&gt;&gt;button_24.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
-  <metadata name="button_25.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_25.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_25.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_25.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 266</value>
+    <value>9, 319</value>
   </data>
   <data name="button_25.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_25.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -934,7 +934,7 @@
     <value>button_25</value>
   </data>
   <data name="&gt;&gt;button_25.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_25.Parent" xml:space="preserve">
     <value>$this</value>
@@ -942,20 +942,20 @@
   <data name="&gt;&gt;button_25.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
-  <metadata name="button_26.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_26.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_26.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_26.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 266</value>
+    <value>166, 319</value>
   </data>
   <data name="button_26.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_26.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_26.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -967,7 +967,7 @@
     <value>button_26</value>
   </data>
   <data name="&gt;&gt;button_26.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_26.Parent" xml:space="preserve">
     <value>$this</value>
@@ -975,20 +975,20 @@
   <data name="&gt;&gt;button_26.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
-  <metadata name="button_27.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_27.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_27.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_27.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 266</value>
+    <value>324, 319</value>
   </data>
   <data name="button_27.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_27.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_27.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -1000,7 +1000,7 @@
     <value>button_27</value>
   </data>
   <data name="&gt;&gt;button_27.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_27.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1008,20 +1008,20 @@
   <data name="&gt;&gt;button_27.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <metadata name="button_28.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_28.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_28.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_28.Location" type="System.Drawing.Point, System.Drawing">
-    <value>385, 266</value>
+    <value>481, 319</value>
   </data>
   <data name="button_28.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_28.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_28.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -1033,7 +1033,7 @@
     <value>button_28</value>
   </data>
   <data name="&gt;&gt;button_28.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_28.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1041,20 +1041,20 @@
   <data name="&gt;&gt;button_28.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <metadata name="button_29.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_29.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_29.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_29.Location" type="System.Drawing.Point, System.Drawing">
-    <value>511, 266</value>
+    <value>639, 319</value>
   </data>
   <data name="button_29.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_29.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_29.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -1066,7 +1066,7 @@
     <value>button_29</value>
   </data>
   <data name="&gt;&gt;button_29.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_29.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1074,20 +1074,20 @@
   <data name="&gt;&gt;button_29.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <metadata name="button_30.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_30.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_30.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_30.Location" type="System.Drawing.Point, System.Drawing">
-    <value>637, 266</value>
+    <value>796, 319</value>
   </data>
   <data name="button_30.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_30.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_30.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -1099,7 +1099,7 @@
     <value>button_30</value>
   </data>
   <data name="&gt;&gt;button_30.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_30.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1107,20 +1107,20 @@
   <data name="&gt;&gt;button_30.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <metadata name="button_31.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_31.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_31.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_31.Location" type="System.Drawing.Point, System.Drawing">
-    <value>763, 266</value>
+    <value>954, 319</value>
   </data>
   <data name="button_31.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_31.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_31.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -1132,7 +1132,7 @@
     <value>button_31</value>
   </data>
   <data name="&gt;&gt;button_31.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_31.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1140,20 +1140,20 @@
   <data name="&gt;&gt;button_31.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <metadata name="button_32.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_32.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_32.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_32.Location" type="System.Drawing.Point, System.Drawing">
-    <value>889, 266</value>
+    <value>1111, 319</value>
   </data>
   <data name="button_32.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_32.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_32.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -1165,7 +1165,7 @@
     <value>button_32</value>
   </data>
   <data name="&gt;&gt;button_32.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_32.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1173,20 +1173,20 @@
   <data name="&gt;&gt;button_32.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <metadata name="button_33.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_33.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_33.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_33.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 352</value>
+    <value>9, 422</value>
   </data>
   <data name="button_33.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_33.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_33.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -1198,7 +1198,7 @@
     <value>button_33</value>
   </data>
   <data name="&gt;&gt;button_33.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_33.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1206,20 +1206,20 @@
   <data name="&gt;&gt;button_33.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <metadata name="button_34.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_34.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_34.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_34.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 352</value>
+    <value>166, 422</value>
   </data>
   <data name="button_34.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_34.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_34.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -1231,7 +1231,7 @@
     <value>button_34</value>
   </data>
   <data name="&gt;&gt;button_34.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_34.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1239,20 +1239,20 @@
   <data name="&gt;&gt;button_34.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <metadata name="button_35.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_35.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_35.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_35.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 352</value>
+    <value>324, 422</value>
   </data>
   <data name="button_35.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_35.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_35.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -1264,7 +1264,7 @@
     <value>button_35</value>
   </data>
   <data name="&gt;&gt;button_35.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_35.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1272,20 +1272,20 @@
   <data name="&gt;&gt;button_35.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <metadata name="button_36.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_36.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_36.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_36.Location" type="System.Drawing.Point, System.Drawing">
-    <value>385, 352</value>
+    <value>481, 422</value>
   </data>
   <data name="button_36.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_36.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_36.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -1297,7 +1297,7 @@
     <value>button_36</value>
   </data>
   <data name="&gt;&gt;button_36.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_36.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1305,20 +1305,20 @@
   <data name="&gt;&gt;button_36.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <metadata name="button_37.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_37.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_37.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_37.Location" type="System.Drawing.Point, System.Drawing">
-    <value>511, 352</value>
+    <value>639, 422</value>
   </data>
   <data name="button_37.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_37.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_37.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
@@ -1330,7 +1330,7 @@
     <value>button_37</value>
   </data>
   <data name="&gt;&gt;button_37.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_37.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1338,20 +1338,20 @@
   <data name="&gt;&gt;button_37.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="button_38.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_38.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_38.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_38.Location" type="System.Drawing.Point, System.Drawing">
-    <value>637, 352</value>
+    <value>796, 422</value>
   </data>
   <data name="button_38.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_38.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_38.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
@@ -1363,7 +1363,7 @@
     <value>button_38</value>
   </data>
   <data name="&gt;&gt;button_38.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_38.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1371,20 +1371,20 @@
   <data name="&gt;&gt;button_38.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="button_39.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_39.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_39.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_39.Location" type="System.Drawing.Point, System.Drawing">
-    <value>763, 352</value>
+    <value>954, 422</value>
   </data>
   <data name="button_39.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_39.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_39.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -1396,7 +1396,7 @@
     <value>button_39</value>
   </data>
   <data name="&gt;&gt;button_39.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_39.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1404,20 +1404,20 @@
   <data name="&gt;&gt;button_39.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="button_40.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="button_40.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="button_40.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_40.Location" type="System.Drawing.Point, System.Drawing">
-    <value>889, 352</value>
+    <value>1111, 422</value>
   </data>
   <data name="button_40.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="button_40.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 80</value>
+    <value>150, 96</value>
   </data>
   <data name="button_40.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -1429,7 +1429,7 @@
     <value>button_40</value>
   </data>
   <data name="&gt;&gt;button_40.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_40.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1437,149 +1437,77 @@
   <data name="&gt;&gt;button_40.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="timerMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="timerMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>415, 18</value>
   </metadata>
-  <metadata name="notifyIconMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="notifyIconMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="contextMenuStripMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="contextMenuStripMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>191, 21</value>
   </metadata>
   <data name="toolStripMenuItem_Display.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 24</value>
+    <value>240, 32</value>
   </data>
   <data name="toolStripMenuItem_Display.Text" xml:space="preserve">
     <value>Display</value>
   </data>
-  <data name="toolStripMenuItem_Opacity_10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+  <data name="toolStripMenuItem_Timer_On.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
   </data>
-  <data name="toolStripMenuItem_Opacity_10.Text" xml:space="preserve">
-    <value>10%</value>
+  <data name="toolStripMenuItem_Timer_On.Text" xml:space="preserve">
+    <value>Timer On</value>
   </data>
-  <data name="toolStripMenuItem_Opacity_20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+  <data name="toolStripMenuItem_Timer_Off.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
   </data>
-  <data name="toolStripMenuItem_Opacity_20.Text" xml:space="preserve">
-    <value>20%</value>
+  <data name="toolStripMenuItem_Timer_Off.Text" xml:space="preserve">
+    <value>Timer Off</value>
   </data>
-  <data name="toolStripMenuItem_Opacity_30.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+  <data name="toolStripMenuItem_Timer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 32</value>
   </data>
-  <data name="toolStripMenuItem_Opacity_30.Text" xml:space="preserve">
-    <value>30%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_40.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_40.Text" xml:space="preserve">
-    <value>40%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_50.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_50.Text" xml:space="preserve">
-    <value>50%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_60.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_60.Text" xml:space="preserve">
-    <value>60%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_70.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_70.Text" xml:space="preserve">
-    <value>70%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_80.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_80.Text" xml:space="preserve">
-    <value>80%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_90.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_90.Text" xml:space="preserve">
-    <value>90%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_100.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_100.Text" xml:space="preserve">
-    <value>100%</value>
+  <data name="toolStripMenuItem_Timer.Text" xml:space="preserve">
+    <value>Timer</value>
   </data>
   <data name="toolStripMenuItem_Opacity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 24</value>
+    <value>240, 32</value>
   </data>
   <data name="toolStripMenuItem_Opacity.Text" xml:space="preserve">
     <value>Opacity</value>
   </data>
-  <data name="toolStripMenuItem_LanguageChineseSimplified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 26</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageChineseSimplified.Text" xml:space="preserve">
-    <value>Chinese(Simplified)</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageChineseTraditional.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 26</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageChineseTraditional.Text" xml:space="preserve">
-    <value>Chinese(Traditional)</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageEnglish.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 26</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageEnglish.Text" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageJapanese.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 26</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageJapanese.Text" xml:space="preserve">
-    <value>Japanese</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageKorean.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 26</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageKorean.Text" xml:space="preserve">
-    <value>Korean</value>
-  </data>
   <data name="toolStripMenuItem_Language.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 24</value>
+    <value>240, 32</value>
   </data>
   <data name="toolStripMenuItem_Language.Text" xml:space="preserve">
     <value>Language</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 6</value>
+    <value>237, 6</value>
   </data>
   <data name="toolStripMenuItem_About.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 24</value>
+    <value>240, 32</value>
   </data>
   <data name="toolStripMenuItem_About.Text" xml:space="preserve">
     <value>About</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 6</value>
+    <value>237, 6</value>
   </data>
   <data name="toolStripMenuItem_Exit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 24</value>
+    <value>240, 32</value>
   </data>
   <data name="toolStripMenuItem_Exit.Text" xml:space="preserve">
     <value>Exit</value>
   </data>
   <data name="contextMenuStripMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 136</value>
+    <value>241, 241</value>
   </data>
   <data name="&gt;&gt;contextMenuStripMain.Name" xml:space="preserve">
     <value>contextMenuStripMain</value>
   </data>
   <data name="&gt;&gt;contextMenuStripMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="notifyIconMain.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3253,17 +3181,107 @@
   <data name="notifyIconMain.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="toolStripMenuItem_Opacity_10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_10.Text" xml:space="preserve">
+    <value>10%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_20.Text" xml:space="preserve">
+    <value>20%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_30.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_30.Text" xml:space="preserve">
+    <value>30%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_40.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_40.Text" xml:space="preserve">
+    <value>40%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_50.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_50.Text" xml:space="preserve">
+    <value>50%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_60.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_60.Text" xml:space="preserve">
+    <value>60%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_70.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_70.Text" xml:space="preserve">
+    <value>70%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_80.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_80.Text" xml:space="preserve">
+    <value>80%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_90.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_90.Text" xml:space="preserve">
+    <value>90%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_100.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_100.Text" xml:space="preserve">
+    <value>100%</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageChineseSimplified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageChineseSimplified.Text" xml:space="preserve">
+    <value>Chinese(Simplified)</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageChineseTraditional.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageChineseTraditional.Text" xml:space="preserve">
+    <value>Chinese(Traditional)</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageEnglish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageEnglish.Text" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageJapanese.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageJapanese.Text" xml:space="preserve">
+    <value>Japanese</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageKorean.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageKorean.Text" xml:space="preserve">
+    <value>Korean</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 15</value>
+    <value>10, 18</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1017, 439</value>
+    <value>1271, 527</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4932,7 +4950,7 @@
 </value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>4, 2, 4, 2</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
@@ -4944,150 +4962,168 @@
     <value>timerMain</value>
   </data>
   <data name="&gt;&gt;timerMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;notifyIconMain.Name" xml:space="preserve">
     <value>notifyIconMain</value>
   </data>
   <data name="&gt;&gt;notifyIconMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NotifyIcon, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.NotifyIcon, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Display.Name" xml:space="preserve">
     <value>toolStripMenuItem_Display</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Display.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity.Name" xml:space="preserve">
     <value>toolStripMenuItem_Opacity</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_10.Name" xml:space="preserve">
     <value>toolStripMenuItem_Opacity_10</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_20.Name" xml:space="preserve">
     <value>toolStripMenuItem_Opacity_20</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_20.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_30.Name" xml:space="preserve">
     <value>toolStripMenuItem_Opacity_30</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_30.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_40.Name" xml:space="preserve">
     <value>toolStripMenuItem_Opacity_40</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_40.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_50.Name" xml:space="preserve">
     <value>toolStripMenuItem_Opacity_50</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_50.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_60.Name" xml:space="preserve">
     <value>toolStripMenuItem_Opacity_60</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_60.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_70.Name" xml:space="preserve">
     <value>toolStripMenuItem_Opacity_70</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_70.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_80.Name" xml:space="preserve">
     <value>toolStripMenuItem_Opacity_80</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_80.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_90.Name" xml:space="preserve">
     <value>toolStripMenuItem_Opacity_90</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_90.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_100.Name" xml:space="preserve">
     <value>toolStripMenuItem_Opacity_100</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity_100.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Language.Name" xml:space="preserve">
     <value>toolStripMenuItem_Language</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Language.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_LanguageChineseSimplified.Name" xml:space="preserve">
     <value>toolStripMenuItem_LanguageChineseSimplified</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_LanguageChineseSimplified.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_LanguageChineseTraditional.Name" xml:space="preserve">
     <value>toolStripMenuItem_LanguageChineseTraditional</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_LanguageChineseTraditional.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_LanguageEnglish.Name" xml:space="preserve">
     <value>toolStripMenuItem_LanguageEnglish</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_LanguageEnglish.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_LanguageJapanese.Name" xml:space="preserve">
     <value>toolStripMenuItem_LanguageJapanese</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_LanguageJapanese.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_LanguageKorean.Name" xml:space="preserve">
     <value>toolStripMenuItem_LanguageKorean</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_LanguageKorean.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
     <value>toolStripSeparator2</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_About.Name" xml:space="preserve">
     <value>toolStripMenuItem_About</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_About.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
     <value>toolStripSeparator1</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Exit.Name" xml:space="preserve">
     <value>toolStripMenuItem_Exit</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Exit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Timer.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Timer</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Timer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Timer_On.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Timer_On</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Timer_On.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Timer_Off.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Timer_Off</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Timer_Off.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>mainForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

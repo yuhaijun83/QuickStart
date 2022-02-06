@@ -96,6 +96,9 @@ namespace QuickStart
             this.toolStripMenuItem_About = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem_Exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Timer = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Timer_On = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Timer_Off = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -395,6 +398,7 @@ namespace QuickStart
             this.contextMenuStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem_Display,
+            this.toolStripMenuItem_Timer,
             this.toolStripMenuItem_Opacity,
             this.toolStripMenuItem_Language,
             this.toolStripSeparator2,
@@ -549,6 +553,26 @@ namespace QuickStart
             resources.ApplyResources(this.toolStripMenuItem_Exit, "toolStripMenuItem_Exit");
             this.toolStripMenuItem_Exit.Click += new System.EventHandler(this.toolStripMenuItem_Exit_Click);
             // 
+            // toolStripMenuItem_Timer
+            // 
+            this.toolStripMenuItem_Timer.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem_Timer_On,
+            this.toolStripMenuItem_Timer_Off});
+            this.toolStripMenuItem_Timer.Name = "toolStripMenuItem_Timer";
+            resources.ApplyResources(this.toolStripMenuItem_Timer, "toolStripMenuItem_Timer");
+            // 
+            // toolStripMenuItem_Timer_On
+            // 
+            this.toolStripMenuItem_Timer_On.Name = "toolStripMenuItem_Timer_On";
+            resources.ApplyResources(this.toolStripMenuItem_Timer_On, "toolStripMenuItem_Timer_On");
+            this.toolStripMenuItem_Timer_On.Click += new System.EventHandler(this.toolStripMenuItem_Timer_On_Click);
+            // 
+            // toolStripMenuItem_Timer_Off
+            // 
+            this.toolStripMenuItem_Timer_Off.Name = "toolStripMenuItem_Timer_Off";
+            resources.ApplyResources(this.toolStripMenuItem_Timer_Off, "toolStripMenuItem_Timer_Off");
+            this.toolStripMenuItem_Timer_Off.Click += new System.EventHandler(this.toolStripMenuItem_Timer_Off_Click);
+            // 
             // mainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -673,6 +697,9 @@ namespace QuickStart
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Opacity_100;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Opacity_10;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Opacity_30;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Timer;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Timer_On;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Timer_Off;
     }
 }
 
