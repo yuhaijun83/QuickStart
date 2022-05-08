@@ -7,7 +7,7 @@
     <ProjectGuid>{D600DA89-484E-4EA9-A14C-D6413722834E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>QuickStart</RootNamespace>
-    <AssemblyName>QuickStart_FW48</AssemblyName>
+    <AssemblyName>QuickStart</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -79,6 +79,7 @@
     <Compile Include="IniConfig.cs" />
     <Compile Include="MultilingualConfig.cs" />
     <Compile Include="OperateIniFile.cs" />
+    <Compile Include="OperateRegistry.cs" />
     <Compile Include="QuickStart.cs">
       <SubType>Form</SubType>
     </Compile>

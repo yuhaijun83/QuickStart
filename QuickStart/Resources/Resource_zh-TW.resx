@@ -126,6 +126,15 @@
   <data name="toolStripMenuItem_About_Text" xml:space="preserve">
     <value>關於</value>
   </data>
+  <data name="toolStripMenuItem_AutoRun_Off_Text" xml:space="preserve">
+    <value>関</value>
+  </data>
+  <data name="toolStripMenuItem_AutoRun_On_Text" xml:space="preserve">
+    <value>開</value>
+  </data>
+  <data name="toolStripMenuItem_AutoRun_Text" xml:space="preserve">
+    <value>開機啟動</value>
+  </data>
   <data name="toolStripMenuItem_Display_Text" xml:space="preserve">
     <value>表示</value>
   </data>

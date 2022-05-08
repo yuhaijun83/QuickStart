@@ -122,14 +122,14 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_01.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 10</value>
+    <value>7, 8</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="button_01.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_01.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="button_01.TabIndex" type="System.Int32, mscorlib">
@@ -157,13 +157,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_02.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 10</value>
+    <value>133, 8</value>
   </data>
   <data name="button_02.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_02.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_02.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -190,13 +190,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_03.Location" type="System.Drawing.Point, System.Drawing">
-    <value>324, 10</value>
+    <value>259, 8</value>
   </data>
   <data name="button_03.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_03.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_03.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -223,13 +223,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_04.Location" type="System.Drawing.Point, System.Drawing">
-    <value>481, 10</value>
+    <value>385, 8</value>
   </data>
   <data name="button_04.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_04.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_04.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -256,13 +256,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_05.Location" type="System.Drawing.Point, System.Drawing">
-    <value>639, 10</value>
+    <value>511, 8</value>
   </data>
   <data name="button_05.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_05.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_05.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -289,13 +289,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_06.Location" type="System.Drawing.Point, System.Drawing">
-    <value>796, 10</value>
+    <value>637, 8</value>
   </data>
   <data name="button_06.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_06.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_06.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -322,13 +322,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_07.Location" type="System.Drawing.Point, System.Drawing">
-    <value>954, 10</value>
+    <value>763, 8</value>
   </data>
   <data name="button_07.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_07.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_07.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -355,13 +355,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_08.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1111, 10</value>
+    <value>889, 8</value>
   </data>
   <data name="button_08.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_08.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_08.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -388,13 +388,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_09.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 113</value>
+    <value>7, 94</value>
   </data>
   <data name="button_09.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_09.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_09.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -421,13 +421,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 113</value>
+    <value>133, 94</value>
   </data>
   <data name="button_10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_10.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -454,13 +454,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>324, 113</value>
+    <value>259, 94</value>
   </data>
   <data name="button_11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_11.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -487,13 +487,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>481, 113</value>
+    <value>385, 94</value>
   </data>
   <data name="button_12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_12.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -520,13 +520,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>639, 113</value>
+    <value>511, 94</value>
   </data>
   <data name="button_13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_13.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -553,13 +553,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>796, 113</value>
+    <value>637, 94</value>
   </data>
   <data name="button_14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_14.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -586,13 +586,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>954, 113</value>
+    <value>763, 94</value>
   </data>
   <data name="button_15.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_15.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -619,13 +619,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1111, 113</value>
+    <value>889, 94</value>
   </data>
   <data name="button_16.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_16.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -652,13 +652,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 216</value>
+    <value>7, 180</value>
   </data>
   <data name="button_17.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_17.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -685,13 +685,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 216</value>
+    <value>133, 180</value>
   </data>
   <data name="button_18.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_18.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -718,13 +718,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_19.Location" type="System.Drawing.Point, System.Drawing">
-    <value>324, 216</value>
+    <value>259, 180</value>
   </data>
   <data name="button_19.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_19.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -751,13 +751,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>481, 216</value>
+    <value>385, 180</value>
   </data>
   <data name="button_20.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_20.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -784,13 +784,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>639, 216</value>
+    <value>511, 180</value>
   </data>
   <data name="button_21.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_21.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -817,13 +817,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_22.Location" type="System.Drawing.Point, System.Drawing">
-    <value>796, 216</value>
+    <value>637, 180</value>
   </data>
   <data name="button_22.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_22.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -850,13 +850,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_23.Location" type="System.Drawing.Point, System.Drawing">
-    <value>954, 216</value>
+    <value>763, 180</value>
   </data>
   <data name="button_23.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_23.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -883,13 +883,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_24.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1111, 216</value>
+    <value>889, 180</value>
   </data>
   <data name="button_24.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_24.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -916,13 +916,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_25.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 319</value>
+    <value>7, 266</value>
   </data>
   <data name="button_25.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_25.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -949,13 +949,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_26.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 319</value>
+    <value>133, 266</value>
   </data>
   <data name="button_26.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_26.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_26.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -982,13 +982,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_27.Location" type="System.Drawing.Point, System.Drawing">
-    <value>324, 319</value>
+    <value>259, 266</value>
   </data>
   <data name="button_27.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_27.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_27.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -1015,13 +1015,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_28.Location" type="System.Drawing.Point, System.Drawing">
-    <value>481, 319</value>
+    <value>385, 266</value>
   </data>
   <data name="button_28.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_28.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_28.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -1048,13 +1048,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_29.Location" type="System.Drawing.Point, System.Drawing">
-    <value>639, 319</value>
+    <value>511, 266</value>
   </data>
   <data name="button_29.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_29.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_29.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -1081,13 +1081,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_30.Location" type="System.Drawing.Point, System.Drawing">
-    <value>796, 319</value>
+    <value>637, 266</value>
   </data>
   <data name="button_30.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_30.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_30.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -1114,13 +1114,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_31.Location" type="System.Drawing.Point, System.Drawing">
-    <value>954, 319</value>
+    <value>763, 266</value>
   </data>
   <data name="button_31.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_31.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_31.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -1147,13 +1147,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_32.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1111, 319</value>
+    <value>889, 266</value>
   </data>
   <data name="button_32.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_32.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_32.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -1180,13 +1180,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_33.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 422</value>
+    <value>7, 352</value>
   </data>
   <data name="button_33.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_33.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_33.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -1213,13 +1213,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_34.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 422</value>
+    <value>133, 352</value>
   </data>
   <data name="button_34.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_34.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_34.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -1246,13 +1246,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_35.Location" type="System.Drawing.Point, System.Drawing">
-    <value>324, 422</value>
+    <value>259, 352</value>
   </data>
   <data name="button_35.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_35.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_35.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -1279,13 +1279,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_36.Location" type="System.Drawing.Point, System.Drawing">
-    <value>481, 422</value>
+    <value>385, 352</value>
   </data>
   <data name="button_36.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_36.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_36.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -1312,13 +1312,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_37.Location" type="System.Drawing.Point, System.Drawing">
-    <value>639, 422</value>
+    <value>511, 352</value>
   </data>
   <data name="button_37.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_37.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_37.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
@@ -1345,13 +1345,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_38.Location" type="System.Drawing.Point, System.Drawing">
-    <value>796, 422</value>
+    <value>637, 352</value>
   </data>
   <data name="button_38.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_38.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_38.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
@@ -1378,13 +1378,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_39.Location" type="System.Drawing.Point, System.Drawing">
-    <value>954, 422</value>
+    <value>763, 352</value>
   </data>
   <data name="button_39.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_39.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_39.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -1411,13 +1411,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_40.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1111, 422</value>
+    <value>889, 352</value>
   </data>
   <data name="button_40.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="button_40.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 96</value>
+    <value>120, 80</value>
   </data>
   <data name="button_40.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -1447,61 +1447,67 @@
     <value>191, 21</value>
   </metadata>
   <data name="toolStripMenuItem_Display.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 32</value>
+    <value>210, 24</value>
   </data>
   <data name="toolStripMenuItem_Display.Text" xml:space="preserve">
     <value>Display</value>
   </data>
-  <data name="toolStripMenuItem_Timer_On.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+  <data name="toolStripMenuItem_AutoRun_On.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
   </data>
-  <data name="toolStripMenuItem_Timer_On.Text" xml:space="preserve">
-    <value>Timer On</value>
+  <data name="toolStripMenuItem_AutoRun_On.Text" xml:space="preserve">
+    <value>AutoRun On</value>
   </data>
-  <data name="toolStripMenuItem_Timer_Off.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+  <data name="toolStripMenuItem_AutoRun_Off.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
   </data>
-  <data name="toolStripMenuItem_Timer_Off.Text" xml:space="preserve">
-    <value>Timer Off</value>
+  <data name="toolStripMenuItem_AutoRun_Off.Text" xml:space="preserve">
+    <value>AutoRun Off</value>
+  </data>
+  <data name="toolStripMenuItem_AutoRun.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="toolStripMenuItem_AutoRun.Text" xml:space="preserve">
+    <value>AutoRun</value>
   </data>
   <data name="toolStripMenuItem_Timer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 32</value>
+    <value>210, 24</value>
   </data>
   <data name="toolStripMenuItem_Timer.Text" xml:space="preserve">
     <value>Timer</value>
   </data>
   <data name="toolStripMenuItem_Opacity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 32</value>
+    <value>210, 24</value>
   </data>
   <data name="toolStripMenuItem_Opacity.Text" xml:space="preserve">
     <value>Opacity</value>
   </data>
   <data name="toolStripMenuItem_Language.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 32</value>
+    <value>210, 24</value>
   </data>
   <data name="toolStripMenuItem_Language.Text" xml:space="preserve">
     <value>Language</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 6</value>
+    <value>207, 6</value>
   </data>
   <data name="toolStripMenuItem_About.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 32</value>
+    <value>210, 24</value>
   </data>
   <data name="toolStripMenuItem_About.Text" xml:space="preserve">
     <value>About</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 6</value>
+    <value>207, 6</value>
   </data>
   <data name="toolStripMenuItem_Exit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 32</value>
+    <value>210, 24</value>
   </data>
   <data name="toolStripMenuItem_Exit.Text" xml:space="preserve">
     <value>Exit</value>
   </data>
   <data name="contextMenuStripMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 241</value>
+    <value>211, 212</value>
   </data>
   <data name="&gt;&gt;contextMenuStripMain.Name" xml:space="preserve">
     <value>contextMenuStripMain</value>
@@ -3181,92 +3187,104 @@
   <data name="notifyIconMain.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="toolStripMenuItem_Timer_On.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Timer_On.Text" xml:space="preserve">
+    <value>Timer On</value>
+  </data>
+  <data name="toolStripMenuItem_Timer_Off.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Timer_Off.Text" xml:space="preserve">
+    <value>Timer Off</value>
+  </data>
   <data name="toolStripMenuItem_Opacity_10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>132, 26</value>
   </data>
   <data name="toolStripMenuItem_Opacity_10.Text" xml:space="preserve">
     <value>10%</value>
   </data>
   <data name="toolStripMenuItem_Opacity_20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>132, 26</value>
   </data>
   <data name="toolStripMenuItem_Opacity_20.Text" xml:space="preserve">
     <value>20%</value>
   </data>
   <data name="toolStripMenuItem_Opacity_30.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>132, 26</value>
   </data>
   <data name="toolStripMenuItem_Opacity_30.Text" xml:space="preserve">
     <value>30%</value>
   </data>
   <data name="toolStripMenuItem_Opacity_40.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>132, 26</value>
   </data>
   <data name="toolStripMenuItem_Opacity_40.Text" xml:space="preserve">
     <value>40%</value>
   </data>
   <data name="toolStripMenuItem_Opacity_50.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>132, 26</value>
   </data>
   <data name="toolStripMenuItem_Opacity_50.Text" xml:space="preserve">
     <value>50%</value>
   </data>
   <data name="toolStripMenuItem_Opacity_60.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>132, 26</value>
   </data>
   <data name="toolStripMenuItem_Opacity_60.Text" xml:space="preserve">
     <value>60%</value>
   </data>
   <data name="toolStripMenuItem_Opacity_70.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>132, 26</value>
   </data>
   <data name="toolStripMenuItem_Opacity_70.Text" xml:space="preserve">
     <value>70%</value>
   </data>
   <data name="toolStripMenuItem_Opacity_80.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>132, 26</value>
   </data>
   <data name="toolStripMenuItem_Opacity_80.Text" xml:space="preserve">
     <value>80%</value>
   </data>
   <data name="toolStripMenuItem_Opacity_90.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>132, 26</value>
   </data>
   <data name="toolStripMenuItem_Opacity_90.Text" xml:space="preserve">
     <value>90%</value>
   </data>
   <data name="toolStripMenuItem_Opacity_100.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>132, 26</value>
   </data>
   <data name="toolStripMenuItem_Opacity_100.Text" xml:space="preserve">
     <value>100%</value>
   </data>
   <data name="toolStripMenuItem_LanguageChineseSimplified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>237, 26</value>
   </data>
   <data name="toolStripMenuItem_LanguageChineseSimplified.Text" xml:space="preserve">
     <value>Chinese(Simplified)</value>
   </data>
   <data name="toolStripMenuItem_LanguageChineseTraditional.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>237, 26</value>
   </data>
   <data name="toolStripMenuItem_LanguageChineseTraditional.Text" xml:space="preserve">
     <value>Chinese(Traditional)</value>
   </data>
   <data name="toolStripMenuItem_LanguageEnglish.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>237, 26</value>
   </data>
   <data name="toolStripMenuItem_LanguageEnglish.Text" xml:space="preserve">
     <value>English</value>
   </data>
   <data name="toolStripMenuItem_LanguageJapanese.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>237, 26</value>
   </data>
   <data name="toolStripMenuItem_LanguageJapanese.Text" xml:space="preserve">
     <value>Japanese</value>
   </data>
   <data name="toolStripMenuItem_LanguageKorean.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>237, 26</value>
   </data>
   <data name="toolStripMenuItem_LanguageKorean.Text" xml:space="preserve">
     <value>Korean</value>
@@ -3278,10 +3296,10 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>10, 18</value>
+    <value>8, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1271, 527</value>
+    <value>1017, 439</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4950,7 +4968,7 @@
 </value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
@@ -4974,6 +4992,24 @@
     <value>toolStripMenuItem_Display</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Display.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Timer.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Timer</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Timer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Timer_On.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Timer_On</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Timer_On.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Timer_Off.Name" xml:space="preserve">
+    <value>toolStripMenuItem_Timer_Off</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_Timer_Off.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Opacity.Name" xml:space="preserve">
@@ -5102,22 +5138,22 @@
   <data name="&gt;&gt;toolStripMenuItem_Exit.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem_Timer.Name" xml:space="preserve">
-    <value>toolStripMenuItem_Timer</value>
+  <data name="&gt;&gt;toolStripMenuItem_AutoRun.Name" xml:space="preserve">
+    <value>toolStripMenuItem_AutoRun</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem_Timer.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolStripMenuItem_AutoRun.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem_Timer_On.Name" xml:space="preserve">
-    <value>toolStripMenuItem_Timer_On</value>
+  <data name="&gt;&gt;toolStripMenuItem_AutoRun_On.Name" xml:space="preserve">
+    <value>toolStripMenuItem_AutoRun_On</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem_Timer_On.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolStripMenuItem_AutoRun_On.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem_Timer_Off.Name" xml:space="preserve">
-    <value>toolStripMenuItem_Timer_Off</value>
+  <data name="&gt;&gt;toolStripMenuItem_AutoRun_Off.Name" xml:space="preserve">
+    <value>toolStripMenuItem_AutoRun_Off</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem_Timer_Off.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolStripMenuItem_AutoRun_Off.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

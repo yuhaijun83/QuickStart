@@ -126,6 +126,15 @@
   <data name="toolStripMenuItem_About_Text" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="toolStripMenuItem_AutoRun_Off_Text" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="toolStripMenuItem_AutoRun_On_Text" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="toolStripMenuItem_AutoRun_Text" xml:space="preserve">
+    <value>AutoRun</value>
+  </data>
   <data name="toolStripMenuItem_Display_Text" xml:space="preserve">
     <value>Display</value>
   </data>

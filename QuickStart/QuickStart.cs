@@ -1,8 +1,10 @@
-﻿using QuickStart.Properties;
+﻿using Microsoft.Win32;
+using QuickStart.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -15,8 +17,8 @@ namespace QuickStart
     public partial class mainForm : Form
     {
         // 35, 48
-        //private const string BUILD_VERSION_FW = "35";
-        private const string BUILD_VERSION_FW = "48";
+        //private static string BUILD_VERSION_FW = "35";
+        private static string BUILD_VERSION_FW = "48";
 
         private const int BUTTON_MAX_SIZE = 40;
 
@@ -26,6 +28,7 @@ namespace QuickStart
         private const string MainForm_Opacity = "MainForm_Opacity";
         private const string MainForm_Language = "MainForm_Language";
         private const string MainForm_Timer = "MainForm_Timer";
+        private const string MainForm_AutoRun = "MainForm_AutoRun";
 
         private const string Button_Name = "Button_Name";
         private const string Button_Visible = "Button_Visible";
@@ -39,11 +42,16 @@ namespace QuickStart
         private const int SC_MAXIMIZE = 0xF030;
         private const int SC_NORMAL = 0xF120;
 
+        private const string Process_RegItemName = "QuickStart";
+        //private const string Process_HandlerName_35 = "QuickStart_FW35";
+        //private const string Process_HandlerName_48 = "QuickStart_FW48";
+
         private int iStopMode = 0; // 0:NO 1:X 2:Y 3:T
         private int iStopMode_T = 2;
         private int iStopMode_XY = 5;
-        
-        private string strIniFilePath = System.Environment.CurrentDirectory + "\\" + INI_FILE_NAME;
+
+        private static string strCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        private string strIniFilePath = strCurrentDirectory + "\\" + INI_FILE_NAME;
         private string win_Language = MultilingualConfig.Language_en_US;
 
         private static List<IniConfig> lstConfig = new List<IniConfig>();
@@ -55,12 +63,15 @@ namespace QuickStart
 
         private void mainForm_Load(object sender, EventArgs e)
         {
+            this.toCheckIsNotExistIniFile();
             this.InitLanguage();
+            this.toCheckIsNotExistCurrentProcess();
             this.InitOpacity();
             this.InitConfig();
             this.InitForm();
             this.InitButton();
             this.InitTimer();
+            this.InitAutoRun();
         }
 
         private void button_01_Click(object sender, EventArgs e)
@@ -509,8 +520,88 @@ namespace QuickStart
             this.timerMain.Enabled = false;
             OperateIniFile.WriteIniData(System_Info, MainForm_Timer, "Off", strIniFilePath);
         }
+        private void toolStripMenuItem_AutoRun_On_Click(object sender, EventArgs e)
+        {
+            this.toolStripMenuItem_AutoRun_On.Checked = true;
+            this.toolStripMenuItem_AutoRun_Off.Checked = false;
+            OperateIniFile.WriteIniData(System_Info, MainForm_AutoRun, "On", strIniFilePath);
+            this.toSetAutoRun(true);
+        }
+
+        private void toolStripMenuItem_AutoRun_Off_Click(object sender, EventArgs e)
+        {
+            this.toolStripMenuItem_AutoRun_On.Checked = false;
+            this.toolStripMenuItem_AutoRun_Off.Checked = true;
+            OperateIniFile.WriteIniData(System_Info, MainForm_AutoRun, "Off", strIniFilePath);
+            this.toSetAutoRun(false);
+        }
 
         #region Me
+
+        private void toCheckIsNotExistIniFile()
+        {
+            if (!File.Exists(strIniFilePath))
+            {
+                string strTitle = "【Error】";
+                string strMessage = "File is Not Found! \n[ " + strIniFilePath + " ]";
+                
+                MessageBox.Show(strMessage, strTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Environment.Exit(0);
+            }
+        }
+
+        private void toCheckIsNotExistCurrentProcess()
+        {
+            int iCount = 0;
+            Process[] processes = Process.GetProcesses();
+            foreach (Process process in processes)
+            {
+                if (process.ProcessName == Process_RegItemName)
+                {
+                    iCount = iCount + 1;
+                }
+            }
+
+            if (iCount > 1)
+            {
+                string strTitle = "【Warn】";
+                string strMessage = "The Program is runing...";
+                switch (this.win_Language)
+                {
+                    case MultilingualConfig.Language_zh_CN:
+                        strTitle = "【警告】";
+                        strMessage = "该程序已经在运行中...";
+                        break;
+
+                    case MultilingualConfig.Language_zh_TW:
+                        strTitle = "【警告】";
+                        strMessage = "該程序已經在運行中...";
+                        break;
+
+                    case MultilingualConfig.Language_en_US:
+                        strTitle = "【Warn】";
+                        strMessage = "The Program is runing...";
+                        break;
+
+                    case MultilingualConfig.Language_ja_JP:
+                        strTitle = "【警告】";
+                        strMessage = "当プログラムは実行中...";
+                        break;
+
+                    case MultilingualConfig.Language_ko_KR:
+                        strTitle = "【경고하다】";
+                        strMessage = "프로그램이 실행 중입니다...";
+                        break;
+
+                    default:
+                        break;
+                }
+
+                MessageBox.Show(strMessage, strTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                System.Environment.Exit(0);
+            }
+        }
+
         private void InitLanguage()
         {
             this.win_Language = OperateIniFile.ReadIniData(System_Info, MainForm_Language, "", strIniFilePath);
@@ -628,34 +719,38 @@ namespace QuickStart
             }
         }
 
+        private void InitAutoRun()
+        {
+            string strMainForm_AutoRun = OperateIniFile.ReadIniData(System_Info, MainForm_AutoRun, "", strIniFilePath);
+            if (strMainForm_AutoRun == "")
+            {
+                strMainForm_AutoRun = "On";
+                OperateIniFile.WriteIniData(System_Info, MainForm_AutoRun, strMainForm_AutoRun, strIniFilePath);
+            }
+
+            switch (strMainForm_AutoRun.ToUpper())
+            {
+                case "ON":
+                    this.toolStripMenuItem_AutoRun_On.Checked = true;
+                    this.toolStripMenuItem_AutoRun_Off.Checked = false;
+                    this.toSetAutoRun(true);
+                    break;
+
+                case "OFF":
+                    this.toolStripMenuItem_AutoRun_On.Checked = false;
+                    this.toolStripMenuItem_AutoRun_Off.Checked = true;
+                    this.toSetAutoRun(false);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
         private void InitConfig()
         {
             string strSection = null;
             IniConfig ini = null;
-
-/*            for (int i = 1; i <= BUTTON_MAX_SIZE; i++)
-            {
-                ini = new IniConfig();
-
-                if (i < 10)
-                {
-                    strSection = "Button_0" + i.ToString();
-                }
-                else
-                {
-                    strSection = "Button_" + i.ToString();
-                }
-
-                ini.Button_Name = OperateIniFile.ReadIniData(strSection, Button_Name, "", strIniFilePath, "utf-8", 1024);
-                ini.Button_Visible = OperateIniFile.ReadIniData(strSection, Button_Visible, "0", strIniFilePath);
-                if (!"1".Equals(ini.Button_Visible)) { continue; }
-                ini.Program_Name = OperateIniFile.ReadIniData(strSection, Program_Name, "", strIniFilePath, "utf-8", 1024);
-                ini.Program_Type = OperateIniFile.ReadIniData(strSection, Program_Type, "exe", strIniFilePath).ToLower();
-                if ("".Equals(ini.Program_Type)) { ini.Program_Type = "exe"; }
-                ini.Program_Param = OperateIniFile.ReadIniData(strSection, Program_Param, "", strIniFilePath, "utf-8", 1024);
-
-                lstConfig.Add(ini);
-            }*/
 
             StreamReader streamReader = new StreamReader(strIniFilePath, Encoding.UTF8);
             string content;
@@ -676,9 +771,23 @@ namespace QuickStart
 
                     lstConfig.Add(ini);
                 }
-
             }
 
+            content = null;
+            try
+            {
+                if (null != streamReader)
+                {
+                    streamReader.Close();
+                }
+            } catch
+            {
+                ;
+            }
+
+            streamReader = null;
+            strSection = null; 
+            ini = null;
         }
 
         private void InitForm()
@@ -1168,6 +1277,9 @@ namespace QuickStart
                     this.toolStripMenuItem_LanguageKorean.Text = Resources.Resource_zh_CN.toolStripMenuItem_LanguageKorean_Text;
                     this.toolStripMenuItem_About.Text = Resources.Resource_zh_CN.toolStripMenuItem_About_Text;
                     this.toolStripMenuItem_Exit.Text = Resources.Resource_zh_CN.toolStripMenuItem_Exit_Text;
+                    this.toolStripMenuItem_AutoRun.Text = Resources.Resource_zh_CN.toolStripMenuItem_AutoRun_Text;
+                    this.toolStripMenuItem_AutoRun_On.Text = Resources.Resource_zh_CN.toolStripMenuItem_AutoRun_On_Text;
+                    this.toolStripMenuItem_AutoRun_Off.Text = Resources.Resource_zh_CN.toolStripMenuItem_AutoRun_Off_Text;
                     break;
 
                 case MultilingualConfig.Language_zh_TW:
@@ -1184,6 +1296,9 @@ namespace QuickStart
                     this.toolStripMenuItem_LanguageKorean.Text = Resources.Resource_zh_TW.toolStripMenuItem_LanguageKorean_Text;
                     this.toolStripMenuItem_About.Text = Resources.Resource_zh_TW.toolStripMenuItem_About_Text;
                     this.toolStripMenuItem_Exit.Text = Resources.Resource_zh_TW.toolStripMenuItem_Exit_Text;
+                    this.toolStripMenuItem_AutoRun.Text = Resources.Resource_zh_TW.toolStripMenuItem_AutoRun_Text;
+                    this.toolStripMenuItem_AutoRun_On.Text = Resources.Resource_zh_TW.toolStripMenuItem_AutoRun_On_Text;
+                    this.toolStripMenuItem_AutoRun_Off.Text = Resources.Resource_zh_TW.toolStripMenuItem_AutoRun_Off_Text;
                     break;
 
                 case MultilingualConfig.Language_en_US:
@@ -1200,6 +1315,9 @@ namespace QuickStart
                     this.toolStripMenuItem_LanguageKorean.Text = Resources.Resource_en_US.toolStripMenuItem_LanguageKorean_Text;
                     this.toolStripMenuItem_About.Text = Resources.Resource_en_US.toolStripMenuItem_About_Text;
                     this.toolStripMenuItem_Exit.Text = Resources.Resource_en_US.toolStripMenuItem_Exit_Text;
+                    this.toolStripMenuItem_AutoRun.Text = Resources.Resource_en_US.toolStripMenuItem_AutoRun_Text;
+                    this.toolStripMenuItem_AutoRun_On.Text = Resources.Resource_en_US.toolStripMenuItem_AutoRun_On_Text;
+                    this.toolStripMenuItem_AutoRun_Off.Text = Resources.Resource_en_US.toolStripMenuItem_AutoRun_Off_Text;
                     break;
 
                 case MultilingualConfig.Language_ja_JP:
@@ -1216,6 +1334,9 @@ namespace QuickStart
                     this.toolStripMenuItem_LanguageKorean.Text = Resources.Resource_ja_JP.toolStripMenuItem_LanguageKorean_Text;
                     this.toolStripMenuItem_About.Text = Resources.Resource_ja_JP.toolStripMenuItem_About_Text;
                     this.toolStripMenuItem_Exit.Text = Resources.Resource_ja_JP.toolStripMenuItem_Exit_Text;
+                    this.toolStripMenuItem_AutoRun.Text = Resources.Resource_ja_JP.toolStripMenuItem_AutoRun_Text;
+                    this.toolStripMenuItem_AutoRun_On.Text = Resources.Resource_ja_JP.toolStripMenuItem_AutoRun_On_Text;
+                    this.toolStripMenuItem_AutoRun_Off.Text = Resources.Resource_ja_JP.toolStripMenuItem_AutoRun_Off_Text;
                     break;
 
                 case MultilingualConfig.Language_ko_KR:
@@ -1232,6 +1353,9 @@ namespace QuickStart
                     this.toolStripMenuItem_LanguageKorean.Text = Resources.Resource_ko_KR.toolStripMenuItem_LanguageKorean_Text;
                     this.toolStripMenuItem_About.Text = Resources.Resource_ko_KR.toolStripMenuItem_About_Text;
                     this.toolStripMenuItem_Exit.Text = Resources.Resource_ko_KR.toolStripMenuItem_Exit_Text;
+                    this.toolStripMenuItem_AutoRun.Text = Resources.Resource_ko_KR.toolStripMenuItem_AutoRun_Text;
+                    this.toolStripMenuItem_AutoRun_On.Text = Resources.Resource_ko_KR.toolStripMenuItem_AutoRun_On_Text;
+                    this.toolStripMenuItem_AutoRun_Off.Text = Resources.Resource_ko_KR.toolStripMenuItem_AutoRun_Off_Text;
                     break;
 
                 default:
@@ -1272,6 +1396,25 @@ namespace QuickStart
 
             }
             base.WndProc(ref m);
+        }
+
+        private void toSetAutoRun(bool bAutoRunFlg)
+        {
+            RegistryKey registryKey = OperateRegistry.GetRegistryKeyByHelper(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+            if (bAutoRunFlg == true)
+            {
+                registryKey.SetValue(Process_RegItemName, "\"" + Process.GetCurrentProcess().MainModule.FileName + "\"", 
+                    RegistryValueKind.String);
+                registryKey.Close();
+            }
+            else
+            {
+                if (OperateRegistry.isExistItemKeyName(registryKey, Process_RegItemName) == true)
+                {
+                    registryKey.DeleteValue(Process_RegItemName);
+                    registryKey.Close();
+                }
+            }
         }
 
         #endregion Me
