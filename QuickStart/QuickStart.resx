@@ -1447,67 +1447,169 @@
     <value>191, 21</value>
   </metadata>
   <data name="toolStripMenuItem_Display.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 24</value>
+    <value>149, 24</value>
   </data>
   <data name="toolStripMenuItem_Display.Text" xml:space="preserve">
     <value>Display</value>
   </data>
   <data name="toolStripMenuItem_AutoRun_On.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+    <value>182, 26</value>
   </data>
   <data name="toolStripMenuItem_AutoRun_On.Text" xml:space="preserve">
     <value>AutoRun On</value>
   </data>
   <data name="toolStripMenuItem_AutoRun_Off.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+    <value>182, 26</value>
   </data>
   <data name="toolStripMenuItem_AutoRun_Off.Text" xml:space="preserve">
     <value>AutoRun Off</value>
   </data>
   <data name="toolStripMenuItem_AutoRun.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 24</value>
+    <value>149, 24</value>
   </data>
   <data name="toolStripMenuItem_AutoRun.Text" xml:space="preserve">
     <value>AutoRun</value>
   </data>
+  <data name="toolStripMenuItem_Timer_On.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Timer_On.Text" xml:space="preserve">
+    <value>Timer On</value>
+  </data>
+  <data name="toolStripMenuItem_Timer_Off.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Timer_Off.Text" xml:space="preserve">
+    <value>Timer Off</value>
+  </data>
   <data name="toolStripMenuItem_Timer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 24</value>
+    <value>149, 24</value>
   </data>
   <data name="toolStripMenuItem_Timer.Text" xml:space="preserve">
     <value>Timer</value>
   </data>
+  <data name="toolStripMenuItem_Opacity_10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_10.Text" xml:space="preserve">
+    <value>10%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_20.Text" xml:space="preserve">
+    <value>20%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_30.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_30.Text" xml:space="preserve">
+    <value>30%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_40.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_40.Text" xml:space="preserve">
+    <value>40%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_50.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_50.Text" xml:space="preserve">
+    <value>50%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_60.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_60.Text" xml:space="preserve">
+    <value>60%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_70.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_70.Text" xml:space="preserve">
+    <value>70%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_80.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_80.Text" xml:space="preserve">
+    <value>80%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_90.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_90.Text" xml:space="preserve">
+    <value>90%</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_100.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Opacity_100.Text" xml:space="preserve">
+    <value>100%</value>
+  </data>
   <data name="toolStripMenuItem_Opacity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 24</value>
+    <value>149, 24</value>
   </data>
   <data name="toolStripMenuItem_Opacity.Text" xml:space="preserve">
     <value>Opacity</value>
   </data>
+  <data name="toolStripMenuItem_LanguageChineseSimplified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 26</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageChineseSimplified.Text" xml:space="preserve">
+    <value>Chinese(Simplified)</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageChineseTraditional.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 26</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageChineseTraditional.Text" xml:space="preserve">
+    <value>Chinese(Traditional)</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageEnglish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 26</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageEnglish.Text" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageJapanese.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 26</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageJapanese.Text" xml:space="preserve">
+    <value>Japanese</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageKorean.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 26</value>
+  </data>
+  <data name="toolStripMenuItem_LanguageKorean.Text" xml:space="preserve">
+    <value>Korean</value>
+  </data>
   <data name="toolStripMenuItem_Language.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 24</value>
+    <value>149, 24</value>
   </data>
   <data name="toolStripMenuItem_Language.Text" xml:space="preserve">
     <value>Language</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 6</value>
+    <value>146, 6</value>
   </data>
   <data name="toolStripMenuItem_About.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 24</value>
+    <value>149, 24</value>
   </data>
   <data name="toolStripMenuItem_About.Text" xml:space="preserve">
     <value>About</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 6</value>
+    <value>146, 6</value>
   </data>
   <data name="toolStripMenuItem_Exit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 24</value>
+    <value>149, 24</value>
   </data>
   <data name="toolStripMenuItem_Exit.Text" xml:space="preserve">
     <value>Exit</value>
   </data>
   <data name="contextMenuStripMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 212</value>
+    <value>150, 184</value>
   </data>
   <data name="&gt;&gt;contextMenuStripMain.Name" xml:space="preserve">
     <value>contextMenuStripMain</value>
@@ -3186,108 +3288,6 @@
   </data>
   <data name="notifyIconMain.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="toolStripMenuItem_Timer_On.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Timer_On.Text" xml:space="preserve">
-    <value>Timer On</value>
-  </data>
-  <data name="toolStripMenuItem_Timer_Off.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Timer_Off.Text" xml:space="preserve">
-    <value>Timer Off</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_10.Text" xml:space="preserve">
-    <value>10%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_20.Text" xml:space="preserve">
-    <value>20%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_30.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_30.Text" xml:space="preserve">
-    <value>30%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_40.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_40.Text" xml:space="preserve">
-    <value>40%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_50.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_50.Text" xml:space="preserve">
-    <value>50%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_60.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_60.Text" xml:space="preserve">
-    <value>60%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_70.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_70.Text" xml:space="preserve">
-    <value>70%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_80.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_80.Text" xml:space="preserve">
-    <value>80%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_90.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_90.Text" xml:space="preserve">
-    <value>90%</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_100.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 26</value>
-  </data>
-  <data name="toolStripMenuItem_Opacity_100.Text" xml:space="preserve">
-    <value>100%</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageChineseSimplified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 26</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageChineseSimplified.Text" xml:space="preserve">
-    <value>Chinese(Simplified)</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageChineseTraditional.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 26</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageChineseTraditional.Text" xml:space="preserve">
-    <value>Chinese(Traditional)</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageEnglish.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 26</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageEnglish.Text" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageJapanese.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 26</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageJapanese.Text" xml:space="preserve">
-    <value>Japanese</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageKorean.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 26</value>
-  </data>
-  <data name="toolStripMenuItem_LanguageKorean.Text" xml:space="preserve">
-    <value>Korean</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -4994,6 +4994,24 @@
   <data name="&gt;&gt;toolStripMenuItem_Display.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolStripMenuItem_AutoRun.Name" xml:space="preserve">
+    <value>toolStripMenuItem_AutoRun</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_AutoRun.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_AutoRun_On.Name" xml:space="preserve">
+    <value>toolStripMenuItem_AutoRun_On</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_AutoRun_On.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_AutoRun_Off.Name" xml:space="preserve">
+    <value>toolStripMenuItem_AutoRun_Off</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem_AutoRun_Off.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;toolStripMenuItem_Timer.Name" xml:space="preserve">
     <value>toolStripMenuItem_Timer</value>
   </data>
@@ -5136,24 +5154,6 @@
     <value>toolStripMenuItem_Exit</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Exit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem_AutoRun.Name" xml:space="preserve">
-    <value>toolStripMenuItem_AutoRun</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem_AutoRun.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem_AutoRun_On.Name" xml:space="preserve">
-    <value>toolStripMenuItem_AutoRun_On</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem_AutoRun_On.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem_AutoRun_Off.Name" xml:space="preserve">
-    <value>toolStripMenuItem_AutoRun_Off</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem_AutoRun_Off.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

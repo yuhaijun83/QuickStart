@@ -75,6 +75,9 @@ namespace QuickStart
             this.notifyIconMain = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStripMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem_Display = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_AutoRun = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_AutoRun_On = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_AutoRun_Off = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Timer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Timer_On = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Timer_Off = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,9 +102,6 @@ namespace QuickStart
             this.toolStripMenuItem_About = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem_Exit = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem_AutoRun = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem_AutoRun_On = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem_AutoRun_Off = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -418,6 +418,26 @@ namespace QuickStart
             resources.ApplyResources(this.toolStripMenuItem_Display, "toolStripMenuItem_Display");
             this.toolStripMenuItem_Display.Click += new System.EventHandler(this.toolStripMenuItem_Display_Click);
             // 
+            // toolStripMenuItem_AutoRun
+            // 
+            this.toolStripMenuItem_AutoRun.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem_AutoRun_On,
+            this.toolStripMenuItem_AutoRun_Off});
+            this.toolStripMenuItem_AutoRun.Name = "toolStripMenuItem_AutoRun";
+            resources.ApplyResources(this.toolStripMenuItem_AutoRun, "toolStripMenuItem_AutoRun");
+            // 
+            // toolStripMenuItem_AutoRun_On
+            // 
+            this.toolStripMenuItem_AutoRun_On.Name = "toolStripMenuItem_AutoRun_On";
+            resources.ApplyResources(this.toolStripMenuItem_AutoRun_On, "toolStripMenuItem_AutoRun_On");
+            this.toolStripMenuItem_AutoRun_On.Click += new System.EventHandler(this.toolStripMenuItem_AutoRun_On_Click);
+            // 
+            // toolStripMenuItem_AutoRun_Off
+            // 
+            this.toolStripMenuItem_AutoRun_Off.Name = "toolStripMenuItem_AutoRun_Off";
+            resources.ApplyResources(this.toolStripMenuItem_AutoRun_Off, "toolStripMenuItem_AutoRun_Off");
+            this.toolStripMenuItem_AutoRun_Off.Click += new System.EventHandler(this.toolStripMenuItem_AutoRun_Off_Click);
+            // 
             // toolStripMenuItem_Timer
             // 
             this.toolStripMenuItem_Timer.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -576,26 +596,6 @@ namespace QuickStart
             this.toolStripMenuItem_Exit.Name = "toolStripMenuItem_Exit";
             resources.ApplyResources(this.toolStripMenuItem_Exit, "toolStripMenuItem_Exit");
             this.toolStripMenuItem_Exit.Click += new System.EventHandler(this.toolStripMenuItem_Exit_Click);
-            // 
-            // toolStripMenuItem_AutoRun
-            // 
-            this.toolStripMenuItem_AutoRun.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem_AutoRun_On,
-            this.toolStripMenuItem_AutoRun_Off});
-            this.toolStripMenuItem_AutoRun.Name = "toolStripMenuItem_AutoRun";
-            resources.ApplyResources(this.toolStripMenuItem_AutoRun, "toolStripMenuItem_AutoRun");
-            // 
-            // toolStripMenuItem_AutoRun_On
-            // 
-            this.toolStripMenuItem_AutoRun_On.Name = "toolStripMenuItem_AutoRun_On";
-            resources.ApplyResources(this.toolStripMenuItem_AutoRun_On, "toolStripMenuItem_AutoRun_On");
-            this.toolStripMenuItem_AutoRun_On.Click += new System.EventHandler(this.toolStripMenuItem_AutoRun_On_Click);
-            // 
-            // toolStripMenuItem_AutoRun_Off
-            // 
-            this.toolStripMenuItem_AutoRun_Off.Name = "toolStripMenuItem_AutoRun_Off";
-            resources.ApplyResources(this.toolStripMenuItem_AutoRun_Off, "toolStripMenuItem_AutoRun_Off");
-            this.toolStripMenuItem_AutoRun_Off.Click += new System.EventHandler(this.toolStripMenuItem_AutoRun_Off_Click);
             // 
             // mainForm
             // 

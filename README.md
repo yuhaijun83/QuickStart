@@ -31,8 +31,14 @@
         [Button_XX]
         #按钮显示名称
         Button_Name=
-        #按钮可视否【1：可视；1 以外不可视；默认：空 不显示】
+        #按钮是否可视【1：可视；1 以外不可视；默认：空 不显示】
         Button_Visible=
+        #按钮是否可用【1：可用；1 以外不可用；默认：空 不可用】
+        Button_Enable=
+        #按钮背景颜色【设定值为 英文单词】
+        Button_BackColor=
+        #按钮文本颜色【设定值为 英文单词】
+        Button_TextColor=
         #启动程序的完整路径和程序名
         Program_Name=
         #程序启动的类型【exe：exe可执行程序；cmd：cmd命令或者*.cmd、*.bat可执行程序；默认：exe】
@@ -44,6 +50,9 @@
         [Button_01]
         Button_Name=Eclipse_v4.21
         Button_Visible=1
+        Button_Enable=1
+        Button_BackColor=GreenYellow
+        Button_TextColor=OrangeRed
         Program_Name=D:\Eclipse_4.21\eclipse.exe
         Program_Type=exe
         Program_Param=-clean
@@ -52,9 +61,15 @@
 
       9.本程序同时只能启动一个实例。
 
-      10.默认显示的Reboot，Shutdown，请不要随便点！！！！！！
+      10.可设置按钮背景颜色，按钮文本颜色。（可参照 docs/Color.html 的颜色名设置）
+
+      11.默认显示的Reboot，Shutdown，请不要随便点！！！！！！
       
 【版本更新】：
+
+      8.v22.06
+        新增可设置按钮背景颜色，按钮文本颜色
+        新增可设置按钮是否可用
 
       7.v22.05
         新增开机自启动功能，可在任务栏托盘区【开机启动】菜单设置

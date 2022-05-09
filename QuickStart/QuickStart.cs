@@ -32,6 +32,9 @@ namespace QuickStart
 
         private const string Button_Name = "Button_Name";
         private const string Button_Visible = "Button_Visible";
+        private const string Button_Enable = "Button_Enable";
+        private const string Button_BackColor = "Button_BackColor";
+        private const string Button_TextColor = "Button_TextColor";
         private const string Program_Name = "Program_Name";
         private const string Program_Type = "Program_Type";
         private const string Program_Param = "Program_Param";
@@ -764,6 +767,9 @@ namespace QuickStart
                     ini.Button_Name = OperateIniFile.ReadIniData(strSection, Button_Name, "", strIniFilePath, "utf-8", 1024);
                     ini.Button_Visible = OperateIniFile.ReadIniData(strSection, Button_Visible, "0", strIniFilePath);
                     if (!"1".Equals(ini.Button_Visible)) { continue; }
+                    ini.Button_Enable = OperateIniFile.ReadIniData(strSection, Button_Enable, "0", strIniFilePath);
+                    ini.Button_BackColor = OperateIniFile.ReadIniData(strSection, Button_BackColor, "", strIniFilePath);
+                    ini.Button_TextColor = OperateIniFile.ReadIniData(strSection, Button_TextColor, "", strIniFilePath);
                     ini.Program_Name = OperateIniFile.ReadIniData(strSection, Program_Name, "", strIniFilePath, "utf-8", 1024);
                     ini.Program_Type = OperateIniFile.ReadIniData(strSection, Program_Type, "exe", strIniFilePath).ToLower();
                     if ("".Equals(ini.Program_Type)) { ini.Program_Type = "exe"; }
@@ -893,166 +899,526 @@ namespace QuickStart
                     case 1:
                         this.button_01.Text = lstConfig[i - 1].Button_Name;
                         this.button_01.Visible = true;
+                        this.button_01.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_01.BackColor =  Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_01.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 2:
                         this.button_02.Text = lstConfig[i - 1].Button_Name;
                         this.button_02.Visible = true;
+                        this.button_02.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_02.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_02.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 3:
                         this.button_03.Text = lstConfig[i - 1].Button_Name;
                         this.button_03.Visible = true;
+                        this.button_03.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_03.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_03.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 4:
                         this.button_04.Text = lstConfig[i - 1].Button_Name;
                         this.button_04.Visible = true;
+                        this.button_04.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_04.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_04.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 5:
                         this.button_05.Text = lstConfig[i - 1].Button_Name;
                         this.button_05.Visible = true;
+                        this.button_05.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_05.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_05.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 6:
                         this.button_06.Text = lstConfig[i - 1].Button_Name;
                         this.button_06.Visible = true;
+                        this.button_06.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_06.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_06.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 7:
                         this.button_07.Text = lstConfig[i - 1].Button_Name;
                         this.button_07.Visible = true;
+                        this.button_07.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_07.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_07.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 8:
                         this.button_08.Text = lstConfig[i - 1].Button_Name;
                         this.button_08.Visible = true;
+                        this.button_08.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_08.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_08.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
 
                     case 9:
                         this.button_09.Text = lstConfig[i - 1].Button_Name;
                         this.button_09.Visible = true;
+                        this.button_09.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_09.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_09.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 10:
                         this.button_10.Text = lstConfig[i - 1].Button_Name;
                         this.button_10.Visible = true;
+                        this.button_10.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_10.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_10.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 11:
                         this.button_11.Text = lstConfig[i - 1].Button_Name;
                         this.button_11.Visible = true;
+                        this.button_11.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_11.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_11.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 12:
                         this.button_12.Text = lstConfig[i - 1].Button_Name;
                         this.button_12.Visible = true;
+                        this.button_12.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_12.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_12.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 13:
                         this.button_13.Text = lstConfig[i - 1].Button_Name;
                         this.button_13.Visible = true;
+                        this.button_13.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_13.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_13.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 14:
                         this.button_14.Text = lstConfig[i - 1].Button_Name;
                         this.button_14.Visible = true;
+                        this.button_14.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_14.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_14.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 15:
                         this.button_15.Text = lstConfig[i - 1].Button_Name;
                         this.button_15.Visible = true;
+                        this.button_15.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_15.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_15.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 16:
                         this.button_16.Text = lstConfig[i - 1].Button_Name;
                         this.button_16.Visible = true;
+                        this.button_16.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_16.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_16.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
 
                     case 17:
                         this.button_17.Text = lstConfig[i - 1].Button_Name;
                         this.button_17.Visible = true;
+                        this.button_17.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_17.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_17.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 18:
                         this.button_18.Text = lstConfig[i - 1].Button_Name;
                         this.button_18.Visible = true;
+                        this.button_18.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_18.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_18.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 19:
                         this.button_19.Text = lstConfig[i - 1].Button_Name;
                         this.button_19.Visible = true;
+                        this.button_19.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_19.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_19.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 20:
                         this.button_20.Text = lstConfig[i - 1].Button_Name;
                         this.button_20.Visible = true;
+                        this.button_20.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_20.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_20.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 21:
                         this.button_21.Text = lstConfig[i - 1].Button_Name;
                         this.button_21.Visible = true;
+                        this.button_21.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_21.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_21.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 22:
                         this.button_22.Text = lstConfig[i - 1].Button_Name;
                         this.button_22.Visible = true;
+                        this.button_22.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_22.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_22.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 23:
                         this.button_23.Text = lstConfig[i - 1].Button_Name;
                         this.button_23.Visible = true;
+                        this.button_23.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_23.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_23.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 24:
                         this.button_24.Text = lstConfig[i - 1].Button_Name;
                         this.button_24.Visible = true;
+                        this.button_24.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_24.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_24.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
 
                     case 25:
                         this.button_25.Text = lstConfig[i - 1].Button_Name;
                         this.button_25.Visible = true;
+                        this.button_25.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_25.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_25.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 26:
                         this.button_26.Text = lstConfig[i - 1].Button_Name;
                         this.button_26.Visible = true;
+                        this.button_26.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_26.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_26.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 27:
                         this.button_27.Text = lstConfig[i - 1].Button_Name;
                         this.button_27.Visible = true;
+                        this.button_27.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_27.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_27.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 28:
                         this.button_28.Text = lstConfig[i - 1].Button_Name;
                         this.button_28.Visible = true;
+                        this.button_28.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_28.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_28.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 29:
                         this.button_29.Text = lstConfig[i - 1].Button_Name;
                         this.button_29.Visible = true;
+                        this.button_29.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_29.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_29.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 30:
                         this.button_30.Text = lstConfig[i - 1].Button_Name;
                         this.button_30.Visible = true;
+                        this.button_30.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_30.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_30.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 31:
                         this.button_31.Text = lstConfig[i - 1].Button_Name;
                         this.button_31.Visible = true;
+                        this.button_31.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_31.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_31.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 32:
                         this.button_32.Text = lstConfig[i - 1].Button_Name;
                         this.button_32.Visible = true;
+                        this.button_32.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_32.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_32.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
 
                     case 33:
                         this.button_33.Text = lstConfig[i - 1].Button_Name;
                         this.button_33.Visible = true;
+                        this.button_33.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_33.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_33.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 34:
                         this.button_34.Text = lstConfig[i - 1].Button_Name;
                         this.button_34.Visible = true;
+                        this.button_34.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_34.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_34.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 35:
                         this.button_35.Text = lstConfig[i - 1].Button_Name;
                         this.button_35.Visible = true;
+                        this.button_35.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_35.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_35.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 36:
                         this.button_36.Text = lstConfig[i - 1].Button_Name;
                         this.button_36.Visible = true;
+                        this.button_36.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_36.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_36.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 37:
                         this.button_37.Text = lstConfig[i - 1].Button_Name;
                         this.button_37.Visible = true;
+                        this.button_37.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_37.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_37.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 38:
                         this.button_38.Text = lstConfig[i - 1].Button_Name;
                         this.button_38.Visible = true;
+                        this.button_38.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_38.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_38.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 39:
                         this.button_39.Text = lstConfig[i - 1].Button_Name;
                         this.button_39.Visible = true;
+                        this.button_39.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_39.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_39.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
                     case 40:
                         this.button_40.Text = lstConfig[i - 1].Button_Name;
                         this.button_40.Visible = true;
+                        this.button_40.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
+                        if (lstConfig[i - 1].Button_BackColor != "")
+                        {
+                            this.button_40.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
+                        }
+                        if (lstConfig[i - 1].Button_TextColor != "")
+                        {
+                            this.button_40.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
+                        }
                         break;
 
                     default:
