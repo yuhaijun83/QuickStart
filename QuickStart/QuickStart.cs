@@ -1399,47 +1399,39 @@ namespace QuickStart
                     return;
                 }
 
-                // 未停靠：只判定窗口中心所在屏幕的边缘（多屏下各屏独立停靠）
+                // 未停靠：以窗口中心最接近的屏幕为停靠屏（多屏下各屏独立停靠；
+                // 中心在屏幕外时 FromPoint 返回最近屏幕，允许把窗口甩出屏幕外停靠）
                 Point center = new Point(this.Location.X + this.Width / 2, this.Location.Y + this.Height / 2);
 
-                foreach (Screen scr in Screen.AllScreens)
+                Screen scr = Screen.FromPoint(center);
+                Rectangle wa = scr.WorkingArea;
+
+                int dTop = this.Location.Y - wa.Top;
+                int dLeft = this.Location.X - wa.Left;
+                int dRight = wa.Right - (this.Location.X + this.Width);
+
+                if (dTop <= t && dTop <= dLeft && dTop <= dRight)
                 {
-                    if (!scr.Bounds.Contains(center))
-                    {
-                        continue;
-                    }
-
-                    Rectangle wa = scr.WorkingArea;
-
-                    int dTop = this.Location.Y - wa.Top;
-                    int dLeft = this.Location.X - wa.Left;
-                    int dRight = wa.Right - (this.Location.X + this.Width);
-
-                    // 允许越过边缘（负值）：窗口中心已限定在本屏内，过冲最多半个窗口
-                    if (dTop <= t && dTop <= dLeft && dTop <= dRight)
-                    {
-                        this.iStopMode = 3;
-                        this.stopWorkingArea = wa;
-                        this.toSnapToEdge(3, wa, t);
-                    }
-                    else if (dLeft <= t && dLeft <= dRight)
-                    {
-                        this.iStopMode = 1;
-                        this.stopWorkingArea = wa;
-                        this.toSnapToEdge(1, wa, t);
-                    }
-                    else if (dRight <= t)
-                    {
-                        this.iStopMode = 2;
-                        this.stopWorkingArea = wa;
-                        this.toSnapToEdge(2, wa, t);
-                    }
-                    else
-                    {
-                        this.iStopMode = 0;
-                        this.stopWorkingArea = Rectangle.Empty;
-                    }
-                    break;
+                    this.iStopMode = 3;
+                    this.stopWorkingArea = wa;
+                    this.toSnapToEdge(3, wa, t);
+                }
+                else if (dLeft <= t && dLeft <= dRight)
+                {
+                    this.iStopMode = 1;
+                    this.stopWorkingArea = wa;
+                    this.toSnapToEdge(1, wa, t);
+                }
+                else if (dRight <= t)
+                {
+                    this.iStopMode = 2;
+                    this.stopWorkingArea = wa;
+                    this.toSnapToEdge(2, wa, t);
+                }
+                else
+                {
+                    this.iStopMode = 0;
+                    this.stopWorkingArea = Rectangle.Empty;
                 }
             }
 
