@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+  <assemblyIdentity version="1.0.0.0" name="QuickStart.app" type="win32" />
+  <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
+    <application>
+      <!-- 声明 Windows 10/11 兼容，使 Environment.OSVersion 报告真实版本，
+           WinForms 才能启用 PerMonitorV2 DPI 感知（配置见 app.config） -->
+      <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}" />
+      <supportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}" />
+      <supportedOS Id="{4a2f28e1-53b1-47c5-bda3-cec78403be7e}" />
+      <supportedOS Id="{35138b9e-5d96-4fbd-8e2d-a2440225f93a}" />
+    </application>
+  </compatibility>
+</assembly>

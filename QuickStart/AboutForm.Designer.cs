@@ -71,7 +71,7 @@ namespace QuickStart
             // aboutForm
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.linkLabel_GitHub);
             this.Controls.Add(this.lbl_BuildVersion);
             this.Controls.Add(this.pictureBox1);

@@ -135,6 +135,15 @@
   <data name="toolStripMenuItem_AutoRun_Text" xml:space="preserve">
     <value>開機啟動</value>
   </data>
+  <data name="toolStripMenuItem_EditMode_Text" xml:space="preserve">
+    <value>編輯模式</value>
+  </data>
+  <data name="toolStripMenuItem_EditMode_On_Text" xml:space="preserve">
+    <value>開</value>
+  </data>
+  <data name="toolStripMenuItem_EditMode_Off_Text" xml:space="preserve">
+    <value>關</value>
+  </data>
   <data name="toolStripMenuItem_Display_Text" xml:space="preserve">
     <value>表示</value>
   </data>

@@ -28,6 +28,38 @@ namespace QuickStart
             this.Close();
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            this.InitLogo();
+            base.OnLoad(e);
+        }
+
+        // pictureBox1 使用的是 BackgroundImage，而 BackgroundImageLayout 默认值为 Tile，
+        // 会把图标平铺成多张。这里改为单张等比缩放，并按控件实际尺寸（已随 DPI 缩放）
+        // 选取图标中最合适的帧，避免高分屏下模糊。
+        private void InitLogo()
+        {
+            this.pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+
+            Size box = this.pictureBox1.ClientSize;
+            if (box.Width <= 0 || box.Height <= 0)
+            {
+                box = new Size(128, 128);
+            }
+
+            try
+            {
+                using (Icon best = new Icon(this.Icon, box))
+                {
+                    this.pictureBox1.BackgroundImage = best.ToBitmap();
+                }
+            }
+            catch
+            {
+                ;
+            }
+        }
+
         private void linkLabel_GitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             String strTargetUrl = "https://github.com/yuhaijun83/QuickStart";

@@ -16,11 +16,7 @@ namespace QuickStart
 {
     public partial class mainForm : Form
     {
-        // 35, 48
-        //private static string BUILD_VERSION_FW = "35";
-        private static string BUILD_VERSION_FW = "48";
-
-        private const int BUTTON_MAX_SIZE = 40;
+        private const int BUTTON_MAX_SIZE = 48;
 
         private const string INI_FILE_NAME = "QuickStart.ini";
 
@@ -49,9 +45,30 @@ namespace QuickStart
         //private const string Process_HandlerName_35 = "QuickStart_FW35";
         //private const string Process_HandlerName_48 = "QuickStart_FW48";
 
+        // 停靠功能相关
         private int iStopMode = 0; // 0:NO 1:X 2:Y 3:T
         private int iStopMode_T = 2;
         private int iStopMode_XY = 5;
+        // 已停靠时记录所停靠屏幕的工作区，保持粘性，避免多屏之间来回跳动
+        private Rectangle stopWorkingArea = Rectangle.Empty;
+
+        // 编辑模式（拖拽排序）相关
+        private bool bEditMode = false;
+        private List<Button> buttonList = new List<Button>();
+        private List<Color> buttonDefaultBackColors = new List<Color>();
+        private List<Color> buttonDefaultForeColors = new List<Color>();
+        private List<IniSection> lstSections = new List<IniSection>();
+        private Button dragSourceButton = null;
+        private Point dragStartPoint = Point.Empty;
+        private Button dragHighlightButton = null;
+        private Color dragHighlightOriginalColor = Color.Empty;
+        private const int DRAG_START_THRESHOLD = 4;
+
+        // 编辑模式按钮抖动动画（类似 iOS 编辑主屏）
+        private System.Windows.Forms.Timer jiggleTimer = null;
+        private int jiggleTick = 0;
+        private int jiggleBaseDpi = 96;
+        private Dictionary<Button, Point> jiggleOriginalLocations = new Dictionary<Button, Point>();
 
         private static string strCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
         private string strIniFilePath = strCurrentDirectory + "\\" + INI_FILE_NAME;
@@ -62,6 +79,49 @@ namespace QuickStart
         public mainForm()
         {
             InitializeComponent();
+            this.InitButtonList();
+        }
+
+        private void InitButtonList()
+        {
+            this.buttonList.Add(this.button_01); this.buttonList.Add(this.button_02);
+            this.buttonList.Add(this.button_03); this.buttonList.Add(this.button_04);
+            this.buttonList.Add(this.button_05); this.buttonList.Add(this.button_06);
+            this.buttonList.Add(this.button_07); this.buttonList.Add(this.button_08);
+            this.buttonList.Add(this.button_09); this.buttonList.Add(this.button_10);
+            this.buttonList.Add(this.button_11); this.buttonList.Add(this.button_12);
+            this.buttonList.Add(this.button_13); this.buttonList.Add(this.button_14);
+            this.buttonList.Add(this.button_15); this.buttonList.Add(this.button_16);
+            this.buttonList.Add(this.button_17); this.buttonList.Add(this.button_18);
+            this.buttonList.Add(this.button_19); this.buttonList.Add(this.button_20);
+            this.buttonList.Add(this.button_21); this.buttonList.Add(this.button_22);
+            this.buttonList.Add(this.button_23); this.buttonList.Add(this.button_24);
+            this.buttonList.Add(this.button_25); this.buttonList.Add(this.button_26);
+            this.buttonList.Add(this.button_27); this.buttonList.Add(this.button_28);
+            this.buttonList.Add(this.button_29); this.buttonList.Add(this.button_30);
+            this.buttonList.Add(this.button_31); this.buttonList.Add(this.button_32);
+            this.buttonList.Add(this.button_33); this.buttonList.Add(this.button_34);
+            this.buttonList.Add(this.button_35); this.buttonList.Add(this.button_36);
+            this.buttonList.Add(this.button_37); this.buttonList.Add(this.button_38);
+            this.buttonList.Add(this.button_39); this.buttonList.Add(this.button_40);
+            this.buttonList.Add(this.button_41); this.buttonList.Add(this.button_42);
+            this.buttonList.Add(this.button_43); this.buttonList.Add(this.button_44);
+            this.buttonList.Add(this.button_45); this.buttonList.Add(this.button_46);
+            this.buttonList.Add(this.button_47); this.buttonList.Add(this.button_48);
+
+            foreach (Button btn in this.buttonList)
+            {
+                // 记录设计器默认颜色，配置为空时用于还原
+                this.buttonDefaultBackColors.Add(btn.BackColor);
+                this.buttonDefaultForeColors.Add(btn.ForeColor);
+
+                btn.MouseDown += new MouseEventHandler(this.button_MouseDown);
+                btn.MouseMove += new MouseEventHandler(this.button_MouseMove);
+                btn.MouseUp += new MouseEventHandler(this.button_MouseUp);
+                btn.DragEnter += new DragEventHandler(this.button_DragEnter);
+                btn.DragLeave += new EventHandler(this.button_DragLeave);
+                btn.DragDrop += new DragEventHandler(this.button_DragDrop);
+            }
         }
 
         private void mainForm_Load(object sender, EventArgs e)
@@ -277,6 +337,46 @@ namespace QuickStart
             this.button_common(lstConfig[39]);
         }
 
+        private void button_41_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[40]);
+        }
+
+        private void button_42_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[41]);
+        }
+
+        private void button_43_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[42]);
+        }
+
+        private void button_44_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[43]);
+        }
+
+        private void button_45_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[44]);
+        }
+
+        private void button_46_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[45]);
+        }
+
+        private void button_47_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[46]);
+        }
+
+        private void button_48_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[47]);
+        }
+
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             string strTitle = "【Warn】";
@@ -376,6 +476,7 @@ namespace QuickStart
         private void mainForm_Move(object sender, EventArgs e)
         {
             this.iStopMode = 0;
+            this.stopWorkingArea = Rectangle.Empty;
         }
 
         private void timerMain_Tick(object sender, EventArgs e)
@@ -537,6 +638,16 @@ namespace QuickStart
             this.toolStripMenuItem_AutoRun_Off.Checked = true;
             OperateIniFile.WriteIniData(System_Info, MainForm_AutoRun, "Off", strIniFilePath);
             this.toSetAutoRun(false);
+        }
+
+        private void toolStripMenuItem_EditMode_On_Click(object sender, EventArgs e)
+        {
+            this.SetEditMode(true);
+        }
+
+        private void toolStripMenuItem_EditMode_Off_Click(object sender, EventArgs e)
+        {
+            this.SetEditMode(false);
         }
 
         #region Me
@@ -766,7 +877,6 @@ namespace QuickStart
 
                     ini.Button_Name = OperateIniFile.ReadIniData(strSection, Button_Name, "", strIniFilePath, "utf-8", 1024);
                     ini.Button_Visible = OperateIniFile.ReadIniData(strSection, Button_Visible, "0", strIniFilePath);
-                    if (!"1".Equals(ini.Button_Visible)) { continue; }
                     ini.Button_Enable = OperateIniFile.ReadIniData(strSection, Button_Enable, "0", strIniFilePath);
                     ini.Button_BackColor = OperateIniFile.ReadIniData(strSection, Button_BackColor, "", strIniFilePath);
                     ini.Button_TextColor = OperateIniFile.ReadIniData(strSection, Button_TextColor, "", strIniFilePath);
@@ -775,7 +885,17 @@ namespace QuickStart
                     if ("".Equals(ini.Program_Type)) { ini.Program_Type = "exe"; }
                     ini.Program_Param = OperateIniFile.ReadIniData(strSection, Program_Param, "", strIniFilePath, "utf-8", 1024);
 
-                    lstConfig.Add(ini);
+                    // 记录全部段（含不可视段），拖拽排序回写 ini 时用于保持隐藏段不动
+                    IniSection section = new IniSection();
+                    section.SectionName = strSection;
+                    section.Config = ini;
+                    section.Visible = "1".Equals(ini.Button_Visible);
+                    lstSections.Add(section);
+
+                    if (section.Visible)
+                    {
+                        lstConfig.Add(ini);
+                    }
                 }
             }
 
@@ -794,6 +914,48 @@ namespace QuickStart
             streamReader = null;
             strSection = null; 
             ini = null;
+
+            // 旧版 ini 只有 40 个按钮段，补齐缺失的 [Button_XX] 段（默认隐藏）并回写文件
+            // 注意：必须在 streamReader 关闭之后回写，否则文件被占用导致替换失败
+            bool bNeedAppend = false;
+            for (int i = 1; i <= BUTTON_MAX_SIZE; i++)
+            {
+                string strName = "Button_" + i.ToString("D2");
+                bool bFound = false;
+                foreach (IniSection s in lstSections)
+                {
+                    if (strName.Equals(s.SectionName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        bFound = true;
+                        break;
+                    }
+                }
+
+                if (!bFound)
+                {
+                    IniConfig def = new IniConfig();
+                    def.Button_Name = "Btn_" + i.ToString("D2");
+                    def.Button_Visible = "0";
+                    def.Button_Enable = "1";
+                    def.Button_BackColor = "";
+                    def.Button_TextColor = "";
+                    def.Program_Name = "";
+                    def.Program_Type = "exe";
+                    def.Program_Param = "";
+
+                    IniSection section = new IniSection();
+                    section.SectionName = strName;
+                    section.Config = def;
+                    section.Visible = false;
+                    lstSections.Add(section);
+                    bNeedAppend = true;
+                }
+            }
+
+            if (bNeedAppend)
+            {
+                IniFileRewriter.RewriteButtonSections(this.strIniFilePath, this.lstSections);
+            }
         }
 
         private void InitForm()
@@ -802,63 +964,25 @@ namespace QuickStart
 
             int isize = lstConfig.Count();
 
-            if (BUILD_VERSION_FW.Equals("35"))
-            {
-                int iWidth = 769;
-                if (isize <= 8)
-                {
-                    this.Size = new Size(iWidth, 104);
-                }
-                else if (9 <= isize && isize <= 16)
-                {
-                    this.Size = new Size(iWidth, 174);
-                }
-                else if (17 <= isize && isize <= 24)
-                {
-                    this.Size = new Size(iWidth, 243);
-                }
-                else if (25 <= isize && isize <= 32)
-                {
-                    this.Size = new Size(iWidth, 312);
-                }
-                else if (33 <= isize && isize <= 40)
-                {
-                    this.Size = new Size(iWidth, 381);
-                }
-                else
-                {
-                    this.Size = new Size(iWidth, 104);
-                }
+            // 宽度固定按每行 8 个按钮计算（与原版一致），高度按实际按钮行数；
+            // 边距取已随 DPI 缩放的按钮左/上边距，保证四周间隔一致（原先 +7 为未缩放常量，高分屏下右边距偏窄）
+            int iButtonCount = isize < BUTTON_MAX_SIZE ? isize : BUTTON_MAX_SIZE;
 
-            } else if (BUILD_VERSION_FW.Equals("48"))
-            {
-                int iWidth = 779;
+            int iRight = this.buttonList[7].Right;
+            int iBottom = this.buttonList[0].Bottom;
 
-                if (isize <= 8)
+            for (int i = 0; i < iButtonCount; i++)
+            {
+                if (this.buttonList[i].Bottom > iBottom)
                 {
-                    this.Size = new Size(iWidth, 115);
-                }
-                else if (9 <= isize && isize <= 16)
-                {
-                    this.Size = new Size(iWidth, 183);
-                }
-                else if (17 <= isize && isize <= 24)
-                {
-                    this.Size = new Size(iWidth, 252);
-                }
-                else if (25 <= isize && isize <= 32)
-                {
-                    this.Size = new Size(iWidth, 321);
-                }
-                else if (33 <= isize && isize <= 40)
-                {
-                    this.Size = new Size(iWidth, 389);
-                }
-                else
-                {
-                    this.Size = new Size(iWidth, 115);
+                    iBottom = this.buttonList[i].Bottom;
                 }
             }
+
+            int iMarginX = this.buttonList[0].Left;
+            int iMarginY = this.buttonList[0].Top;
+
+            this.ClientSize = new Size(iRight + iMarginX, iBottom + iMarginY);
 
             switch (this.win_Language)
             {
@@ -892,543 +1016,277 @@ namespace QuickStart
 
         private void InitButton()
         {
-            for (int i = 1; i <= lstConfig.Count(); i++)
+            this.RenderButtons();
+        }
+
+        private void RenderButtons()
+        {
+            for (int i = 0; i < BUTTON_MAX_SIZE; i++)
             {
-                switch (i)
+                Button btn = this.buttonList[i];
+
+                if (i < lstConfig.Count())
                 {
-                    case 1:
-                        this.button_01.Text = lstConfig[i - 1].Button_Name;
-                        this.button_01.Visible = true;
-                        this.button_01.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_01.BackColor =  Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_01.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 2:
-                        this.button_02.Text = lstConfig[i - 1].Button_Name;
-                        this.button_02.Visible = true;
-                        this.button_02.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_02.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_02.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 3:
-                        this.button_03.Text = lstConfig[i - 1].Button_Name;
-                        this.button_03.Visible = true;
-                        this.button_03.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_03.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_03.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 4:
-                        this.button_04.Text = lstConfig[i - 1].Button_Name;
-                        this.button_04.Visible = true;
-                        this.button_04.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_04.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_04.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 5:
-                        this.button_05.Text = lstConfig[i - 1].Button_Name;
-                        this.button_05.Visible = true;
-                        this.button_05.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_05.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_05.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 6:
-                        this.button_06.Text = lstConfig[i - 1].Button_Name;
-                        this.button_06.Visible = true;
-                        this.button_06.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_06.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_06.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 7:
-                        this.button_07.Text = lstConfig[i - 1].Button_Name;
-                        this.button_07.Visible = true;
-                        this.button_07.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_07.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_07.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 8:
-                        this.button_08.Text = lstConfig[i - 1].Button_Name;
-                        this.button_08.Visible = true;
-                        this.button_08.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_08.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_08.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
+                    IniConfig ini = lstConfig[i];
 
-                    case 9:
-                        this.button_09.Text = lstConfig[i - 1].Button_Name;
-                        this.button_09.Visible = true;
-                        this.button_09.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_09.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_09.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 10:
-                        this.button_10.Text = lstConfig[i - 1].Button_Name;
-                        this.button_10.Visible = true;
-                        this.button_10.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_10.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_10.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 11:
-                        this.button_11.Text = lstConfig[i - 1].Button_Name;
-                        this.button_11.Visible = true;
-                        this.button_11.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_11.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_11.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 12:
-                        this.button_12.Text = lstConfig[i - 1].Button_Name;
-                        this.button_12.Visible = true;
-                        this.button_12.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_12.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_12.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 13:
-                        this.button_13.Text = lstConfig[i - 1].Button_Name;
-                        this.button_13.Visible = true;
-                        this.button_13.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_13.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_13.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 14:
-                        this.button_14.Text = lstConfig[i - 1].Button_Name;
-                        this.button_14.Visible = true;
-                        this.button_14.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_14.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_14.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 15:
-                        this.button_15.Text = lstConfig[i - 1].Button_Name;
-                        this.button_15.Visible = true;
-                        this.button_15.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_15.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_15.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 16:
-                        this.button_16.Text = lstConfig[i - 1].Button_Name;
-                        this.button_16.Visible = true;
-                        this.button_16.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_16.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_16.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
+                    btn.Text = ini.Button_Name;
+                    btn.Visible = true;
+                    btn.Enabled = this.bEditMode || "1".Equals(ini.Button_Enable);
+                    btn.AllowDrop = this.bEditMode;
 
-                    case 17:
-                        this.button_17.Text = lstConfig[i - 1].Button_Name;
-                        this.button_17.Visible = true;
-                        this.button_17.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_17.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_17.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 18:
-                        this.button_18.Text = lstConfig[i - 1].Button_Name;
-                        this.button_18.Visible = true;
-                        this.button_18.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_18.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_18.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 19:
-                        this.button_19.Text = lstConfig[i - 1].Button_Name;
-                        this.button_19.Visible = true;
-                        this.button_19.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_19.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_19.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 20:
-                        this.button_20.Text = lstConfig[i - 1].Button_Name;
-                        this.button_20.Visible = true;
-                        this.button_20.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_20.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_20.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 21:
-                        this.button_21.Text = lstConfig[i - 1].Button_Name;
-                        this.button_21.Visible = true;
-                        this.button_21.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_21.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_21.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 22:
-                        this.button_22.Text = lstConfig[i - 1].Button_Name;
-                        this.button_22.Visible = true;
-                        this.button_22.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_22.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_22.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 23:
-                        this.button_23.Text = lstConfig[i - 1].Button_Name;
-                        this.button_23.Visible = true;
-                        this.button_23.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_23.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_23.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 24:
-                        this.button_24.Text = lstConfig[i - 1].Button_Name;
-                        this.button_24.Visible = true;
-                        this.button_24.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_24.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_24.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
+                    if (ini.Button_BackColor != "")
+                    {
+                        btn.BackColor = Color.FromName(ini.Button_BackColor);
+                    }
+                    else
+                    {
+                        btn.BackColor = this.buttonDefaultBackColors[i];
+                    }
 
-                    case 25:
-                        this.button_25.Text = lstConfig[i - 1].Button_Name;
-                        this.button_25.Visible = true;
-                        this.button_25.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_25.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_25.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 26:
-                        this.button_26.Text = lstConfig[i - 1].Button_Name;
-                        this.button_26.Visible = true;
-                        this.button_26.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_26.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_26.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 27:
-                        this.button_27.Text = lstConfig[i - 1].Button_Name;
-                        this.button_27.Visible = true;
-                        this.button_27.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_27.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_27.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 28:
-                        this.button_28.Text = lstConfig[i - 1].Button_Name;
-                        this.button_28.Visible = true;
-                        this.button_28.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_28.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_28.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 29:
-                        this.button_29.Text = lstConfig[i - 1].Button_Name;
-                        this.button_29.Visible = true;
-                        this.button_29.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_29.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_29.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 30:
-                        this.button_30.Text = lstConfig[i - 1].Button_Name;
-                        this.button_30.Visible = true;
-                        this.button_30.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_30.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_30.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 31:
-                        this.button_31.Text = lstConfig[i - 1].Button_Name;
-                        this.button_31.Visible = true;
-                        this.button_31.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_31.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_31.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 32:
-                        this.button_32.Text = lstConfig[i - 1].Button_Name;
-                        this.button_32.Visible = true;
-                        this.button_32.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_32.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_32.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-
-                    case 33:
-                        this.button_33.Text = lstConfig[i - 1].Button_Name;
-                        this.button_33.Visible = true;
-                        this.button_33.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_33.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_33.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 34:
-                        this.button_34.Text = lstConfig[i - 1].Button_Name;
-                        this.button_34.Visible = true;
-                        this.button_34.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_34.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_34.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 35:
-                        this.button_35.Text = lstConfig[i - 1].Button_Name;
-                        this.button_35.Visible = true;
-                        this.button_35.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_35.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_35.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 36:
-                        this.button_36.Text = lstConfig[i - 1].Button_Name;
-                        this.button_36.Visible = true;
-                        this.button_36.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_36.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_36.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 37:
-                        this.button_37.Text = lstConfig[i - 1].Button_Name;
-                        this.button_37.Visible = true;
-                        this.button_37.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_37.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_37.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 38:
-                        this.button_38.Text = lstConfig[i - 1].Button_Name;
-                        this.button_38.Visible = true;
-                        this.button_38.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_38.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_38.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 39:
-                        this.button_39.Text = lstConfig[i - 1].Button_Name;
-                        this.button_39.Visible = true;
-                        this.button_39.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_39.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_39.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-                    case 40:
-                        this.button_40.Text = lstConfig[i - 1].Button_Name;
-                        this.button_40.Visible = true;
-                        this.button_40.Enabled = lstConfig[i - 1].Button_Enable == "1" ? true : false;
-                        if (lstConfig[i - 1].Button_BackColor != "")
-                        {
-                            this.button_40.BackColor = Color.FromName(lstConfig[i - 1].Button_BackColor);
-                        }
-                        if (lstConfig[i - 1].Button_TextColor != "")
-                        {
-                            this.button_40.ForeColor = Color.FromName(lstConfig[i - 1].Button_TextColor);
-                        }
-                        break;
-
-                    default:
-                        break;
+                    if (ini.Button_TextColor != "")
+                    {
+                        btn.ForeColor = Color.FromName(ini.Button_TextColor);
+                    }
+                    else
+                    {
+                        btn.ForeColor = this.buttonDefaultForeColors[i];
+                    }
+                }
+                else
+                {
+                    btn.Visible = false;
+                    btn.AllowDrop = false;
                 }
             }
         }
 
+        private void SetEditMode(bool bOn)
+        {
+            this.bEditMode = bOn;
+            this.toolStripMenuItem_EditMode_On.Checked = bOn;
+            this.toolStripMenuItem_EditMode_Off.Checked = !bOn;
+
+            this.toClearHighlight();
+            this.RenderButtons();
+
+            if (bOn)
+            {
+                this.toStartJiggle();
+                this.Text = "QuickStart  " + Properties.Resources.Program_Build_Version_Text + "  [" + this.toolStripMenuItem_EditMode.Text + "]";
+            }
+            else
+            {
+                this.toStopJiggle();
+                this.Text = "QuickStart  " + Properties.Resources.Program_Build_Version_Text;
+            }
+        }
+
+        private void toStartJiggle()
+        {
+            if (null == this.jiggleTimer)
+            {
+                this.jiggleTimer = new System.Windows.Forms.Timer();
+                this.jiggleTimer.Interval = 60;
+                this.jiggleTimer.Tick += new EventHandler(this.jiggleTimer_Tick);
+            }
+
+            this.jiggleOriginalLocations.Clear();
+            foreach (Button btn in this.buttonList)
+            {
+                this.jiggleOriginalLocations[btn] = btn.Location;
+            }
+
+            this.jiggleTick = 0;
+            this.jiggleBaseDpi = this.DeviceDpi;
+            this.jiggleTimer.Start();
+        }
+
+        private void toStopJiggle()
+        {
+            if (null != this.jiggleTimer)
+            {
+                this.jiggleTimer.Stop();
+            }
+
+            foreach (KeyValuePair<Button, Point> kv in this.jiggleOriginalLocations)
+            {
+                kv.Key.Location = kv.Value;
+            }
+            this.jiggleOriginalLocations.Clear();
+        }
+
+        private void jiggleTimer_Tick(object sender, EventArgs e)
+        {
+            // 中途切换显示器导致 DPI 变化时，以当前（已重缩放的）位置重新建立基准
+            if (this.DeviceDpi != this.jiggleBaseDpi)
+            {
+                this.jiggleOriginalLocations.Clear();
+                foreach (Button btn in this.buttonList)
+                {
+                    this.jiggleOriginalLocations[btn] = btn.Location;
+                }
+                this.jiggleBaseDpi = this.DeviceDpi;
+                return;
+            }
+
+            this.jiggleTick++;
+
+            // 振幅随 DPI 缩放（96dpi 下约 2.5 像素），各按钮相位错开形成自然抖动
+            double amp = 2.5 * this.DeviceDpi / 96.0;
+            int i = 0;
+
+            foreach (Button btn in this.buttonList)
+            {
+                if (btn.Visible && this.jiggleOriginalLocations.ContainsKey(btn))
+                {
+                    Point orig = this.jiggleOriginalLocations[btn];
+                    double phase = this.jiggleTick * 0.45 + i * 0.9;
+                    int dx = (int)Math.Round(amp * Math.Sin(phase));
+                    int dy = (int)Math.Round(amp * 0.6 * Math.Sin(phase * 1.3 + 1.0));
+                    btn.Location = new Point(orig.X + dx, orig.Y + dy);
+                }
+                i++;
+            }
+        }
+
+        private void button_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (!this.bEditMode || e.Button != MouseButtons.Left)
+            {
+                return;
+            }
+
+            this.dragSourceButton = (Button)sender;
+            this.dragStartPoint = e.Location;
+        }
+
+        private void button_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (null == this.dragSourceButton)
+            {
+                return;
+            }
+
+            if (e.Button != MouseButtons.Left)
+            {
+                this.dragSourceButton = null;
+                return;
+            }
+
+            if (Math.Abs(e.X - this.dragStartPoint.X) > DRAG_START_THRESHOLD
+                || Math.Abs(e.Y - this.dragStartPoint.Y) > DRAG_START_THRESHOLD)
+            {
+                Button source = this.dragSourceButton;
+                this.dragSourceButton = null;
+                source.DoDragDrop(source, DragDropEffects.Move);
+            }
+        }
+
+        private void button_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.dragSourceButton = null;
+        }
+
+        private void button_DragEnter(object sender, DragEventArgs e)
+        {
+            if (!this.bEditMode || !e.Data.GetDataPresent(typeof(Button)))
+            {
+                e.Effect = DragDropEffects.None;
+                return;
+            }
+
+            Button source = (Button)e.Data.GetData(typeof(Button));
+            Button target = (Button)sender;
+
+            if (source == target)
+            {
+                e.Effect = DragDropEffects.None;
+                return;
+            }
+
+            e.Effect = DragDropEffects.Move;
+            this.toHighlightTarget(target);
+        }
+
+        private void button_DragLeave(object sender, EventArgs e)
+        {
+            this.toClearHighlight();
+        }
+
+        private void button_DragDrop(object sender, DragEventArgs e)
+        {
+            this.toClearHighlight();
+
+            if (!this.bEditMode || !e.Data.GetDataPresent(typeof(Button)))
+            {
+                return;
+            }
+
+            Button source = (Button)e.Data.GetData(typeof(Button));
+            Button target = (Button)sender;
+
+            int iFrom = this.buttonList.IndexOf(source);
+            int iTo = this.buttonList.IndexOf(target);
+
+            if (iFrom < 0 || iTo < 0 || iFrom == iTo
+                || iFrom >= lstConfig.Count() || iTo >= lstConfig.Count())
+            {
+                return;
+            }
+
+            IniConfig moved = lstConfig[iFrom];
+            lstConfig.RemoveAt(iFrom);
+            lstConfig.Insert(iTo, moved);
+
+            this.RenderButtons();
+            this.toSaveButtonOrder();
+        }
+
+        private void toHighlightTarget(Button target)
+        {
+            if (this.dragHighlightButton == target)
+            {
+                return;
+            }
+
+            this.toClearHighlight();
+            this.dragHighlightButton = target;
+            this.dragHighlightOriginalColor = target.BackColor;
+            target.BackColor = Color.Khaki;
+        }
+
+        private void toClearHighlight()
+        {
+            if (null != this.dragHighlightButton)
+            {
+                this.dragHighlightButton.BackColor = this.dragHighlightOriginalColor;
+                this.dragHighlightButton = null;
+            }
+        }
+
+        private void toSaveButtonOrder()
+        {
+            int i = 0;
+            foreach (IniSection section in this.lstSections)
+            {
+                if (section.Visible && i < lstConfig.Count())
+                {
+                    section.Config = lstConfig[i];
+                    i++;
+                }
+            }
+
+            IniFileRewriter.RewriteButtonSections(this.strIniFilePath, this.lstSections);
+        }
+
+
         private void button_common(IniConfig ini)
         {
+            if (this.bEditMode)
+            {
+                return;
+            }
+
             string strTitle = "【Error】";
             string strQuestion = "The Program Startup Type Configuration Error！";
             switch (this.win_Language)
@@ -1497,30 +1355,34 @@ namespace QuickStart
                 return;
             }
 
+            // 阈值随 DPI 缩放（设计值基于 96dpi）
+            int t = Math.Max(1, (int)Math.Round(iStopMode_T * this.DeviceDpi / 96.0));
+            int xy = Math.Max(1, (int)Math.Round(iStopMode_XY * this.DeviceDpi / 96.0));
+
             int x = MousePosition.X, y = MousePosition.Y;
 
-            if (x > (this.Location.X - iStopMode_XY)
+            if (x > (this.Location.X - xy)
                 &&
-                x < (this.Location.X + this.Width + iStopMode_XY)
+                x < (this.Location.X + this.Width + xy)
                 &&
-                y > (this.Location.Y - iStopMode_XY)
+                y > (this.Location.Y - xy)
                 &&
-                y < (this.Location.Y + this.Height + iStopMode_XY))
+                y < (this.Location.Y + this.Height + xy))
             {
-
+                // 鼠标移回窗口上：从停靠状态滑出（使用停靠时记录的屏幕，保证多屏下位置正确）
                 if (this.iStopMode == 1)
                 {
-                    this.Location = new Point(iStopMode_T, this.Location.Y);
+                    this.Location = new Point(this.stopWorkingArea.Left + t, this.Location.Y);
                     this.TopMost = true;
                 }
                 else if (this.iStopMode == 2)
                 {
-                    this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - this.Width - iStopMode_T, this.Location.Y);
+                    this.Location = new Point(this.stopWorkingArea.Right - this.Width - t, this.Location.Y);
                     this.TopMost = true;
                 }
                 else if (this.iStopMode == 3)
                 {
-                    this.Location = new Point(this.Location.X, iStopMode_T);
+                    this.Location = new Point(this.Location.X, this.stopWorkingArea.Top + t);
                     this.TopMost = true;
                 }
                 else
@@ -1530,27 +1392,74 @@ namespace QuickStart
             }
             else
             {
-                if (this.Location.Y <= iStopMode_T)
+                if (this.iStopMode != 0 && !this.stopWorkingArea.IsEmpty)
                 {
-                    this.Location = new Point(this.Location.X, iStopMode_T - this.Height);
-                    this.iStopMode = 3;
+                    // 已停靠：保持停靠在该屏幕边缘，不重新扫描其他屏幕（防止多屏间来回跳）
+                    this.toSnapToEdge(this.iStopMode, this.stopWorkingArea, t);
+                    return;
                 }
-                else if (this.Location.X <= iStopMode_T)
+
+                // 未停靠：只判定窗口中心所在屏幕的边缘（多屏下各屏独立停靠）
+                Point center = new Point(this.Location.X + this.Width / 2, this.Location.Y + this.Height / 2);
+
+                foreach (Screen scr in Screen.AllScreens)
                 {
-                    this.Location = new Point(iStopMode_T - this.Width, this.Location.Y);
-                    this.iStopMode = 1;
-                }
-                else if (this.Location.X >= Screen.PrimaryScreen.WorkingArea.Width - this.Width - iStopMode_T)
-                {
-                    this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - iStopMode_T, this.Location.Y);
-                    this.iStopMode = 2;
-                }
-                else
-                {
-                    this.iStopMode = 0;
+                    if (!scr.Bounds.Contains(center))
+                    {
+                        continue;
+                    }
+
+                    Rectangle wa = scr.WorkingArea;
+
+                    int dTop = this.Location.Y - wa.Top;
+                    int dLeft = this.Location.X - wa.Left;
+                    int dRight = wa.Right - (this.Location.X + this.Width);
+
+                    // 允许越过边缘（负值）：窗口中心已限定在本屏内，过冲最多半个窗口
+                    if (dTop <= t && dTop <= dLeft && dTop <= dRight)
+                    {
+                        this.iStopMode = 3;
+                        this.stopWorkingArea = wa;
+                        this.toSnapToEdge(3, wa, t);
+                    }
+                    else if (dLeft <= t && dLeft <= dRight)
+                    {
+                        this.iStopMode = 1;
+                        this.stopWorkingArea = wa;
+                        this.toSnapToEdge(1, wa, t);
+                    }
+                    else if (dRight <= t)
+                    {
+                        this.iStopMode = 2;
+                        this.stopWorkingArea = wa;
+                        this.toSnapToEdge(2, wa, t);
+                    }
+                    else
+                    {
+                        this.iStopMode = 0;
+                        this.stopWorkingArea = Rectangle.Empty;
+                    }
+                    break;
                 }
             }
 
+        }
+
+        // 按停靠模式把窗口吸附到指定屏幕工作区的边缘（只露出 t 像素）
+        private void toSnapToEdge(int mode, Rectangle wa, int t)
+        {
+            if (mode == 1)
+            {
+                this.Location = new Point(wa.Left + t - this.Width, this.Location.Y);
+            }
+            else if (mode == 2)
+            {
+                this.Location = new Point(wa.Right - t, this.Location.Y);
+            }
+            else if (mode == 3)
+            {
+                this.Location = new Point(this.Location.X, wa.Top + t - this.Height);
+            }
         }
 
         private void toSetOpacity(string strPersent)
@@ -1646,6 +1555,9 @@ namespace QuickStart
                     this.toolStripMenuItem_AutoRun.Text = Resources.Resource_zh_CN.toolStripMenuItem_AutoRun_Text;
                     this.toolStripMenuItem_AutoRun_On.Text = Resources.Resource_zh_CN.toolStripMenuItem_AutoRun_On_Text;
                     this.toolStripMenuItem_AutoRun_Off.Text = Resources.Resource_zh_CN.toolStripMenuItem_AutoRun_Off_Text;
+                    this.toolStripMenuItem_EditMode.Text = Resources.Resource_zh_CN.toolStripMenuItem_EditMode_Text;
+                    this.toolStripMenuItem_EditMode_On.Text = Resources.Resource_zh_CN.toolStripMenuItem_EditMode_On_Text;
+                    this.toolStripMenuItem_EditMode_Off.Text = Resources.Resource_zh_CN.toolStripMenuItem_EditMode_Off_Text;
                     break;
 
                 case MultilingualConfig.Language_zh_TW:
@@ -1665,6 +1577,9 @@ namespace QuickStart
                     this.toolStripMenuItem_AutoRun.Text = Resources.Resource_zh_TW.toolStripMenuItem_AutoRun_Text;
                     this.toolStripMenuItem_AutoRun_On.Text = Resources.Resource_zh_TW.toolStripMenuItem_AutoRun_On_Text;
                     this.toolStripMenuItem_AutoRun_Off.Text = Resources.Resource_zh_TW.toolStripMenuItem_AutoRun_Off_Text;
+                    this.toolStripMenuItem_EditMode.Text = Resources.Resource_zh_TW.toolStripMenuItem_EditMode_Text;
+                    this.toolStripMenuItem_EditMode_On.Text = Resources.Resource_zh_TW.toolStripMenuItem_EditMode_On_Text;
+                    this.toolStripMenuItem_EditMode_Off.Text = Resources.Resource_zh_TW.toolStripMenuItem_EditMode_Off_Text;
                     break;
 
                 case MultilingualConfig.Language_en_US:
@@ -1684,6 +1599,9 @@ namespace QuickStart
                     this.toolStripMenuItem_AutoRun.Text = Resources.Resource_en_US.toolStripMenuItem_AutoRun_Text;
                     this.toolStripMenuItem_AutoRun_On.Text = Resources.Resource_en_US.toolStripMenuItem_AutoRun_On_Text;
                     this.toolStripMenuItem_AutoRun_Off.Text = Resources.Resource_en_US.toolStripMenuItem_AutoRun_Off_Text;
+                    this.toolStripMenuItem_EditMode.Text = Resources.Resource_en_US.toolStripMenuItem_EditMode_Text;
+                    this.toolStripMenuItem_EditMode_On.Text = Resources.Resource_en_US.toolStripMenuItem_EditMode_On_Text;
+                    this.toolStripMenuItem_EditMode_Off.Text = Resources.Resource_en_US.toolStripMenuItem_EditMode_Off_Text;
                     break;
 
                 case MultilingualConfig.Language_ja_JP:
@@ -1703,6 +1621,9 @@ namespace QuickStart
                     this.toolStripMenuItem_AutoRun.Text = Resources.Resource_ja_JP.toolStripMenuItem_AutoRun_Text;
                     this.toolStripMenuItem_AutoRun_On.Text = Resources.Resource_ja_JP.toolStripMenuItem_AutoRun_On_Text;
                     this.toolStripMenuItem_AutoRun_Off.Text = Resources.Resource_ja_JP.toolStripMenuItem_AutoRun_Off_Text;
+                    this.toolStripMenuItem_EditMode.Text = Resources.Resource_ja_JP.toolStripMenuItem_EditMode_Text;
+                    this.toolStripMenuItem_EditMode_On.Text = Resources.Resource_ja_JP.toolStripMenuItem_EditMode_On_Text;
+                    this.toolStripMenuItem_EditMode_Off.Text = Resources.Resource_ja_JP.toolStripMenuItem_EditMode_Off_Text;
                     break;
 
                 case MultilingualConfig.Language_ko_KR:
@@ -1722,6 +1643,9 @@ namespace QuickStart
                     this.toolStripMenuItem_AutoRun.Text = Resources.Resource_ko_KR.toolStripMenuItem_AutoRun_Text;
                     this.toolStripMenuItem_AutoRun_On.Text = Resources.Resource_ko_KR.toolStripMenuItem_AutoRun_On_Text;
                     this.toolStripMenuItem_AutoRun_Off.Text = Resources.Resource_ko_KR.toolStripMenuItem_AutoRun_Off_Text;
+                    this.toolStripMenuItem_EditMode.Text = Resources.Resource_ko_KR.toolStripMenuItem_EditMode_Text;
+                    this.toolStripMenuItem_EditMode_On.Text = Resources.Resource_ko_KR.toolStripMenuItem_EditMode_On_Text;
+                    this.toolStripMenuItem_EditMode_Off.Text = Resources.Resource_ko_KR.toolStripMenuItem_EditMode_Off_Text;
                     break;
 
                 default:

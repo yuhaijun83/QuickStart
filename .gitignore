@@ -1,0 +1,28 @@
+# Visual Studio / IDE 本地缓存
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# 编译输出
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+
+# 备份/临时
+*.orig
+*.bak
+*.tmp
+
+# NuGet
+packages/
+*.nupkg
+
+# 其他
+*.log
+*.vsidx
+*.db

@@ -115,6 +115,33 @@ namespace QuickStart.Resources {
         }
         
         /// <summary>
+        ///   查找类似 편집 모드 的本地化字符串。
+        /// </summary>
+        internal static string toolStripMenuItem_EditMode_Text {
+            get {
+                return ResourceManager.GetString("toolStripMenuItem_EditMode_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 열려있는 的本地化字符串。
+        /// </summary>
+        internal static string toolStripMenuItem_EditMode_On_Text {
+            get {
+                return ResourceManager.GetString("toolStripMenuItem_EditMode_On_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 폐쇄 的本地化字符串。
+        /// </summary>
+        internal static string toolStripMenuItem_EditMode_Off_Text {
+            get {
+                return ResourceManager.GetString("toolStripMenuItem_EditMode_Off_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 디스플레이 的本地化字符串。
         /// </summary>
         internal static string toolStripMenuItem_Display_Text {
