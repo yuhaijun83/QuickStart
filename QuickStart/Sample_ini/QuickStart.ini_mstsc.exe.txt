@@ -1,0 +1,9 @@
+[Button_01]
+Button_Name=Mstsc
+Button_Visible=1
+Button_Enable=1
+Button_BackColor=
+Button_TextColor=
+Program_Name=mstsc.exe
+Program_Type=exe
+Program_Param=/v:192.168.1.10 /f

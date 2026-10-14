@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace QuickStart
 {
     public partial class mainForm : Form
     {
-        private const int BUTTON_MAX_SIZE = 48;
+        private const int BUTTON_MAX_SIZE = 64;
 
         private const string INI_FILE_NAME = "QuickStart.ini";
 
@@ -64,6 +65,21 @@ namespace QuickStart
         private Color dragHighlightOriginalColor = Color.Empty;
         private const int DRAG_START_THRESHOLD = 4;
 
+        // 按下反馈：记录处于按下态的按钮，Paint 时绘制凹陷效果
+        private HashSet<Button> pressedButtons = new HashSet<Button>();
+
+        // 鼠标悬停时文字浮动动画
+        private Button hoverAnimButton = null;
+        private System.Windows.Forms.Timer hoverAnimTimer = null;
+
+        // 左键长按 3 秒进入编辑模式
+        private Button longPressButton = null;
+        private System.Windows.Forms.Timer longPressTimer = null;
+
+        // 编辑模式下 8 秒无按钮顺序变动自动退出
+        private System.Windows.Forms.Timer editIdleTimer = null;
+        private bool bDragDropActive = false;
+
         // 编辑模式按钮抖动动画（类似 iOS 编辑主屏）
         private System.Windows.Forms.Timer jiggleTimer = null;
         private int jiggleTick = 0;
@@ -108,9 +124,23 @@ namespace QuickStart
             this.buttonList.Add(this.button_43); this.buttonList.Add(this.button_44);
             this.buttonList.Add(this.button_45); this.buttonList.Add(this.button_46);
             this.buttonList.Add(this.button_47); this.buttonList.Add(this.button_48);
+            this.buttonList.Add(this.button_49); this.buttonList.Add(this.button_50);
+            this.buttonList.Add(this.button_51); this.buttonList.Add(this.button_52);
+            this.buttonList.Add(this.button_53); this.buttonList.Add(this.button_54);
+            this.buttonList.Add(this.button_55); this.buttonList.Add(this.button_56);
+            this.buttonList.Add(this.button_57); this.buttonList.Add(this.button_58);
+            this.buttonList.Add(this.button_59); this.buttonList.Add(this.button_60);
+            this.buttonList.Add(this.button_61); this.buttonList.Add(this.button_62);
+            this.buttonList.Add(this.button_63); this.buttonList.Add(this.button_64);
 
             foreach (Button btn in this.buttonList)
             {
+                // 按钮未显式设色时会继承窗体的淡黄背景，立体渐变会发黄，这里显式给淡绿色
+                if (btn.BackColor.Equals(this.BackColor))
+                {
+                    btn.BackColor = Color.White; // 默认纯白（渐变已调淡，不再发灰）
+                }
+
                 // 记录设计器默认颜色，配置为空时用于还原
                 this.buttonDefaultBackColors.Add(btn.BackColor);
                 this.buttonDefaultForeColors.Add(btn.ForeColor);
@@ -121,7 +151,103 @@ namespace QuickStart
                 btn.DragEnter += new DragEventHandler(this.button_DragEnter);
                 btn.DragLeave += new EventHandler(this.button_DragLeave);
                 btn.DragDrop += new DragEventHandler(this.button_DragDrop);
+                btn.MouseLeave += new EventHandler(this.button_MouseLeave3D);
+                btn.MouseEnter += new EventHandler(this.button_MouseEnter3D);
+
+                // 立体感：自绘渐变面与高光/阴影边缘（见 button_Paint3D）
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.FlatAppearance.BorderSize = 0;
+                btn.Paint += new PaintEventHandler(this.button_Paint3D);
             }
+        }
+
+        // 立体感绘制：卡片风格 —— 纯色圆角面 + 外侧柔和投影（多层半透明圆角矩形叠加模拟模糊）。
+        // 按下时投影收缩、面轻微变暗，形成按压感。颜色始终取按钮当前 BackColor，ini 自定义色与拖拽高亮自动适配。
+        private void button_Paint3D(object sender, PaintEventArgs e)
+        {
+            Button btn = (Button)sender;
+            Rectangle r = btn.ClientRectangle;
+            if (r.Width < 6 || r.Height < 6)
+            {
+                return;
+            }
+
+            Graphics g = e.Graphics;
+            Color baseColor = btn.BackColor;
+            bool pressed = this.pressedButtons.Contains(btn);
+
+            // 侧壁以外的区域用窗体背景盖掉按钮自绘的方角底色
+            using (SolidBrush bg = new SolidBrush(this.BackColor))
+            {
+                g.FillRectangle(bg, r);
+            }
+
+            float dpi = btn.DeviceDpi / 96f;
+            int radius = Math.Max(4, (int)Math.Round(6 * dpi));
+
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            // 键帽式立体：顶面下方露出实心灰色侧壁形成物理厚度；按下时顶面下沉、侧壁消失、面变暗
+            int thickness = pressed ? 1 : Math.Max(2, (int)Math.Round(3 * dpi));
+            int faceY = pressed ? 1 : 0;
+
+            Rectangle sideRect = new Rectangle(r.X, r.Y + thickness, r.Width - 1, r.Height - 1 - thickness);
+            using (GraphicsPath side = RoundedRect(sideRect, radius))
+            {
+                using (SolidBrush sb = new SolidBrush(ControlPaint.Dark(baseColor, 0.20f)))
+                {
+                    g.FillPath(sb, side);
+                }
+                using (Pen p = new Pen(ControlPaint.Dark(baseColor, 0.30f)))
+                {
+                    g.DrawPath(p, side);
+                }
+            }
+
+            Rectangle faceRect = new Rectangle(r.X, r.Y + faceY, r.Width - 1, r.Height - 1 - thickness);
+            using (GraphicsPath face = RoundedRect(faceRect, radius))
+            {
+                Color faceColor = pressed ? ControlPaint.Dark(baseColor, 0.06f) : baseColor;
+                using (SolidBrush fb = new SolidBrush(faceColor))
+                {
+                    g.FillPath(fb, face);
+                }
+                using (Pen p = new Pen(ControlPaint.Dark(baseColor, 0.25f)))
+                {
+                    g.DrawPath(p, face);
+                }
+            }
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
+
+            // Paint 在按钮自绘之后触发，会盖掉原文字，这里按原样式重绘；按下时文字右下移 1px 增强按压感；
+            // 悬停时文字做 ±2px 上下正弦浮动
+            Color textColor = btn.Enabled ? btn.ForeColor : ControlPaint.Dark(btn.ForeColor, 0.25f);
+            Rectangle textRect;
+            if (pressed)
+            {
+                textRect = new Rectangle(r.X + 1, r.Y + 1, r.Width, r.Height);
+            }
+            else
+            {
+                int bobY = ReferenceEquals(this.hoverAnimButton, btn)
+                    ? (int)Math.Round(2 * dpi * Math.Sin(Environment.TickCount * 0.006))
+                    : 0;
+                textRect = new Rectangle(r.X, r.Y + bobY, r.Width, r.Height);
+            }
+            TextRenderer.DrawText(g, btn.Text, btn.Font, textRect, textColor, Color.Transparent,
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis | TextFormatFlags.NoPadding);
+        }
+
+        private static GraphicsPath RoundedRect(Rectangle rect, int radius)
+        {
+            GraphicsPath path = new GraphicsPath();
+            int d = radius * 2;
+            path.AddArc(rect.X, rect.Y, d, d, 180, 90);
+            path.AddArc(rect.Right - d, rect.Y, d, d, 270, 90);
+            path.AddArc(rect.Right - d, rect.Bottom - d, d, d, 0, 90);
+            path.AddArc(rect.X, rect.Bottom - d, d, d, 90, 90);
+            path.CloseFigure();
+            return path;
         }
 
         private void mainForm_Load(object sender, EventArgs e)
@@ -135,6 +261,7 @@ namespace QuickStart
             this.InitButton();
             this.InitTimer();
             this.InitAutoRun();
+            this.toStartIniWatcher();
         }
 
         private void button_01_Click(object sender, EventArgs e)
@@ -375,6 +502,86 @@ namespace QuickStart
         private void button_48_Click(object sender, EventArgs e)
         {
             this.button_common(lstConfig[47]);
+        }
+
+        private void button_49_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[48]);
+        }
+
+        private void button_50_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[49]);
+        }
+
+        private void button_51_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[50]);
+        }
+
+        private void button_52_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[51]);
+        }
+
+        private void button_53_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[52]);
+        }
+
+        private void button_54_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[53]);
+        }
+
+        private void button_55_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[54]);
+        }
+
+        private void button_56_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[55]);
+        }
+
+        private void button_57_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[56]);
+        }
+
+        private void button_58_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[57]);
+        }
+
+        private void button_59_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[58]);
+        }
+
+        private void button_60_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[59]);
+        }
+
+        private void button_61_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[60]);
+        }
+
+        private void button_62_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[61]);
+        }
+
+        private void button_63_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[62]);
+        }
+
+        private void button_64_Click(object sender, EventArgs e)
+        {
+            this.button_common(lstConfig[63]);
         }
 
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -861,61 +1068,15 @@ namespace QuickStart
             }
         }
 
+        // ini 热重载：外部修改 ini 后自动重新解析并刷新按钮，无需重启
+        private FileSystemWatcher iniWatcher = null;
+        private System.Windows.Forms.Timer iniReloadTimer = null;
+
         private void InitConfig()
         {
-            string strSection = null;
-            IniConfig ini = null;
+            this.toParseIni();
 
-            StreamReader streamReader = new StreamReader(strIniFilePath, Encoding.UTF8);
-            string content;
-            while ((content = streamReader.ReadLine()) != null)
-            {
-                if (content.StartsWith("[Button_"))
-                {
-                    ini = new IniConfig();
-                    strSection = content.Replace("[", "").Replace("]", "");
-
-                    ini.Button_Name = OperateIniFile.ReadIniData(strSection, Button_Name, "", strIniFilePath, "utf-8", 1024);
-                    ini.Button_Visible = OperateIniFile.ReadIniData(strSection, Button_Visible, "0", strIniFilePath);
-                    ini.Button_Enable = OperateIniFile.ReadIniData(strSection, Button_Enable, "0", strIniFilePath);
-                    ini.Button_BackColor = OperateIniFile.ReadIniData(strSection, Button_BackColor, "", strIniFilePath);
-                    ini.Button_TextColor = OperateIniFile.ReadIniData(strSection, Button_TextColor, "", strIniFilePath);
-                    ini.Program_Name = OperateIniFile.ReadIniData(strSection, Program_Name, "", strIniFilePath, "utf-8", 1024);
-                    ini.Program_Type = OperateIniFile.ReadIniData(strSection, Program_Type, "exe", strIniFilePath).ToLower();
-                    if ("".Equals(ini.Program_Type)) { ini.Program_Type = "exe"; }
-                    ini.Program_Param = OperateIniFile.ReadIniData(strSection, Program_Param, "", strIniFilePath, "utf-8", 1024);
-
-                    // 记录全部段（含不可视段），拖拽排序回写 ini 时用于保持隐藏段不动
-                    IniSection section = new IniSection();
-                    section.SectionName = strSection;
-                    section.Config = ini;
-                    section.Visible = "1".Equals(ini.Button_Visible);
-                    lstSections.Add(section);
-
-                    if (section.Visible)
-                    {
-                        lstConfig.Add(ini);
-                    }
-                }
-            }
-
-            content = null;
-            try
-            {
-                if (null != streamReader)
-                {
-                    streamReader.Close();
-                }
-            } catch
-            {
-                ;
-            }
-
-            streamReader = null;
-            strSection = null; 
-            ini = null;
-
-            // 旧版 ini 只有 40 个按钮段，补齐缺失的 [Button_XX] 段（默认隐藏）并回写文件
+            // 旧版 ini 按钮段少于 BUTTON_MAX_SIZE（如 40/48 个），补齐缺失的 [Button_XX] 段（默认隐藏）并回写文件
             // 注意：必须在 streamReader 关闭之后回写，否则文件被占用导致替换失败
             bool bNeedAppend = false;
             for (int i = 1; i <= BUTTON_MAX_SIZE; i++)
@@ -958,31 +1119,144 @@ namespace QuickStart
             }
         }
 
+        // 解析 ini 全部按钮段到 lstSections/lstConfig（启动与热重载共用）
+        private void toParseIni()
+        {
+            this.lstSections.Clear();
+            lstConfig.Clear();
+
+            string strSection = null;
+            IniConfig ini = null;
+
+            using (StreamReader streamReader = new StreamReader(strIniFilePath, Encoding.UTF8))
+            {
+            string content;
+            while ((content = streamReader.ReadLine()) != null)
+            {
+                if (content.StartsWith("[Button_"))
+                {
+                    ini = new IniConfig();
+                    strSection = content.Replace("[", "").Replace("]", "");
+
+                    ini.Button_Name = OperateIniFile.ReadIniData(strSection, Button_Name, "", strIniFilePath, "utf-8", 1024);
+                    ini.Button_Visible = OperateIniFile.ReadIniData(strSection, Button_Visible, "0", strIniFilePath);
+                    ini.Button_Enable = OperateIniFile.ReadIniData(strSection, Button_Enable, "0", strIniFilePath);
+                    ini.Button_BackColor = OperateIniFile.ReadIniData(strSection, Button_BackColor, "", strIniFilePath);
+                    ini.Button_TextColor = OperateIniFile.ReadIniData(strSection, Button_TextColor, "", strIniFilePath);
+                    ini.Program_Name = OperateIniFile.ReadIniData(strSection, Program_Name, "", strIniFilePath, "utf-8", 1024);
+                    ini.Program_Type = OperateIniFile.ReadIniData(strSection, Program_Type, "exe", strIniFilePath).ToLower();
+                    if ("".Equals(ini.Program_Type)) { ini.Program_Type = "exe"; }
+                    ini.Program_Param = OperateIniFile.ReadIniData(strSection, Program_Param, "", strIniFilePath, "utf-8", 1024);
+
+                    // 记录全部段（含不可视段），拖拽排序回写 ini 时用于保持隐藏段不动
+                    IniSection section = new IniSection();
+                    section.SectionName = strSection;
+                    section.Config = ini;
+                    section.Visible = "1".Equals(ini.Button_Visible);
+                    lstSections.Add(section);
+
+                    if (section.Visible)
+                    {
+                        lstConfig.Add(ini);
+                    }
+                }
+            }
+
+            }
+
+            strSection = null;
+            ini = null;
+        }
+
+        // 启动 ini 文件监视：外部修改后防抖 600ms 自动重载；重载只读不写文件，不会自激循环
+        private void toStartIniWatcher()
+        {
+            try
+            {
+                this.iniWatcher = new FileSystemWatcher();
+                this.iniWatcher.Path = Path.GetDirectoryName(this.strIniFilePath);
+                this.iniWatcher.Filter = Path.GetFileName(this.strIniFilePath);
+                this.iniWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.Size;
+                this.iniWatcher.Changed += new FileSystemEventHandler(this.iniFile_Changed);
+                this.iniWatcher.Created += new FileSystemEventHandler(this.iniFile_Changed);
+                this.iniWatcher.Renamed += (s, ev) => this.iniFile_Changed(s, ev);
+                this.iniWatcher.EnableRaisingEvents = true;
+            }
+            catch (Exception)
+            {
+                // 无法建立监视时退回旧行为（仅启动时读取）
+            }
+        }
+
+        private void iniFile_Changed(object sender, FileSystemEventArgs e)
+        {
+            // watcher 回调在非 UI 线程，切回 UI 线程操作定时器
+            if (!this.IsHandleCreated)
+            {
+                return;
+            }
+
+            try
+            {
+                this.BeginInvoke(new Action(() =>
+                {
+                    if (this.iniReloadTimer == null)
+                    {
+                        this.iniReloadTimer = new System.Windows.Forms.Timer();
+                        this.iniReloadTimer.Interval = 600;
+                        this.iniReloadTimer.Tick += new EventHandler(this.iniReloadTimer_Tick);
+                    }
+                    this.iniReloadTimer.Stop();
+                    this.iniReloadTimer.Start();
+                }));
+            }
+            catch (Exception)
+            {
+                // 关窗瞬间句柄可能已销毁（InvalidOperationException），忽略即可
+            }
+        }
+
+        private void iniReloadTimer_Tick(object sender, EventArgs e)
+        {
+            this.iniReloadTimer.Stop();
+
+            // 文件被删除/改名移走：保持界面现状，停止重试。
+            // 若继续运行，后续托盘设置(透明度/语言等)的 ini 写入会新建一个不含按钮段的空 ini，导致配置丢失
+            if (!File.Exists(this.strIniFilePath))
+            {
+                return;
+            }
+
+            // 拖拽换位进行中暂不重载，稍后再试
+            if (this.bDragDropActive)
+            {
+                this.iniReloadTimer.Start();
+                return;
+            }
+
+            try
+            {
+                this.toReloadConfig();
+            }
+            catch (Exception)
+            {
+                // 文件可能仍被编辑器占用，稍后重试
+                this.iniReloadTimer.Start();
+            }
+        }
+
+        private void toReloadConfig()
+        {
+            this.toParseIni();
+            this.RenderButtons();
+            this.toRecalcClientSize();
+        }
+
         private void InitForm()
         {
             this.Text = "QuickStart  " + Properties.Resources.Program_Build_Version_Text;
 
-            int isize = lstConfig.Count();
-
-            // 宽度固定按每行 8 个按钮计算（与原版一致），高度按实际按钮行数；
-            // 边距取已随 DPI 缩放的按钮左/上边距，保证四周间隔一致（原先 +7 为未缩放常量，高分屏下右边距偏窄）
-            int iButtonCount = isize < BUTTON_MAX_SIZE ? isize : BUTTON_MAX_SIZE;
-
-            int iRight = this.buttonList[7].Right;
-            int iBottom = this.buttonList[0].Bottom;
-
-            for (int i = 0; i < iButtonCount; i++)
-            {
-                if (this.buttonList[i].Bottom > iBottom)
-                {
-                    iBottom = this.buttonList[i].Bottom;
-                }
-            }
-
-            int iMarginX = this.buttonList[0].Left;
-            int iMarginY = this.buttonList[0].Top;
-
-            this.ClientSize = new Size(iRight + iMarginX, iBottom + iMarginY);
+            this.toRecalcClientSize();
 
             switch (this.win_Language)
             {
@@ -1014,6 +1288,32 @@ namespace QuickStart
             this.toSetMainFormLocation();
         }
 
+        // 按当前可视按钮数量重算窗口客户区大小（启动与热重载共用）
+        private void toRecalcClientSize()
+        {
+            int isize = lstConfig.Count();
+
+            // 宽度固定按每行 8 个按钮计算（与原版一致），高度按实际按钮行数；
+            // 边距取已随 DPI 缩放的按钮左/上边距，保证四周间隔一致（原先 +7 为未缩放常量，高分屏下右边距偏窄）
+            int iButtonCount = isize < BUTTON_MAX_SIZE ? isize : BUTTON_MAX_SIZE;
+
+            int iRight = this.buttonList[7].Right;
+            int iBottom = this.buttonList[0].Bottom;
+
+            for (int i = 0; i < iButtonCount; i++)
+            {
+                if (this.buttonList[i].Bottom > iBottom)
+                {
+                    iBottom = this.buttonList[i].Bottom;
+                }
+            }
+
+            int iMarginX = this.buttonList[0].Left;
+            int iMarginY = this.buttonList[0].Top;
+
+            this.ClientSize = new Size(iRight + iMarginX, iBottom + iMarginY);
+        }
+
         private void InitButton()
         {
             this.RenderButtons();
@@ -1029,7 +1329,7 @@ namespace QuickStart
                 {
                     IniConfig ini = lstConfig[i];
 
-                    btn.Text = ini.Button_Name;
+                    btn.Text = this.toDisplayText(ini.Button_Name);
                     btn.Visible = true;
                     btn.Enabled = this.bEditMode || "1".Equals(ini.Button_Enable);
                     btn.AllowDrop = this.bEditMode;
@@ -1060,6 +1360,17 @@ namespace QuickStart
             }
         }
 
+        // 按钮文字手动换行：ini 里写 </br>、<br>、<br/> 或字面 \n（反斜杠+n）都会转成真实换行显示
+        private string toDisplayText(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                return name;
+            }
+
+            return name.Replace("</br>", "\n").Replace("<br/>", "\n").Replace("<br>", "\n").Replace(@"\n", "\n");
+        }
+
         private void SetEditMode(bool bOn)
         {
             this.bEditMode = bOn;
@@ -1072,11 +1383,13 @@ namespace QuickStart
             if (bOn)
             {
                 this.toStartJiggle();
+                this.toRestartEditIdle();
                 this.Text = "QuickStart  " + Properties.Resources.Program_Build_Version_Text + "  [" + this.toolStripMenuItem_EditMode.Text + "]";
             }
             else
             {
                 this.toStopJiggle();
+                this.toStopEditIdle();
                 this.Text = "QuickStart  " + Properties.Resources.Program_Build_Version_Text;
             }
         }
@@ -1151,6 +1464,26 @@ namespace QuickStart
 
         private void button_MouseDown(object sender, MouseEventArgs e)
         {
+            // 编辑模式下右键任意处（含按钮）立即退出编辑模式
+            if (this.bEditMode && e.Button == MouseButtons.Right)
+            {
+                this.toExitEditModeByRightClick((Button)sender);
+                return;
+            }
+
+            // 按下反馈：记录按下态并重绘
+            if (e.Button == MouseButtons.Left)
+            {
+                this.pressedButtons.Add((Button)sender);
+                ((Button)sender).Invalidate();
+
+                // 非编辑模式下开始长按计时，满 3 秒自动进入编辑模式
+                if (!this.bEditMode)
+                {
+                    this.toStartLongPress((Button)sender);
+                }
+            }
+
             if (!this.bEditMode || e.Button != MouseButtons.Left)
             {
                 return;
@@ -1178,13 +1511,166 @@ namespace QuickStart
             {
                 Button source = this.dragSourceButton;
                 this.dragSourceButton = null;
+
+                // 拖拽期间 MouseUp 会被拖拽循环吞掉，这里清掉按下态避免卡住
+                if (this.pressedButtons.Remove(source))
+                {
+                    source.Invalidate();
+                }
+                if (ReferenceEquals(this.hoverAnimButton, source))
+                {
+                    this.hoverAnimButton = null;
+                    if (this.hoverAnimTimer != null)
+                    {
+                        this.hoverAnimTimer.Stop();
+                    }
+                }
+
+                this.bDragDropActive = true;
                 source.DoDragDrop(source, DragDropEffects.Move);
+                this.bDragDropActive = false;
             }
         }
 
         private void button_MouseUp(object sender, MouseEventArgs e)
         {
+            this.toCancelLongPress();
+
+            Button btn = (Button)sender;
+            if (this.pressedButtons.Remove(btn))
+            {
+                btn.Invalidate();
+            }
             this.dragSourceButton = null;
+        }
+
+        // 编辑模式下右键窗体内任意位置立即退出编辑模式（无需等 8 秒自动退出）
+        private void mainForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (this.bEditMode && e.Button == MouseButtons.Right)
+            {
+                this.toExitEditModeByRightClick(null);
+            }
+        }
+
+        // 右键退出编辑模式：先清掉按钮按下态，避免退出后卡在凹陷效果
+        private void toExitEditModeByRightClick(Button btn)
+        {
+            if (null != btn && this.pressedButtons.Remove(btn))
+            {
+                btn.Invalidate();
+            }
+            foreach (Button b in this.pressedButtons)
+            {
+                b.Invalidate();
+            }
+            this.pressedButtons.Clear();
+
+            this.SetEditMode(false);
+        }
+
+        // 按下后指针移出按钮（或在按钮外松开）时清除按下态，避免卡在凹陷效果
+        private void button_MouseLeave3D(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (ReferenceEquals(this.longPressButton, btn))
+            {
+                this.toCancelLongPress();
+            }
+            if (ReferenceEquals(this.hoverAnimButton, btn))
+            {
+                this.hoverAnimButton = null;
+                if (this.hoverAnimTimer != null)
+                {
+                    this.hoverAnimTimer.Stop();
+                }
+            }
+            if (this.pressedButtons.Remove(btn))
+            {
+                btn.Invalidate();
+            }
+        }
+
+        // 悬停开始：启动定时器持续重绘，Paint 里按 TickCount 计算文字浮动偏移
+        private void button_MouseEnter3D(object sender, EventArgs e)
+        {
+            this.hoverAnimButton = (Button)sender;
+            if (this.hoverAnimTimer == null)
+            {
+                this.hoverAnimTimer = new System.Windows.Forms.Timer();
+                this.hoverAnimTimer.Interval = 30;
+                this.hoverAnimTimer.Tick += (s, ev) =>
+                {
+                    if (this.hoverAnimButton == null)
+                    {
+                        this.hoverAnimTimer.Stop();
+                    }
+                    else
+                    {
+                        this.hoverAnimButton.Invalidate();
+                    }
+                };
+            }
+            this.hoverAnimTimer.Start();
+        }
+
+        // 长按进入编辑模式：3 秒计时，期间松开/移出按钮则取消
+        private void toStartLongPress(Button btn)
+        {
+            this.longPressButton = btn;
+            if (this.longPressTimer == null)
+            {
+                this.longPressTimer = new System.Windows.Forms.Timer();
+                this.longPressTimer.Interval = 3000;
+                this.longPressTimer.Tick += (s, ev) =>
+                {
+                    this.longPressTimer.Stop();
+                    if (this.longPressButton != null && this.pressedButtons.Contains(this.longPressButton))
+                    {
+                        this.longPressButton = null;
+                        this.SetEditMode(true);
+                    }
+                };
+            }
+            this.longPressTimer.Start();
+        }
+
+        private void toCancelLongPress()
+        {
+            this.longPressButton = null;
+            if (this.longPressTimer != null)
+            {
+                this.longPressTimer.Stop();
+            }
+        }
+
+        // 编辑模式闲置计时：8 秒无按钮顺序变动则退出；每次换位后重置
+        private void toRestartEditIdle()
+        {
+            if (this.editIdleTimer == null)
+            {
+                this.editIdleTimer = new System.Windows.Forms.Timer();
+                this.editIdleTimer.Interval = 8000;
+                this.editIdleTimer.Tick += (s, ev) =>
+                {
+                    if (this.bDragDropActive)
+                    {
+                        this.editIdleTimer.Start();
+                        return;
+                    }
+                    this.SetEditMode(false);
+                };
+            }
+            this.editIdleTimer.Stop();
+            this.editIdleTimer.Start();
+        }
+
+        private void toStopEditIdle()
+        {
+            if (this.editIdleTimer != null)
+            {
+                this.editIdleTimer.Stop();
+            }
         }
 
         private void button_DragEnter(object sender, DragEventArgs e)
@@ -1240,6 +1726,9 @@ namespace QuickStart
 
             this.RenderButtons();
             this.toSaveButtonOrder();
+
+            // 顺序有变动，重置 8 秒自动退出计时
+            this.toRestartEditIdle();
         }
 
         private void toHighlightTarget(Button target)

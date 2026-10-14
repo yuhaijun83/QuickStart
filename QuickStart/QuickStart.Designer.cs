@@ -79,6 +79,22 @@ namespace QuickStart
             this.button_46 = new System.Windows.Forms.Button();
             this.button_47 = new System.Windows.Forms.Button();
             this.button_48 = new System.Windows.Forms.Button();
+            this.button_49 = new System.Windows.Forms.Button();
+            this.button_50 = new System.Windows.Forms.Button();
+            this.button_51 = new System.Windows.Forms.Button();
+            this.button_52 = new System.Windows.Forms.Button();
+            this.button_53 = new System.Windows.Forms.Button();
+            this.button_54 = new System.Windows.Forms.Button();
+            this.button_55 = new System.Windows.Forms.Button();
+            this.button_56 = new System.Windows.Forms.Button();
+            this.button_57 = new System.Windows.Forms.Button();
+            this.button_58 = new System.Windows.Forms.Button();
+            this.button_59 = new System.Windows.Forms.Button();
+            this.button_60 = new System.Windows.Forms.Button();
+            this.button_61 = new System.Windows.Forms.Button();
+            this.button_62 = new System.Windows.Forms.Button();
+            this.button_63 = new System.Windows.Forms.Button();
+            this.button_64 = new System.Windows.Forms.Button();
             this.timerMain = new System.Windows.Forms.Timer(this.components);
             this.notifyIconMain = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStripMain = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -452,6 +468,118 @@ namespace QuickStart
             this.button_48.UseVisualStyleBackColor = true;
             this.button_48.Click += new System.EventHandler(this.button_48_Click);
             // 
+            // button_49
+            // 
+            resources.ApplyResources(this.button_49, "button_49");
+            this.button_49.Name = "button_49";
+            this.button_49.UseVisualStyleBackColor = true;
+            this.button_49.Click += new System.EventHandler(this.button_49_Click);
+            // 
+            // button_50
+            // 
+            resources.ApplyResources(this.button_50, "button_50");
+            this.button_50.Name = "button_50";
+            this.button_50.UseVisualStyleBackColor = true;
+            this.button_50.Click += new System.EventHandler(this.button_50_Click);
+            // 
+            // button_51
+            // 
+            resources.ApplyResources(this.button_51, "button_51");
+            this.button_51.Name = "button_51";
+            this.button_51.UseVisualStyleBackColor = true;
+            this.button_51.Click += new System.EventHandler(this.button_51_Click);
+            // 
+            // button_52
+            // 
+            resources.ApplyResources(this.button_52, "button_52");
+            this.button_52.Name = "button_52";
+            this.button_52.UseVisualStyleBackColor = true;
+            this.button_52.Click += new System.EventHandler(this.button_52_Click);
+            // 
+            // button_53
+            // 
+            resources.ApplyResources(this.button_53, "button_53");
+            this.button_53.Name = "button_53";
+            this.button_53.UseVisualStyleBackColor = true;
+            this.button_53.Click += new System.EventHandler(this.button_53_Click);
+            // 
+            // button_54
+            // 
+            resources.ApplyResources(this.button_54, "button_54");
+            this.button_54.Name = "button_54";
+            this.button_54.UseVisualStyleBackColor = true;
+            this.button_54.Click += new System.EventHandler(this.button_54_Click);
+            // 
+            // button_55
+            // 
+            resources.ApplyResources(this.button_55, "button_55");
+            this.button_55.Name = "button_55";
+            this.button_55.UseVisualStyleBackColor = true;
+            this.button_55.Click += new System.EventHandler(this.button_55_Click);
+            // 
+            // button_56
+            // 
+            resources.ApplyResources(this.button_56, "button_56");
+            this.button_56.Name = "button_56";
+            this.button_56.UseVisualStyleBackColor = true;
+            this.button_56.Click += new System.EventHandler(this.button_56_Click);
+            // 
+            // button_57
+            // 
+            resources.ApplyResources(this.button_57, "button_57");
+            this.button_57.Name = "button_57";
+            this.button_57.UseVisualStyleBackColor = true;
+            this.button_57.Click += new System.EventHandler(this.button_57_Click);
+            // 
+            // button_58
+            // 
+            resources.ApplyResources(this.button_58, "button_58");
+            this.button_58.Name = "button_58";
+            this.button_58.UseVisualStyleBackColor = true;
+            this.button_58.Click += new System.EventHandler(this.button_58_Click);
+            // 
+            // button_59
+            // 
+            resources.ApplyResources(this.button_59, "button_59");
+            this.button_59.Name = "button_59";
+            this.button_59.UseVisualStyleBackColor = true;
+            this.button_59.Click += new System.EventHandler(this.button_59_Click);
+            // 
+            // button_60
+            // 
+            resources.ApplyResources(this.button_60, "button_60");
+            this.button_60.Name = "button_60";
+            this.button_60.UseVisualStyleBackColor = true;
+            this.button_60.Click += new System.EventHandler(this.button_60_Click);
+            // 
+            // button_61
+            // 
+            resources.ApplyResources(this.button_61, "button_61");
+            this.button_61.Name = "button_61";
+            this.button_61.UseVisualStyleBackColor = true;
+            this.button_61.Click += new System.EventHandler(this.button_61_Click);
+            // 
+            // button_62
+            // 
+            resources.ApplyResources(this.button_62, "button_62");
+            this.button_62.Name = "button_62";
+            this.button_62.UseVisualStyleBackColor = true;
+            this.button_62.Click += new System.EventHandler(this.button_62_Click);
+            // 
+            // button_63
+            // 
+            resources.ApplyResources(this.button_63, "button_63");
+            this.button_63.Name = "button_63";
+            this.button_63.UseVisualStyleBackColor = true;
+            this.button_63.Click += new System.EventHandler(this.button_63_Click);
+            // 
+            // button_64
+            // 
+            resources.ApplyResources(this.button_64, "button_64");
+            this.button_64.Name = "button_64";
+            this.button_64.UseVisualStyleBackColor = true;
+            this.button_64.Click += new System.EventHandler(this.button_64_Click);
+            // 
             // timerMain
             // 
             this.timerMain.Enabled = true;
@@ -738,12 +866,29 @@ namespace QuickStart
             this.Controls.Add(this.button_46);
             this.Controls.Add(this.button_47);
             this.Controls.Add(this.button_48);
+            this.Controls.Add(this.button_49);
+            this.Controls.Add(this.button_50);
+            this.Controls.Add(this.button_51);
+            this.Controls.Add(this.button_52);
+            this.Controls.Add(this.button_53);
+            this.Controls.Add(this.button_54);
+            this.Controls.Add(this.button_55);
+            this.Controls.Add(this.button_56);
+            this.Controls.Add(this.button_57);
+            this.Controls.Add(this.button_58);
+            this.Controls.Add(this.button_59);
+            this.Controls.Add(this.button_60);
+            this.Controls.Add(this.button_61);
+            this.Controls.Add(this.button_62);
+            this.Controls.Add(this.button_63);
+            this.Controls.Add(this.button_64);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "mainForm";
             this.Opacity = 0D;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
             this.Load += new System.EventHandler(this.mainForm_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainForm_MouseDown);
             this.Move += new System.EventHandler(this.mainForm_Move);
             this.contextMenuStripMain.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -800,6 +945,22 @@ namespace QuickStart
         private System.Windows.Forms.Button button_46;
         private System.Windows.Forms.Button button_47;
         private System.Windows.Forms.Button button_48;
+        private System.Windows.Forms.Button button_49;
+        private System.Windows.Forms.Button button_50;
+        private System.Windows.Forms.Button button_51;
+        private System.Windows.Forms.Button button_52;
+        private System.Windows.Forms.Button button_53;
+        private System.Windows.Forms.Button button_54;
+        private System.Windows.Forms.Button button_55;
+        private System.Windows.Forms.Button button_56;
+        private System.Windows.Forms.Button button_57;
+        private System.Windows.Forms.Button button_58;
+        private System.Windows.Forms.Button button_59;
+        private System.Windows.Forms.Button button_60;
+        private System.Windows.Forms.Button button_61;
+        private System.Windows.Forms.Button button_62;
+        private System.Windows.Forms.Button button_63;
+        private System.Windows.Forms.Button button_64;
         private System.Windows.Forms.Timer timerMain;
         private System.Windows.Forms.NotifyIcon notifyIconMain;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripMain;

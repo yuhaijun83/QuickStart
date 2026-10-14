@@ -1,0 +1,9 @@
+[Button_01]
+Button_Name=Eclipse</br>v4.21
+Button_Visible=1
+Button_Enable=1
+Button_BackColor=GreenYellow
+Button_TextColor=OrangeRed
+Program_Name=D:\Eclipse_4.21\eclipse.exe
+Program_Type=exe
+Program_Param=-clean

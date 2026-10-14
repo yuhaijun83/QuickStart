@@ -1,0 +1,9 @@
+[Button_01]
+Button_Name=Start<br>WebLogic
+Button_Visible=1
+Button_Enable=1
+Button_BackColor=
+Button_TextColor=
+Program_Name=C:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain\startWebLogic.cmd
+Program_Type=cmd
+Program_Param=

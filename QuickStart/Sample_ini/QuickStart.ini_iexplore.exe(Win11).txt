@@ -1,0 +1,9 @@
+[Button_01]
+Button_Name=IE
+Button_Visible=1
+Button_Enable=1
+Button_BackColor=
+Button_TextColor=
+Program_Name=C:\Program Files\Internet Explorer\iexplore.exe
+Program_Type=exe
+Program_Param=https://www.google.com/#ie={inputEncoding}&wd=%s -Embedding

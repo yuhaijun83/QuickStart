@@ -1,0 +1,9 @@
+[Button_01]
+Button_Name=Shutdown
+Button_Visible=1
+Button_Enable=1
+Button_BackColor=
+Button_TextColor=
+Program_Name=shutdown -s
+Program_Type=cmd
+Program_Param=

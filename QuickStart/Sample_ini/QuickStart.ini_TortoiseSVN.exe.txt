@@ -1,0 +1,9 @@
+[Button_01]
+Button_Name=RepoBrowser
+Button_Visible=1
+Button_Enable=1
+Button_BackColor=
+Button_TextColor=
+Program_Name=C:\Program Files\TortoiseSVN\bin\TortoiseProc.exe
+Program_Type=exe
+Program_Param=/command:repobrowser /path:"https://192.168.1.10/svn"
