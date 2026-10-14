@@ -36,7 +36,7 @@ A quick-launch tool that gathers your frequently used programs and commands in o
         #############################################
         #[Button_01] - [Button_64] up to 64 buttons supported, beyond 64 ignored
         [Button_XX]
-        #Button display name【line breaks supported via </br>, <br>, <br/> or \n】
+        #Button display name【line breaks supported via </br>, <br>, <br/> or \n; text wider than one line wraps automatically at spaces, and an ellipsis ... is shown when the lines exceed the button height】
         Button_Name=
         #Button visibility【1: visible; anything else: hidden; default: empty = hidden】
         Button_Visible=
@@ -87,7 +87,7 @@ A quick-launch tool that gathers your frequently used programs and commands in o
 
       13.Buttons use a rounded keycap-style 3D look (white top face + light gray side wall below);
         pressing sinks and darkens the face, and hovering makes the button text float slightly up and down;
-        see the ini example in item 7 for text line breaks.
+        button text wider than one line wraps automatically at spaces, an ellipsis ... is shown when the lines exceed the button height, and manual line breaks are shown in the ini example of item 7.
   
 【Changelog】：
 
@@ -97,6 +97,7 @@ A quick-launch tool that gathers your frequently used programs and commands in o
         New button style: rounded keycap 3D effect (white face + light gray side wall, no gradient), clear press feedback (sinks and darkens)
         Hovering a button makes its text float slightly up and down
         Manual button-text line breaks: use </br>, <br>, <br/> or \n in ini Button_Name
+        Button text wider than one line now wraps automatically at spaces, with a trailing ... when the lines exceed the button height
         Long-press any button for 3 seconds to enter edit mode; edit mode auto-exits after 8 seconds without order changes
         Right-clicking anywhere inside the window now exits edit mode immediately
         Fixed QuickStart.ini not being copied to the build output (csproj Resource changed to Content + PreserveNewest)

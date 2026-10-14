@@ -234,8 +234,134 @@ namespace QuickStart
                     : 0;
                 textRect = new Rectangle(r.X, r.Y + bobY, r.Width, r.Height);
             }
-            TextRenderer.DrawText(g, btn.Text, btn.Font, textRect, textColor, Color.Transparent,
-                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis | TextFormatFlags.NoPadding);
+            // 自绘文字：从第一个字符开始排版，一行放不下就换到下一行，行数超过按钮高度时最后一行截断加省略号
+            toDrawButtonText(g, btn.Text, btn.Font, textRect, textColor);
+        }
+
+        // 按按钮宽度逐行排版文字：优先在空格处断行，无空格的超长串按字符硬断；
+        // 整块放得下时垂直居中，放不下时从顶部开始画、并在最后可见行末尾加省略号
+        private static void toDrawButtonText(Graphics g, string text, Font font, Rectangle rect, Color color)
+        {
+            if (string.IsNullOrEmpty(text) || rect.Width < 8 || rect.Height < 8)
+            {
+                return;
+            }
+
+            TextFormatFlags measureFlags = TextFormatFlags.NoPadding | TextFormatFlags.SingleLine;
+            int lineHeight = TextRenderer.MeasureText(g, "Wg", font, new Size(int.MaxValue, int.MaxValue), measureFlags).Height;
+            if (lineHeight < 6)
+            {
+                lineHeight = Math.Max(6, font.Height);
+            }
+
+            List<string> lines = new List<string>();
+            foreach (string logical in text.Replace("\r\n", "\n").Split('\n'))
+            {
+                toWrapOneLine(g, logical, font, rect.Width, measureFlags, lines);
+            }
+
+            int maxRows = rect.Height / lineHeight;
+            if (maxRows < 1)
+            {
+                return;
+            }
+            bool overflow = lines.Count > maxRows;
+            int rows = overflow ? maxRows : lines.Count;
+            int y = overflow ? rect.Y : rect.Y + (rect.Height - rows * lineHeight) / 2;
+            TextFormatFlags lineFlags = TextFormatFlags.HorizontalCenter | TextFormatFlags.Top
+                | TextFormatFlags.NoPadding | TextFormatFlags.SingleLine;
+
+            for (int i = 0; i < rows; i++)
+            {
+                string line = lines[i];
+                if (overflow && i == rows - 1)
+                {
+                    line = toClipWithEllipsis(g, line, font, rect.Width, measureFlags);
+                }
+                if (line.Length > 0)
+                {
+                    TextRenderer.DrawText(g, line, font, new Rectangle(rect.X, y, rect.Width, lineHeight), color, lineFlags);
+                }
+                y += lineHeight;
+            }
+        }
+
+        // 把一行文字按 maxWidth 拆成若干物理行：能在空格处断就在最后一个空格处断，否则按字符硬断
+        private static void toWrapOneLine(Graphics g, string line, Font font, int maxWidth, TextFormatFlags measureFlags, List<string> result)
+        {
+            if (line.Length == 0)
+            {
+                result.Add(string.Empty);
+                return;
+            }
+            if (toTextWidth(g, line, font, measureFlags) <= maxWidth)
+            {
+                result.Add(line);
+                return;
+            }
+
+            int start = 0;
+            while (start < line.Length)
+            {
+                // 二分找出从 start 起能放进 maxWidth 的最长前缀
+                int lo = start + 1;
+                int hi = line.Length;
+                while (lo < hi)
+                {
+                    int mid = (lo + hi + 1) / 2;
+                    if (toTextWidth(g, line.Substring(start, mid - start), font, measureFlags) <= maxWidth)
+                    {
+                        lo = mid;
+                    }
+                    else
+                    {
+                        hi = mid - 1;
+                    }
+                }
+                int end = lo;
+
+                int space = line.LastIndexOf(' ', end - 1);
+                if (space > start)
+                {
+                    // 在前缀范围内找最后一个空格断行，空格本身不保留
+                    result.Add(line.Substring(start, space - start));
+                    start = space + 1;
+                }
+                else
+                {
+                    result.Add(line.Substring(start, end - start));
+                    start = end;
+                }
+            }
+        }
+
+        private static string toClipWithEllipsis(Graphics g, string line, Font font, int maxWidth, TextFormatFlags measureFlags)
+        {
+            const string ellipsis = "...";
+            if (toTextWidth(g, line + ellipsis, font, measureFlags) <= maxWidth)
+            {
+                return line + ellipsis;
+            }
+            int lo = 0;
+            int hi = line.Length;
+            while (lo < hi)
+            {
+                int mid = (lo + hi + 1) / 2;
+                if (toTextWidth(g, line.Substring(0, mid) + ellipsis, font, measureFlags) <= maxWidth)
+                {
+                    lo = mid;
+                }
+                else
+                {
+                    hi = mid - 1;
+                }
+            }
+            return line.Substring(0, lo) + ellipsis;
+        }
+
+        private static int toTextWidth(Graphics g, string text, Font font, TextFormatFlags measureFlags)
+        {
+            return TextRenderer.MeasureText(g, text, font, new Size(int.MaxValue, int.MaxValue), measureFlags).Width;
         }
 
         private static GraphicsPath RoundedRect(Rectangle rect, int radius)
@@ -262,6 +388,29 @@ namespace QuickStart
             this.InitTimer();
             this.InitAutoRun();
             this.toStartIniWatcher();
+
+            // 跨显示器/系统缩放比例变化导致控件重新缩放后，同样强制重绘，避免残留陈旧画面
+            this.DpiChanged += (s, ev) => this.toInvalidateButtons();
+        }
+
+        // 保险：窗体显示后强制重绘一次按钮。
+        // 首帧可能在按钮完成 DPI 缩放/布局之前绘制，文字按当时的宽度排版（长文字不换行、居中后被裁成中间一段），
+        // 之后若无任何事件触发重绘，这个陈旧画面会一直留在屏幕上（鼠标悬停/遮挡才会恢复）
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            this.toInvalidateButtons();
+        }
+
+        private void toInvalidateButtons()
+        {
+            foreach (Button btn in this.buttonList)
+            {
+                if (btn.Visible)
+                {
+                    btn.Invalidate();
+                }
+            }
         }
 
         private void button_01_Click(object sender, EventArgs e)
