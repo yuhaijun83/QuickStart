@@ -46,9 +46,19 @@ namespace QuickStart
     // 暗色托盘菜单渲染器：默认专业渲染器 + 暗色配色表 + 浅色对勾/子菜单箭头（默认是深色，暗底上看不见）
     class DarkMenuRenderer : ToolStripProfessionalRenderer
     {
+        internal static readonly Color ColorText = Color.FromArgb(240, 240, 240);
+        private static readonly Color ColorTextDisabled = Color.FromArgb(130, 130, 130);
+
         public DarkMenuRenderer()
             : base(new DarkMenuColorTable())
         {
+        }
+
+        // 子菜单下拉是顶层窗口，ForeColor 不继承主菜单的浅色（默认黑色），这里统一强制浅色文字
+        protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
+        {
+            e.TextColor = e.Item.Enabled ? ColorText : ColorTextDisabled;
+            base.OnRenderItemText(e);
         }
 
         protected override void OnRenderItemCheck(ToolStripItemImageRenderEventArgs e)

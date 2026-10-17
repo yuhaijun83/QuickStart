@@ -6,4 +6,4 @@ Button_BackColor=
 Button_TextColor=
 Program_Name=C:\Windows\system32\control.exe
 Program_Type=exe
-Program_Param= /name Microsoft.AdministrativeTools
+Program_Param=/name Microsoft.AdministrativeTools
