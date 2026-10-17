@@ -180,4 +180,16 @@
   <data name="toolStripMenuItem_Timer_Text" xml:space="preserve">
     <value>フォームドック</value>
   </data>
+  <data name="toolStripMenuItem_Theme_Text" xml:space="preserve">
+    <value>テーマ</value>
+  </data>
+  <data name="toolStripMenuItem_Theme_Auto_Text" xml:space="preserve">
+    <value>システムに従う</value>
+  </data>
+  <data name="toolStripMenuItem_Theme_Light_Text" xml:space="preserve">
+    <value>ライト</value>
+  </data>
+  <data name="toolStripMenuItem_Theme_Dark_Text" xml:space="preserve">
+    <value>ダーク</value>
+  </data>
 </root>

@@ -125,6 +125,10 @@ namespace QuickStart
             this.toolStripMenuItem_EditMode = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_EditMode_On = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_EditMode_Off = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Theme = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Theme_Auto = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Theme_Light = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Theme_Dark = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem_About = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -601,6 +605,7 @@ namespace QuickStart
             this.toolStripMenuItem_Opacity,
             this.toolStripMenuItem_Language,
             this.toolStripMenuItem_EditMode,
+            this.toolStripMenuItem_Theme,
             this.toolStripSeparator2,
             this.toolStripMenuItem_About,
             this.toolStripSeparator1,
@@ -790,6 +795,33 @@ namespace QuickStart
             this.toolStripMenuItem_EditMode_Off.Name = "toolStripMenuItem_EditMode_Off";
             resources.ApplyResources(this.toolStripMenuItem_EditMode_Off, "toolStripMenuItem_EditMode_Off");
             this.toolStripMenuItem_EditMode_Off.Click += new System.EventHandler(this.toolStripMenuItem_EditMode_Off_Click);
+            // 
+            // toolStripMenuItem_Theme
+            // 
+            this.toolStripMenuItem_Theme.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem_Theme_Auto,
+            this.toolStripMenuItem_Theme_Light,
+            this.toolStripMenuItem_Theme_Dark});
+            this.toolStripMenuItem_Theme.Name = "toolStripMenuItem_Theme";
+            resources.ApplyResources(this.toolStripMenuItem_Theme, "toolStripMenuItem_Theme");
+            // 
+            // toolStripMenuItem_Theme_Auto
+            // 
+            this.toolStripMenuItem_Theme_Auto.Name = "toolStripMenuItem_Theme_Auto";
+            resources.ApplyResources(this.toolStripMenuItem_Theme_Auto, "toolStripMenuItem_Theme_Auto");
+            this.toolStripMenuItem_Theme_Auto.Click += new System.EventHandler(this.toolStripMenuItem_Theme_Auto_Click);
+            // 
+            // toolStripMenuItem_Theme_Light
+            // 
+            this.toolStripMenuItem_Theme_Light.Name = "toolStripMenuItem_Theme_Light";
+            resources.ApplyResources(this.toolStripMenuItem_Theme_Light, "toolStripMenuItem_Theme_Light");
+            this.toolStripMenuItem_Theme_Light.Click += new System.EventHandler(this.toolStripMenuItem_Theme_Light_Click);
+            // 
+            // toolStripMenuItem_Theme_Dark
+            // 
+            this.toolStripMenuItem_Theme_Dark.Name = "toolStripMenuItem_Theme_Dark";
+            resources.ApplyResources(this.toolStripMenuItem_Theme_Dark, "toolStripMenuItem_Theme_Dark");
+            this.toolStripMenuItem_Theme_Dark.Click += new System.EventHandler(this.toolStripMenuItem_Theme_Dark_Click);
             // 
             // toolStripSeparator2
             // 
@@ -995,6 +1027,10 @@ namespace QuickStart
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_EditMode;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_EditMode_On;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_EditMode_Off;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Theme;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Theme_Auto;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Theme_Light;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Theme_Dark;
     }
 }
 

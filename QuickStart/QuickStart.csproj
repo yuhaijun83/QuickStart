@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>QuickStart</RootNamespace>
     <AssemblyName>QuickStart</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -41,7 +41,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -87,7 +87,11 @@
     <Compile Include="QuickStart.Designer.cs">
       <DependentUpon>QuickStart.cs</DependentUpon>
     </Compile>
+    <Compile Include="DarkMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramIcon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resource_en-US.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -115,6 +119,8 @@
       <DependentUpon>Resource_zh-TW.resx</DependentUpon>
     </Compile>
     <Compile Include="RunCommand.cs" />
+    <Compile Include="ThemeHelper.cs" />
+    <Compile Include="DarkMenuRenderer.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,4 +183,27 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- Release 编译时，把工程目录的 QuickStart.ini 额外复制一份为输出目录的 QuickStart_Template.ini（模板配置，随发布包分发） -->
+  <Target Name="CopyTemplateIni" AfterTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
+    <Copy SourceFiles="$(ProjectDir)QuickStart.ini" DestinationFiles="$(TargetDir)QuickStart_Template.ini" SkipUnchangedFiles="true" />
+  </Target>
+  <!-- Release 编译时，把解决方案根目录的 5 个语言 README 与 LICENSE 复制到输出目录的 Readme 文件夹（随发布包分发） -->
+  <Target Name="CopyReadmeFiles" AfterTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
+    <ItemGroup>
+      <ReadmeSrcFiles Include="$(ProjectDir)..\README.md;$(ProjectDir)..\README.zh-TW.md;$(ProjectDir)..\README.ja-JP.md;$(ProjectDir)..\README.en-US.md;$(ProjectDir)..\README.ko-KR.md;$(ProjectDir)..\LICENSE" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ReadmeSrcFiles)" DestinationFolder="$(TargetDir)Readme" SkipUnchangedFiles="true" />
+  </Target>
+  <!-- Release 编译时，把工程目录的 Sample_ini 文件夹整体复制到输出目录（ini 配置示例，随发布包分发） -->
+  <Target Name="CopySampleIni" AfterTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
+    <ItemGroup>
+      <SampleIniSrcFiles Include="$(ProjectDir)Sample_ini\**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(SampleIniSrcFiles)" DestinationFiles="@(SampleIniSrcFiles->'$(TargetDir)Sample_ini\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+  <!-- 清理解决方案时删除上述自定义复制的产物（自定义 Copy 不进 FileListAbsolute.txt 清单，Clean 默认不认识它们） -->
+  <Target Name="CleanExtraOutputs" BeforeTargets="Clean">
+    <RemoveDir Directories="$(TargetDir)Readme;$(TargetDir)Sample_ini" />
+    <Delete Files="$(TargetDir)QuickStart_Template.ini" />
+  </Target>
 </Project>

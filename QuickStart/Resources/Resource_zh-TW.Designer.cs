@@ -248,5 +248,41 @@ namespace QuickStart.Resources {
                 return ResourceManager.GetString("toolStripMenuItem_TimerOn_Text", resourceCulture);
             }
         }
-    }
+            /// <summary>
+        ///   Look up a localized string similar to Theme menu item.
+        /// </summary>
+        internal static string toolStripMenuItem_Theme_Text {
+            get {
+                return ResourceManager.GetString("toolStripMenuItem_Theme_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Look up a localized string similar to Theme menu item.
+        /// </summary>
+        internal static string toolStripMenuItem_Theme_Auto_Text {
+            get {
+                return ResourceManager.GetString("toolStripMenuItem_Theme_Auto_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Look up a localized string similar to Theme menu item.
+        /// </summary>
+        internal static string toolStripMenuItem_Theme_Light_Text {
+            get {
+                return ResourceManager.GetString("toolStripMenuItem_Theme_Light_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Look up a localized string similar to Theme menu item.
+        /// </summary>
+        internal static string toolStripMenuItem_Theme_Dark_Text {
+            get {
+                return ResourceManager.GetString("toolStripMenuItem_Theme_Dark_Text", resourceCulture);
+            }
+        }
+        
+}
 }

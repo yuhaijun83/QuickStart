@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -26,6 +27,8 @@ namespace QuickStart
         private const string MainForm_Language = "MainForm_Language";
         private const string MainForm_Timer = "MainForm_Timer";
         private const string MainForm_AutoRun = "MainForm_AutoRun";
+        private const string MainForm_ShowProgramIcon = "MainForm_ShowProgramIcon";
+        private const string MainForm_Theme = "MainForm_Theme";
 
         private const string Button_Name = "Button_Name";
         private const string Button_Visible = "Button_Visible";
@@ -67,6 +70,31 @@ namespace QuickStart
 
         // 按下反馈：记录处于按下态的按钮，Paint 时绘制凹陷效果
         private HashSet<Button> pressedButtons = new HashSet<Button>();
+
+        // 按钮程序图标映射：按钮 → 配置程序的系统图标（仅引用，所有权归 iconCacheByFile；后台提取完成后在 UI 线程整体替换）
+        private Dictionary<Button, Bitmap> buttonIcons = new Dictionary<Button, Bitmap>();
+
+        // 跨重建图标缓存：键 = 解析后路径|最后写入时间|大小（程序文件变化后自动重新提取）；Bitmap 统一由该缓存持有，窗体退出时释放
+        private static readonly Dictionary<string, Bitmap> iconCacheByFile = new Dictionary<string, Bitmap>(StringComparer.OrdinalIgnoreCase);
+        private static readonly object iconCacheLock = new object();
+
+        // 图标重建代数：后台提取完成时若代数已变化（ini 连续多次修改），丢弃过期结果
+        private int iconGeneration = 0;
+
+        // 窗体正在退出：置位后拒绝一切图标结果回写（防止 FormClosing 释放缓存后，
+        // 排队中的 BeginInvoke 回调把已释放的 Bitmap 重新塞回按钮映射导致绘制崩溃）
+        private volatile bool bIconsExiting = false;
+
+        // 主题：ini [System_Info] MainForm_Theme = Auto/Light/Dark（默认 Auto 跟随系统）
+        private string strThemeConfig = "Auto";
+        private bool bDarkMode = false;
+        private Color colorLightFormBack = Color.Empty; // 设计器亮色窗体背景，切回亮色时还原
+        private ToolStripRenderer rendererMenuDefault = null; // 托盘菜单默认渲染器/颜色，切回亮色时还原
+        private Color colorMenuBack = Color.Empty;
+        private Color colorMenuFore = Color.Empty;
+        private DarkMenuRenderer darkMenuRenderer = null;
+
+        // 标题栏暗色模式（Win10 1809+）实现已提取到 ThemeHelper（About 窗体共用）
 
         // 鼠标悬停时文字浮动动画
         private Button hoverAnimButton = null;
@@ -174,6 +202,10 @@ namespace QuickStart
 
             Graphics g = e.Graphics;
             Color baseColor = btn.BackColor;
+            if (this.bDarkMode)
+            {
+                baseColor = toDarkButtonColor(baseColor);
+            }
             bool pressed = this.pressedButtons.Contains(btn);
 
             // 侧壁以外的区域用窗体背景盖掉按钮自绘的方角底色
@@ -219,9 +251,29 @@ namespace QuickStart
             }
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
 
+            // 程序图标：按钮左上角显示配置程序（exe/cmd 等）的系统图标，提取失败则不显示
+            Bitmap iconBmp;
+            if (this.buttonIcons.TryGetValue(btn, out iconBmp) && iconBmp != null)
+            {
+                int iconSize = Math.Max(14, (int)Math.Round(20 * dpi));
+                int iconMargin = Math.Max(2, (int)Math.Round(4 * dpi));
+                Rectangle iconRect = new Rectangle(r.X + iconMargin, r.Y + faceY + iconMargin, iconSize, iconSize);
+
+                System.Drawing.Drawing2D.InterpolationMode oldInterp = g.InterpolationMode;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.DrawImage(iconBmp, iconRect);
+                g.InterpolationMode = oldInterp;
+            }
+
             // Paint 在按钮自绘之后触发，会盖掉原文字，这里按原样式重绘；按下时文字右下移 1px 增强按压感；
             // 悬停时文字做 ±2px 上下正弦浮动
             Color textColor = btn.Enabled ? btn.ForeColor : ControlPaint.Dark(btn.ForeColor, 0.25f);
+            if (this.bDarkMode)
+            {
+                textColor = btn.Enabled
+                    ? toDarkTextColor(textColor)
+                    : toBlend(toDarkTextColor(btn.ForeColor), Color.Black, 0.25f);
+            }
             Rectangle textRect;
             if (pressed)
             {
@@ -379,12 +431,17 @@ namespace QuickStart
         private void mainForm_Load(object sender, EventArgs e)
         {
             this.toCheckIsNotExistIniFile();
+            this.toEnsureSystemInfoSection();
+            this.InitTheme(); // 提前读取主题配置，保证启动阶段的弹框（重复实例警告等）也能按主题选色
             this.InitLanguage();
             this.toCheckIsNotExistCurrentProcess();
             this.InitOpacity();
+            this.InitShowProgramIcon();
             this.InitConfig();
+            this.RebuildButtonIcons();
             this.InitForm();
             this.InitButton();
+            this.ApplyTheme();
             this.InitTimer();
             this.InitAutoRun();
             this.toStartIniWatcher();
@@ -769,7 +826,7 @@ namespace QuickStart
             }
 
             DialogResult dialogResult =
-                MessageBox.Show(strQuestion, strTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                toShowMessageBox(strQuestion, strTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (dialogResult == DialogResult.Yes)
             {
                 e.Cancel = false;
@@ -777,6 +834,24 @@ namespace QuickStart
             else
             {
                 e.Cancel = true;
+            }
+
+            // 确认退出时释放图标缓存持有的全部 Bitmap（iconCacheByFile 统一持有所有权）
+            if (e.Cancel == false)
+            {
+                this.bIconsExiting = true;
+                this.buttonIcons.Clear();
+                lock (iconCacheLock)
+                {
+                    foreach (Bitmap bmp in iconCacheByFile.Values)
+                    {
+                        if (bmp != null)
+                        {
+                            bmp.Dispose();
+                        }
+                    }
+                    iconCacheByFile.Clear();
+                }
             }
         }
 
@@ -816,7 +891,7 @@ namespace QuickStart
             }
 
             DialogResult dialogResult =
-                MessageBox.Show(strQuestion, strTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                toShowMessageBox(strQuestion, strTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (dialogResult == DialogResult.Yes)
             {
                 Environment.Exit(0);
@@ -825,8 +900,8 @@ namespace QuickStart
 
         private void toolStripMenuItem_About_Click(object sender, EventArgs e)
         {
-            aboutForm objAboutForm = new aboutForm(this.win_Language);
-            objAboutForm.ShowDialog();
+            aboutForm objAboutForm = new aboutForm(this.win_Language, toIsDarkModeByConfig());
+            objAboutForm.ShowDialog(this);
         }
 
         private void mainForm_Move(object sender, EventArgs e)
@@ -1015,8 +1090,108 @@ namespace QuickStart
                 string strTitle = "【Error】";
                 string strMessage = "File is Not Found! \n[ " + strIniFilePath + " ]";
                 
-                MessageBox.Show(strMessage, strTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                toShowMessageBox(strMessage, strTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 System.Environment.Exit(0);
+            }
+        }
+
+        // 提取行中的段名（] 之后的内容忽略，与 Win32 profile API 行为一致）；非段行返回 null
+        private static string toSectionNameOfLine(string line)
+        {
+            string t = line.Trim();
+            if (t.Length < 2 || t[0] != '[')
+            {
+                return null;
+            }
+
+            int iEnd = t.IndexOf(']');
+            if (iEnd < 1)
+            {
+                return null;
+            }
+
+            return t.Substring(1, iEnd - 1);
+        }
+
+        // ini 缺失 [System_Info] 段时，在文件第一行插入与模板完全一致的完整块：
+        // "System Config" 注释横幅 + [System_Info] 段 + 5 个键（固定顺序），原有内容整体下移并保持不变；
+        // 横幅注释行天然接住 UTF-8 BOM（BOM 粘在注释上无害），避免 BOM 粘进段名导致 Win32 API 找不到段；
+        // 段已存在但位于第一行且文件带 BOM 时（API 认不出段名），仅在其上方补插横幅注释；其余情况不做任何修改；
+        // 文件不是合法 UTF-8（如 ANSI/GBK）或只读/被占用时跳过处理，避免损坏原内容或启动崩溃
+        private void toEnsureSystemInfoSection()
+        {
+            try
+            {
+                if (!File.Exists(this.strIniFilePath))
+                {
+                    return;
+                }
+
+                byte[] raw = File.ReadAllBytes(this.strIniFilePath);
+                bool bHasBom = raw.Length >= 3 && raw[0] == 0xEF && raw[1] == 0xBB && raw[2] == 0xBF;
+
+                // 严格 UTF-8 解码：失败说明是 ANSI/GBK 等其他编码，跳过（宽松解码产生的替换符重写文件会损坏中文内容）
+                string text;
+                try
+                {
+                    text = new UTF8Encoding(false, true).GetString(raw, bHasBom ? 3 : 0, raw.Length - (bHasBom ? 3 : 0));
+                }
+                catch (DecoderFallbackException)
+                {
+                    return;
+                }
+
+                string[] lines = text.Replace("\r\n", "\n").Replace("\r", "\n").Split('\n');
+
+                int iSection = -1;
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    if ("System_Info".Equals(toSectionNameOfLine(lines[i]), StringComparison.OrdinalIgnoreCase))
+                    {
+                        iSection = i;
+                        break;
+                    }
+                }
+
+                string banner = new string('#', 90);
+
+                if (iSection >= 0)
+                {
+                    // BOM 陷阱：[System_Info] 位于第一行且文件带 BOM 时，API 把 BOM 字节读进段名而找不到该段，
+                    // 后续所有 API 写入都会变成在文件末尾追加重复段；在段上方补插横幅注释行接住 BOM
+                    if (iSection == 0 && bHasBom)
+                    {
+                        List<string> bannerLines = new List<string>(lines);
+                        bannerLines.InsertRange(0, new string[] { banner, "#    System Config", banner });
+                        File.WriteAllText(this.strIniFilePath, string.Join("\r\n", bannerLines.ToArray()), new UTF8Encoding(true));
+                    }
+                    return;
+                }
+
+                List<string> block = new List<string>();
+                block.Add(banner);
+                block.Add("#    System Config");
+                block.Add(banner);
+                block.Add("[System_Info]");
+                block.Add(MainForm_Opacity + "=100");
+                block.Add(MainForm_Language + "=en-US");
+                block.Add(MainForm_Timer + "=On");
+                block.Add(MainForm_AutoRun + "=On");
+                block.Add(MainForm_ShowProgramIcon + "=On");
+                block.Add(MainForm_Theme + "=Auto");
+                if (lines.Length == 0 || lines[0].Trim().Length != 0)
+                {
+                    block.Add(string.Empty); // 与模板一致：块后空一行（原文件首行已是空行则不重复加）
+                }
+
+                List<string> outLines = new List<string>(lines);
+                outLines.InsertRange(0, block);
+
+                File.WriteAllText(this.strIniFilePath, string.Join("\r\n", outLines.ToArray()), new UTF8Encoding(bHasBom));
+            }
+            catch (Exception)
+            {
+                // 文件只读或被其他进程占用：跳过补全，后续 API 写入按原行为处理
             }
         }
 
@@ -1067,7 +1242,7 @@ namespace QuickStart
                         break;
                 }
 
-                MessageBox.Show(strMessage, strTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                toShowMessageBox(strMessage, strTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                 System.Environment.Exit(0);
             }
         }
@@ -1159,6 +1334,170 @@ namespace QuickStart
             {
                 this.toolStripMenuItem_Opacity_100.Checked = true;
             }
+        }
+
+        // 旧版 ini 缺失 MainForm_ShowProgramIcon 键时自动补写默认值 On（与 Timer/AutoRun 惯例一致；仅启动时写回，热重载不写文件）
+        private void InitShowProgramIcon()
+        {
+            string strShowIcon = OperateIniFile.ReadIniData(System_Info, MainForm_ShowProgramIcon, "", strIniFilePath);
+            if (strShowIcon == "")
+            {
+                OperateIniFile.WriteIniData(System_Info, MainForm_ShowProgramIcon, "On", strIniFilePath);
+            }
+        }
+
+        // 旧版 ini 缺失 MainForm_Theme 键时自动补写默认值 Auto（与 Timer/AutoRun 惯例一致；仅启动时写回，热重载不写文件）
+        private void InitTheme()
+        {
+            string strTheme = OperateIniFile.ReadIniData(System_Info, MainForm_Theme, "", strIniFilePath);
+            if (strTheme == "")
+            {
+                strTheme = "Auto";
+                OperateIniFile.WriteIniData(System_Info, MainForm_Theme, "Auto", strIniFilePath);
+            }
+            this.strThemeConfig = strTheme.Trim();
+        }
+
+        // 应用主题：解析 Auto/Light/Dark → 计算生效明暗 → 窗体背景 + 标题栏 + 按钮重绘 + 菜单勾选
+        private void ApplyTheme()
+        {
+            if (this.colorLightFormBack.IsEmpty)
+            {
+                this.colorLightFormBack = this.BackColor; // 首次记录设计器亮色背景
+            }
+
+            bool dark = toIsDarkModeByConfig();
+
+            this.bDarkMode = dark;
+            this.BackColor = dark ? Color.FromArgb(32, 32, 32) : this.colorLightFormBack;
+            this.toApplyTitleBarTheme(dark);
+            this.toApplyMenuTheme(dark);
+            this.toUpdateThemeMenuCheck();
+            this.toInvalidateButtons();
+        }
+
+        // 托盘菜单明暗：WinForms 菜单是自绘的（非系统原生），暗色时换暗色渲染器，亮色时还原默认
+        private void toApplyMenuTheme(bool dark)
+        {
+            if (this.rendererMenuDefault == null)
+            {
+                this.rendererMenuDefault = this.contextMenuStripMain.Renderer;
+                this.colorMenuBack = this.contextMenuStripMain.BackColor;
+                this.colorMenuFore = this.contextMenuStripMain.ForeColor;
+            }
+
+            if (dark)
+            {
+                if (this.darkMenuRenderer == null)
+                {
+                    this.darkMenuRenderer = new DarkMenuRenderer();
+                }
+                this.contextMenuStripMain.BackColor = Color.FromArgb(43, 43, 43);
+                this.contextMenuStripMain.ForeColor = Color.FromArgb(240, 240, 240);
+                this.contextMenuStripMain.Renderer = this.darkMenuRenderer;
+            }
+            else
+            {
+                this.contextMenuStripMain.Renderer = this.rendererMenuDefault;
+                this.contextMenuStripMain.BackColor = this.colorMenuBack;
+                this.contextMenuStripMain.ForeColor = this.colorMenuFore;
+            }
+        }
+
+        // 按当前主题配置计算是否暗色（Auto/未加载时跟随系统）；不依赖控件状态，ApplyTheme 之前也可安全调用
+        private bool toIsDarkModeByConfig()
+        {
+            string cfg = (this.strThemeConfig ?? "Auto").Trim();
+            if ("Light".Equals(cfg, StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+            if ("Dark".Equals(cfg, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+            return ThemeHelper.IsSystemDarkMode(); // Auto（含非法值）跟随系统
+        }
+
+        // 标题栏明暗（实现见 ThemeHelper，About 窗体共用）
+        private void toApplyTitleBarTheme(bool dark)
+        {
+            if (!this.IsHandleCreated)
+            {
+                return;
+            }
+            ThemeHelper.ApplyTitleBarTheme(this.Handle, dark);
+        }
+
+        private void toUpdateThemeMenuCheck()
+        {
+            string cfg = (this.strThemeConfig ?? "Auto").Trim();
+            this.toolStripMenuItem_Theme_Auto.Checked = !"Light".Equals(cfg, StringComparison.OrdinalIgnoreCase) && !"Dark".Equals(cfg, StringComparison.OrdinalIgnoreCase);
+            this.toolStripMenuItem_Theme_Light.Checked = "Light".Equals(cfg, StringComparison.OrdinalIgnoreCase);
+            this.toolStripMenuItem_Theme_Dark.Checked = "Dark".Equals(cfg, StringComparison.OrdinalIgnoreCase);
+        }
+
+        // 托盘菜单切换主题：写回 ini（热重载会再次读到同值，无冲突）并立即应用
+        private void toSetTheme(string strMode)
+        {
+            this.strThemeConfig = strMode;
+            OperateIniFile.WriteIniData(System_Info, MainForm_Theme, strMode, strIniFilePath);
+            this.ApplyTheme();
+        }
+
+        private void toolStripMenuItem_Theme_Auto_Click(object sender, EventArgs e)
+        {
+            this.toSetTheme("Auto");
+        }
+
+        private void toolStripMenuItem_Theme_Light_Click(object sender, EventArgs e)
+        {
+            this.toSetTheme("Light");
+        }
+
+        private void toolStripMenuItem_Theme_Dark_Click(object sender, EventArgs e)
+        {
+            this.toSetTheme("Dark");
+        }
+
+        // 颜色混合：ratioB 为 b 的占比（0~1）
+        private static Color toBlend(Color a, Color b, float ratioB)
+        {
+            int r = (int)Math.Round(a.R + (b.R - a.R) * ratioB);
+            int g = (int)Math.Round(a.G + (b.G - a.G) * ratioB);
+            int bl = (int)Math.Round(a.B + (b.B - a.B) * ratioB);
+            return Color.FromArgb(a.A, r, g, bl);
+        }
+
+        // 暗色模式按钮底色：默认白色 → 深灰面板；用户显式配置色 → 与深灰混合保留色相
+        private static Color toDarkButtonColor(Color baseColor)
+        {
+            if (baseColor.ToArgb() == Color.White.ToArgb())
+            {
+                return Color.FromArgb(62, 62, 62);
+            }
+            return toBlend(baseColor, Color.FromArgb(48, 48, 48), 0.72f);
+        }
+
+        // 暗色模式文字色：默认黑 → 浅灰白；用户显式配置色 → 向白提亮保留色相
+        private static Color toDarkTextColor(Color textColor)
+        {
+            if (textColor.ToArgb() == SystemColors.ControlText.ToArgb())
+            {
+                return Color.FromArgb(240, 240, 240);
+            }
+            return toBlend(textColor, Color.FromArgb(250, 250, 250), 0.62f);
+        }
+
+        // 按当前主题弹框：亮色用系统原生 MessageBox，暗色用自绘暗色对话框
+        // 用配置实时计算（而非 bDarkMode），保证启动阶段 ApplyTheme 之前的弹框也按主题选色
+        private DialogResult toShowMessageBox(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton)
+        {
+            if (toIsDarkModeByConfig())
+            {
+                return DarkMessageBox.Show(this, text, caption, buttons, icon, defaultButton, this.win_Language);
+            }
+            return MessageBox.Show(this, text, caption, buttons, icon, defaultButton);
         }
 
         private void InitTimer()
@@ -1271,8 +1610,10 @@ namespace QuickStart
         // 解析 ini 全部按钮段到 lstSections/lstConfig（启动与热重载共用）
         private void toParseIni()
         {
-            this.lstSections.Clear();
-            lstConfig.Clear();
+            // 先解析到局部列表，全部成功后才整体替换：解析中途抛异常（文件被编辑器占用等）时保持原有配置与按钮不变，
+            // 避免 lstConfig 被清空而按钮仍在 → 点击触发 lstConfig 越界崩溃
+            List<IniSection> newSections = new List<IniSection>();
+            List<IniConfig> newConfig = new List<IniConfig>();
 
             string strSection = null;
             IniConfig ini = null;
@@ -1302,16 +1643,29 @@ namespace QuickStart
                     section.SectionName = strSection;
                     section.Config = ini;
                     section.Visible = "1".Equals(ini.Button_Visible);
-                    lstSections.Add(section);
+                    newSections.Add(section);
 
                     if (section.Visible)
                     {
-                        lstConfig.Add(ini);
+                        newConfig.Add(ini);
                     }
                 }
             }
 
             }
+
+            // 解析结果为空但此前有配置：极可能读到截断/半写状态的文件（编辑器保存瞬间），
+            // 视为可疑读取，抛异常让调用方保持原配置并稍后重试，避免按钮全部消失
+            if (newSections.Count == 0 && lstSections.Count > 0)
+            {
+                throw new IOException("ini parse found no button sections (suspected partial read)");
+            }
+
+            // 解析全程无异常，整体替换生效
+            this.lstSections.Clear();
+            this.lstSections.AddRange(newSections);
+            lstConfig.Clear();
+            lstConfig.AddRange(newConfig);
 
             strSection = null;
             ini = null;
@@ -1397,6 +1751,16 @@ namespace QuickStart
         private void toReloadConfig()
         {
             this.toParseIni();
+
+            // ini 里改了主题配置则同步应用（Auto/Light/Dark 热切换）
+            string strTheme = OperateIniFile.ReadIniData(System_Info, MainForm_Theme, "Auto", strIniFilePath).Trim();
+            if (!strTheme.Equals(this.strThemeConfig ?? "Auto", StringComparison.OrdinalIgnoreCase))
+            {
+                this.strThemeConfig = strTheme;
+                this.ApplyTheme();
+            }
+
+            this.RebuildButtonIcons();
             this.RenderButtons();
             this.toRecalcClientSize();
         }
@@ -1466,6 +1830,190 @@ namespace QuickStart
         private void InitButton()
         {
             this.RenderButtons();
+        }
+
+        // 重建按钮程序图标（启动与 ini 热重载时调用）：提取在后台线程执行，不阻塞窗体显示，
+        // 窗体先出现、图标随后数十毫秒内浮现；结果按代数校验，过期结果自动丢弃
+        private void RebuildButtonIcons()
+        {
+            // ini 开关：[System_Info] 段 MainForm_ShowProgramIcon=Off 时不显示按钮程序图标（空/非法值按 On 处理）
+            string strShowIcon = OperateIniFile.ReadIniData(System_Info, MainForm_ShowProgramIcon, "On", strIniFilePath).Trim().ToUpper();
+
+            // 快照当前按钮→程序配置（lstConfig 是 UI 线程状态，后台线程不得直接读取）
+            List<Button> snapshotButtons = new List<Button>();
+            List<string> snapshotPrograms = new List<string>();
+            if (!"OFF".Equals(strShowIcon))
+            {
+                int iButtonCount = lstConfig.Count < BUTTON_MAX_SIZE ? lstConfig.Count : BUTTON_MAX_SIZE;
+                for (int i = 0; i < iButtonCount; i++)
+                {
+                    snapshotButtons.Add(this.buttonList[i]);
+                    snapshotPrograms.Add(lstConfig[i].Program_Name);
+                }
+            }
+
+            this.iconGeneration++;
+            int iGen = this.iconGeneration;
+
+            // 分工原则（实测结论）：SHGetFileInfo 的图标句柄在后台线程获取是安全的（纯 shell32，耗时大头），
+            // 但 Icon/GDI+ 对象的创建与 Dispose 在后台线程会触发 AccessViolationException（与 UI 线程消息泵存在隐性耦合），
+            // 因此句柄→Bitmap 的转换统一回到 UI 线程执行；重复重建时旧线程结果由代数校验丢弃
+            System.Threading.Thread extractThread = new System.Threading.Thread(() =>
+            {
+                List<PendingIcon> pending = new List<PendingIcon>();
+                try
+                {
+                    Dictionary<Button, Bitmap> extracted = new Dictionary<Button, Bitmap>();
+                    for (int i = 0; i < snapshotButtons.Count; i++)
+                    {
+                        string strPath = ProgramIcon.ResolveProgramPath(snapshotPrograms[i]);
+                        string strKey = toGetIconCacheKey(strPath);
+                        if (strKey == null)
+                        {
+                            continue;
+                        }
+
+                        // 先查跨重建缓存（热重载时图标直接复用，零提取）
+                        Bitmap cached;
+                        lock (iconCacheLock)
+                        {
+                            iconCacheByFile.TryGetValue(strKey, out cached);
+                        }
+                        if (cached != null)
+                        {
+                            extracted[snapshotButtons[i]] = cached;
+                            continue;
+                        }
+
+                        IntPtr hIcon = ProgramIcon.ExtractIconHandle(strPath);
+                        if (hIcon != IntPtr.Zero)
+                        {
+                            pending.Add(new PendingIcon(snapshotButtons[i], hIcon, strKey));
+                        }
+                    }
+
+                    bool posted = false;
+                    if (this.IsHandleCreated)
+                    {
+                        try
+                        {
+                            this.BeginInvoke(new Action(() => this.toConvertAndApplyIcons(extracted, pending, iGen)));
+                            posted = true;
+                        }
+                        catch (Exception)
+                        {
+                            // 关窗瞬间句柄可能已销毁，走下方统一释放
+                        }
+                    }
+
+                    if (!posted)
+                    {
+                        foreach (PendingIcon p in pending)
+                        {
+                            ProgramIcon.ReleaseIconHandle(p.hIcon);
+                        }
+                        pending.Clear();
+                    }
+                }
+                catch (Exception)
+                {
+                    // 后台提取的任何异常都不允许影响主程序（结果丢弃即可）
+                    foreach (PendingIcon p in pending)
+                    {
+                        ProgramIcon.ReleaseIconHandle(p.hIcon);
+                    }
+                }
+            });
+            extractThread.IsBackground = true;
+            extractThread.SetApartmentState(System.Threading.ApartmentState.STA);
+            extractThread.Start();
+        }
+
+        // 后台线程提取的中间结果：按钮 + 待转换的 shell 图标句柄 + 缓存键
+        private sealed class PendingIcon
+        {
+            public Button btn;
+            public IntPtr hIcon;
+            public string strKey;
+
+            public PendingIcon(Button btn_, IntPtr hIcon_, string strKey_)
+            {
+                this.btn = btn_;
+                this.hIcon = hIcon_;
+                this.strKey = strKey_;
+            }
+        }
+
+        // 缓存键含文件写入时间与大小，程序更新后图标自动重新提取；路径无效返回 null
+        private static string toGetIconCacheKey(string strPath)
+        {
+            if (string.IsNullOrEmpty(strPath))
+            {
+                return null;
+            }
+
+            try
+            {
+                FileInfo fi = new FileInfo(strPath);
+                return strPath + "|" + fi.LastWriteTimeUtc.Ticks + "|" + fi.Length;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        // UI 线程：把后台取回的图标句柄转换为 Bitmap（GDI+ 只允许在 UI 线程触碰）、回填缓存并应用
+        private void toConvertAndApplyIcons(Dictionary<Button, Bitmap> extracted, List<PendingIcon> pending, int iGen)
+        {
+            // 窗体退出中：只释放句柄，不再触碰已释放的缓存与按钮映射
+            if (this.bIconsExiting)
+            {
+                foreach (PendingIcon p in pending)
+                {
+                    ProgramIcon.ReleaseIconHandle(p.hIcon);
+                }
+                return;
+            }
+
+            foreach (PendingIcon p in pending)
+            {
+                Bitmap bmp = ProgramIcon.IconHandleToBitmap(p.hIcon);
+                ProgramIcon.ReleaseIconHandle(p.hIcon);
+
+                if (bmp != null)
+                {
+                    lock (iconCacheLock)
+                    {
+                        // 并发重建可能对同一文件各提取了一份：保留先入缓存的，丢弃重复的，避免孤儿 Bitmap
+                        Bitmap existing;
+                        if (iconCacheByFile.TryGetValue(p.strKey, out existing) && existing != null)
+                        {
+                            bmp.Dispose();
+                            bmp = existing;
+                        }
+                        else
+                        {
+                            iconCacheByFile[p.strKey] = bmp;
+                        }
+                    }
+                    extracted[p.btn] = bmp;
+                }
+            }
+
+            this.toApplyButtonIcons(extracted, iGen);
+        }
+
+        // UI 线程：应用后台提取结果（代数已变或窗体退出中则丢弃过期结果）；整体替换映射后强制重绘按钮
+        private void toApplyButtonIcons(Dictionary<Button, Bitmap> extracted, int iGen)
+        {
+            if (this.bIconsExiting || iGen != this.iconGeneration)
+            {
+                return;
+            }
+
+            this.buttonIcons = extracted;
+            this.toInvalidateButtons();
         }
 
         private void RenderButtons()
@@ -1966,7 +2514,7 @@ namespace QuickStart
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ini.Program_Name + " " + ini.Program_Param + "\n\n" + ex.Message, strTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    toShowMessageBox(ini.Program_Name + " " + ini.Program_Param + "\n\n" + ex.Message, strTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 }
             }
             else if ("cmd".Equals(ini.Program_Type))
@@ -1976,12 +2524,12 @@ namespace QuickStart
                     RunCommand.RunCmd(ini.Program_Name, ini.Program_Param);
                 } catch (Exception ex)
                 {
-                    MessageBox.Show(ini.Program_Name + " " + ini.Program_Param + "\n\n" + ex.Message, strTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    toShowMessageBox(ini.Program_Name + " " + ini.Program_Param + "\n\n" + ex.Message, strTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 }
             }
             else
             {
-                MessageBox.Show(strQuestion + "\n【" + ini.Program_Type + "】", strTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                toShowMessageBox(strQuestion + "\n【" + ini.Program_Type + "】", strTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
 
@@ -2188,6 +2736,10 @@ namespace QuickStart
                     this.toolStripMenuItem_EditMode.Text = Resources.Resource_zh_CN.toolStripMenuItem_EditMode_Text;
                     this.toolStripMenuItem_EditMode_On.Text = Resources.Resource_zh_CN.toolStripMenuItem_EditMode_On_Text;
                     this.toolStripMenuItem_EditMode_Off.Text = Resources.Resource_zh_CN.toolStripMenuItem_EditMode_Off_Text;
+                    this.toolStripMenuItem_Theme.Text = Resources.Resource_zh_CN.toolStripMenuItem_Theme_Text;
+                    this.toolStripMenuItem_Theme_Auto.Text = Resources.Resource_zh_CN.toolStripMenuItem_Theme_Auto_Text;
+                    this.toolStripMenuItem_Theme_Light.Text = Resources.Resource_zh_CN.toolStripMenuItem_Theme_Light_Text;
+                    this.toolStripMenuItem_Theme_Dark.Text = Resources.Resource_zh_CN.toolStripMenuItem_Theme_Dark_Text;
                     break;
 
                 case MultilingualConfig.Language_zh_TW:
@@ -2210,6 +2762,10 @@ namespace QuickStart
                     this.toolStripMenuItem_EditMode.Text = Resources.Resource_zh_TW.toolStripMenuItem_EditMode_Text;
                     this.toolStripMenuItem_EditMode_On.Text = Resources.Resource_zh_TW.toolStripMenuItem_EditMode_On_Text;
                     this.toolStripMenuItem_EditMode_Off.Text = Resources.Resource_zh_TW.toolStripMenuItem_EditMode_Off_Text;
+                    this.toolStripMenuItem_Theme.Text = Resources.Resource_zh_TW.toolStripMenuItem_Theme_Text;
+                    this.toolStripMenuItem_Theme_Auto.Text = Resources.Resource_zh_TW.toolStripMenuItem_Theme_Auto_Text;
+                    this.toolStripMenuItem_Theme_Light.Text = Resources.Resource_zh_TW.toolStripMenuItem_Theme_Light_Text;
+                    this.toolStripMenuItem_Theme_Dark.Text = Resources.Resource_zh_TW.toolStripMenuItem_Theme_Dark_Text;
                     break;
 
                 case MultilingualConfig.Language_en_US:
@@ -2232,6 +2788,10 @@ namespace QuickStart
                     this.toolStripMenuItem_EditMode.Text = Resources.Resource_en_US.toolStripMenuItem_EditMode_Text;
                     this.toolStripMenuItem_EditMode_On.Text = Resources.Resource_en_US.toolStripMenuItem_EditMode_On_Text;
                     this.toolStripMenuItem_EditMode_Off.Text = Resources.Resource_en_US.toolStripMenuItem_EditMode_Off_Text;
+                    this.toolStripMenuItem_Theme.Text = Resources.Resource_en_US.toolStripMenuItem_Theme_Text;
+                    this.toolStripMenuItem_Theme_Auto.Text = Resources.Resource_en_US.toolStripMenuItem_Theme_Auto_Text;
+                    this.toolStripMenuItem_Theme_Light.Text = Resources.Resource_en_US.toolStripMenuItem_Theme_Light_Text;
+                    this.toolStripMenuItem_Theme_Dark.Text = Resources.Resource_en_US.toolStripMenuItem_Theme_Dark_Text;
                     break;
 
                 case MultilingualConfig.Language_ja_JP:
@@ -2254,6 +2814,10 @@ namespace QuickStart
                     this.toolStripMenuItem_EditMode.Text = Resources.Resource_ja_JP.toolStripMenuItem_EditMode_Text;
                     this.toolStripMenuItem_EditMode_On.Text = Resources.Resource_ja_JP.toolStripMenuItem_EditMode_On_Text;
                     this.toolStripMenuItem_EditMode_Off.Text = Resources.Resource_ja_JP.toolStripMenuItem_EditMode_Off_Text;
+                    this.toolStripMenuItem_Theme.Text = Resources.Resource_ja_JP.toolStripMenuItem_Theme_Text;
+                    this.toolStripMenuItem_Theme_Auto.Text = Resources.Resource_ja_JP.toolStripMenuItem_Theme_Auto_Text;
+                    this.toolStripMenuItem_Theme_Light.Text = Resources.Resource_ja_JP.toolStripMenuItem_Theme_Light_Text;
+                    this.toolStripMenuItem_Theme_Dark.Text = Resources.Resource_ja_JP.toolStripMenuItem_Theme_Dark_Text;
                     break;
 
                 case MultilingualConfig.Language_ko_KR:
@@ -2276,6 +2840,10 @@ namespace QuickStart
                     this.toolStripMenuItem_EditMode.Text = Resources.Resource_ko_KR.toolStripMenuItem_EditMode_Text;
                     this.toolStripMenuItem_EditMode_On.Text = Resources.Resource_ko_KR.toolStripMenuItem_EditMode_On_Text;
                     this.toolStripMenuItem_EditMode_Off.Text = Resources.Resource_ko_KR.toolStripMenuItem_EditMode_Off_Text;
+                    this.toolStripMenuItem_Theme.Text = Resources.Resource_ko_KR.toolStripMenuItem_Theme_Text;
+                    this.toolStripMenuItem_Theme_Auto.Text = Resources.Resource_ko_KR.toolStripMenuItem_Theme_Auto_Text;
+                    this.toolStripMenuItem_Theme_Light.Text = Resources.Resource_ko_KR.toolStripMenuItem_Theme_Light_Text;
+                    this.toolStripMenuItem_Theme_Dark.Text = Resources.Resource_ko_KR.toolStripMenuItem_Theme_Dark_Text;
                     break;
 
                 default:
@@ -2315,6 +2883,24 @@ namespace QuickStart
                 }
 
             }
+
+            // 系统明暗主题实时切换：设置变更广播 WM_SETTINGCHANGE(ImmersiveColorSet) 时立即重应用（Auto 模式下生效）
+            const int WM_SETTINGCHANGE = 0x001A;
+            if (m.Msg == WM_SETTINGCHANGE && m.LParam != IntPtr.Zero)
+            {
+                try
+                {
+                    string section = Marshal.PtrToStringAuto(m.LParam);
+                    if ("ImmersiveColorSet".Equals(section))
+                    {
+                        this.ApplyTheme();
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+
             base.WndProc(ref m);
         }
 

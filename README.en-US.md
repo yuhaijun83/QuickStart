@@ -88,8 +88,41 @@ A quick-launch tool that gathers your frequently used programs and commands in o
       13.Buttons use a rounded keycap-style 3D look (white top face + light gray side wall below);
         pressing sinks and darkens the face, and hovering makes the button text float slightly up and down;
         button text wider than one line wraps automatically at spaces, an ellipsis ... is shown when the lines exceed the button height, and manual line breaks are shown in the ini example of item 7.
+
+      14.Program icon shown automatically at the top-left of each button: the system-associated icon of the program
+        configured in Program_Name (exe/cmd/bat/msc/lnk etc.) is extracted and displayed automatically;
+        bare commands (e.g. shutdown, notepad) are resolved via PATH; no icon is shown when the program is missing or not configured; icons are re-extracted automatically after ini changes, no restart needed;
+        set MainForm_ShowProgramIcon=Off in the [System_Info] section to hide the icons (default On, takes effect automatically after saving).
+
+      15.System light/dark theme following supported: set MainForm_Theme=Auto/Light/Dark in the
+        [System_Info] section (default Auto follows the system theme; the window follows system theme
+        switches in real time without restart); it can also be switched anytime via the tray menu
+        【Theme】(Follow System / Light / Dark), applied instantly and saved back to ini; in light mode
+        the ini-configured button colors apply unchanged, in dark mode they are auto-converted to
+        dark-friendly tones (explicitly configured colors keep their hue); dialogs switch to a dark style in dark mode too.
   
 【Changelog】：
+
+      11.v26.12
+        Release builds now also copy the project QuickStart.ini to the output as QuickStart_Template.ini (template config; not generated in Debug)
+        Release builds now also copy the 5 localized README files and LICENSE to the output Readme folder (not generated in Debug)
+        Release builds now also copy the entire project Sample_ini folder to the output (ini configuration examples; not generated in Debug)
+        Release builds no longer generate the QuickStart.pdb debug symbols file (Debug unaffected)
+        Added program icon at the top-left of each button: system icon of the exe/cmd/bat/msc/lnk configured in ini Program_Name is extracted automatically, bare commands resolved via PATH, no icon when program is missing, ini hot-reload supported
+        Added program icon display switch: MainForm_ShowProgramIcon=Off in the [System_Info] ini section hides the icons (default On, hot-reload supported; auto-added on startup when missing from older ini files)
+        Program icons are now extracted asynchronously in the background: the window appears first and icons fade in shortly after, without delaying startup
+        Added cross-reload icon cache: extracted icons are reused across ini hot reloads and icon toggling (automatically re-extracted when the program file changes)
+        When the [System_Info] section is missing, a complete block identical to the template (System Config comment banner + section + 6 keys in fixed order) is now inserted at the first line of the file on startup, instead of being appended at the end
+        Fixed: when [System_Info] is the first line of a UTF-8 BOM ini, settings became unreadable and a duplicate section was appended at the end (a banner comment is now auto-inserted above the section); ANSI/GBK-encoded or read-only ini files are now skipped safely instead of being corrupted or crashing startup
+        Added system theme following: ini [System_Info] MainForm_Theme=Auto/Light/Dark (default Auto follows the system light/dark theme; the key is auto-added to old ini files at startup)
+        Added a "Theme" submenu to the tray menu (Follow System / Light / Dark); switching applies instantly and is written back to ini
+        The title bar follows the theme too (dark title bar in dark mode); in dark mode button and text colors are auto-converted to dark-friendly tones while explicitly configured ini colors keep their hue
+        In light mode, ini background/text colors apply unchanged; changing the Theme key supports hot reload
+        When the system switches between light and dark themes, running windows follow in real time without restart
+        In dark mode, dialogs such as exit confirmation use a dark-styled custom message box; light mode keeps the native system dialog
+        The About window follows the light/dark theme as well (window, title bar, button and link all dark-styled in dark mode)
+        In dark mode, the tray right-click menu is dark-styled too (including submenus, separators, check marks and arrows); light mode keeps the native menu
+        Runtime requirement clarified as .NET Framework 4.7.2 (compile target lowered from 4.8 to 4.7.2, compiler-enforced verification that no newer APIs are used)
 
       10.v26.11
         Max buttons raised from 48 to 64 (8 rows × 8 columns); older ini files auto-completed with missing sections (hidden by default)

@@ -1,0 +1,9 @@
+[Button_01]
+Button_Name=Control
+Button_Visible=1
+Button_Enable=1
+Button_BackColor=
+Button_TextColor=
+Program_Name=C:\Windows\system32\control.exe
+Program_Type=exe
+Program_Param= /name Microsoft.AdministrativeTools

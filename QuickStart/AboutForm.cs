@@ -11,16 +11,30 @@ namespace QuickStart
 {
     public partial class aboutForm : Form
     {
+        private bool bDarkMode = false;
+
+        // 与暗色弹框/主窗体一致的暗色配色
+        private static readonly Color ColorDarkBack = Color.FromArgb(32, 32, 32);
+        private static readonly Color ColorDarkText = Color.FromArgb(240, 240, 240);
+        private static readonly Color ColorDarkButtonBack = Color.FromArgb(62, 62, 62);
+        private static readonly Color ColorDarkButtonBorder = Color.FromArgb(100, 100, 100);
+        private static readonly Color ColorDarkLink = Color.FromArgb(120, 175, 230);
+
         public aboutForm()
         {
             InitializeComponent();
         }
 
-        public aboutForm(string strWin_Language)
+        public aboutForm(string strWin_Language, bool darkMode)
         {
             InitializeComponent();
+            this.bDarkMode = darkMode;
             this.lbl_BuildVersion.Text = Properties.Resources.Program_Build_Version_Text;
             this.setAboutFormLanguage(strWin_Language);
+            if (this.bDarkMode)
+            {
+                this.ApplyDarkStyle();
+            }
         }
 
         private void button_AboutFormClose_Click(object sender, EventArgs e)
@@ -32,6 +46,42 @@ namespace QuickStart
         {
             this.InitLogo();
             base.OnLoad(e);
+        }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            if (this.bDarkMode)
+            {
+                ThemeHelper.ApplyTitleBarTheme(this.Handle, true);
+            }
+        }
+
+        // 暗色风格：窗体/文字/按钮/链接配色与暗色弹框一致（亮色模式保持系统原生外观不动）
+        private void ApplyDarkStyle()
+        {
+            this.BackColor = ColorDarkBack;
+            this.ForeColor = ColorDarkText;
+
+            this.lbl_BigTitle.BackColor = ColorDarkBack;
+            this.lbl_BigTitle.ForeColor = ColorDarkText;
+            this.lbl_BuildVersion.BackColor = ColorDarkBack;
+            this.lbl_BuildVersion.ForeColor = ColorDarkText;
+            this.pictureBox1.BackColor = ColorDarkBack;
+
+            this.linkLabel_GitHub.BackColor = ColorDarkBack;
+            this.linkLabel_GitHub.LinkColor = ColorDarkLink;
+            this.linkLabel_GitHub.ActiveLinkColor = Color.FromArgb(160, 200, 240);
+            this.linkLabel_GitHub.VisitedLinkColor = ColorDarkLink;
+
+            this.button_AboutForm_Close.FlatStyle = FlatStyle.Flat;
+            this.button_AboutForm_Close.FlatAppearance.BorderColor = ColorDarkButtonBorder;
+            this.button_AboutForm_Close.FlatAppearance.BorderSize = 1;
+            this.button_AboutForm_Close.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 82, 82);
+            this.button_AboutForm_Close.FlatAppearance.MouseDownBackColor = Color.FromArgb(96, 96, 96);
+            this.button_AboutForm_Close.BackColor = ColorDarkButtonBack;
+            this.button_AboutForm_Close.ForeColor = ColorDarkText;
+            this.button_AboutForm_Close.UseVisualStyleBackColor = false;
         }
 
         // pictureBox1 使用的是 BackgroundImage，而 BackgroundImageLayout 默认值为 Tile，

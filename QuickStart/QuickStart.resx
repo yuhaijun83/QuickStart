@@ -5972,4 +5972,28 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="toolStripMenuItem_Theme.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 24</value>
+  </data>
+  <data name="toolStripMenuItem_Theme.Text" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="toolStripMenuItem_Theme_Auto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Theme_Auto.Text" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="toolStripMenuItem_Theme_Light.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Theme_Light.Text" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="toolStripMenuItem_Theme_Dark.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 26</value>
+  </data>
+  <data name="toolStripMenuItem_Theme_Dark.Text" xml:space="preserve">
+    <value>Dark</value>
+  </data>
 </root>
