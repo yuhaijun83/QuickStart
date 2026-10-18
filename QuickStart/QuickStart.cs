@@ -2995,19 +2995,24 @@ namespace QuickStart
 
         private void toSetAutoRun(bool bAutoRunFlg)
         {
-            RegistryKey registryKey = OperateRegistry.GetRegistryKeyByHelper(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
-            if (bAutoRunFlg == true)
+            using (RegistryKey registryKey = OperateRegistry.GetRegistryKeyByHelper(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true))
             {
-                registryKey.SetValue(Process_RegItemName, "\"" + Process.GetCurrentProcess().MainModule.FileName + "\"", 
-                    RegistryValueKind.String);
-                registryKey.Close();
-            }
-            else
-            {
-                if (OperateRegistry.isExistItemKeyName(registryKey, Process_RegItemName) == true)
+                if (null == registryKey)
                 {
-                    registryKey.DeleteValue(Process_RegItemName);
-                    registryKey.Close();
+                    return;
+                }
+
+                if (bAutoRunFlg == true)
+                {
+                    registryKey.SetValue(Process_RegItemName, "\"" + Process.GetCurrentProcess().MainModule.FileName + "\"",
+                        RegistryValueKind.String);
+                }
+                else
+                {
+                    if (OperateRegistry.isExistItemKeyName(registryKey, Process_RegItemName) == true)
+                    {
+                        registryKey.DeleteValue(Process_RegItemName);
+                    }
                 }
             }
         }
