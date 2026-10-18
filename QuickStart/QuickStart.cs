@@ -13,6 +13,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace QuickStart
@@ -118,6 +119,9 @@ namespace QuickStart
         private static string strCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
         private string strIniFilePath = strCurrentDirectory + "\\" + INI_FILE_NAME;
         private string win_Language = MultilingualConfig.Language_en_US;
+
+        // 单实例互斥体：静态持有，保证进程存活期内不释放（同名 exe 阻塞、改名放行）
+        private static Mutex singleInstanceMutex = null;
 
         private static List<IniConfig> lstConfig = new List<IniConfig>();
 
@@ -1215,17 +1219,12 @@ namespace QuickStart
 
         private void toCheckIsNotExistCurrentProcess()
         {
-            int iCount = 0;
-            Process[] processes = Process.GetProcesses();
-            foreach (Process process in processes)
-            {
-                if (process.ProcessName == Process_RegItemName)
-                {
-                    iCount = iCount + 1;
-                }
-            }
+            // 单实例：按 exe 文件名命名互斥体（同名阻塞、改名放行）；Local\ 按登录会话隔离
+            string strMutexName = @"Local\QuickStart_" + Process.GetCurrentProcess().ProcessName;
+            bool bCreatedNew;
+            singleInstanceMutex = new Mutex(true, strMutexName, out bCreatedNew);
 
-            if (iCount > 1)
+            if (!bCreatedNew)
             {
                 string strTitle = "【Warn】";
                 string strMessage = "The Program is runing...";
