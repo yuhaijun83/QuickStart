@@ -181,6 +181,7 @@ namespace QuickStart
                 btn.DragDrop += new DragEventHandler(this.button_DragDrop);
                 btn.MouseLeave += new EventHandler(this.button_MouseLeave3D);
                 btn.MouseEnter += new EventHandler(this.button_MouseEnter3D);
+                btn.MouseCaptureChanged += new EventHandler(this.button_MouseCaptureChanged);
 
                 // 立体感：自绘渐变面与高光/阴影边缘（见 button_Paint3D）
                 btn.FlatStyle = FlatStyle.Flat;
@@ -2274,6 +2275,23 @@ namespace QuickStart
                 btn.Invalidate();
             }
             this.dragSourceButton = null;
+        }
+
+        // 丢失鼠标捕获（如按下左键时 Alt+Tab 切走）不会产生 MouseUp/MouseLeave，这里兜底清除按下态。
+        // 该事件在「获得」捕获时也会触发（此时 Capture 为 true），需跳过，否则会在按下瞬间把按下反馈清掉
+        private void button_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn.Capture)
+            {
+                return;
+            }
+
+            this.toCancelLongPress();
+            if (this.pressedButtons.Remove(btn))
+            {
+                btn.Invalidate();
+            }
         }
 
         // 编辑模式下右键窗体内任意位置立即退出编辑模式（无需等 8 秒自动退出）
