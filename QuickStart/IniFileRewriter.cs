@@ -40,100 +40,110 @@ namespace QuickStart
                 return false;
             }
 
-            byte[] raw = File.ReadAllBytes(iniFilePath);
-            bool hasBom = raw.Length >= 3 && raw[0] == 0xEF && raw[1] == 0xBB && raw[2] == 0xBF;
-            string content = hasBom ? Encoding.UTF8.GetString(raw, 3, raw.Length - 3) : Encoding.UTF8.GetString(raw);
-            string newline = content.Contains("\r\n") ? "\r\n" : "\n";
-            string[] lines = content.Replace("\r\n", "\n").Replace("\r", "\n").Split('\n');
-
-            // 段名 -> 该段应写入的配置（可视段已被重排为新顺序）
-            Dictionary<string, IniConfig> byName = new Dictionary<string, IniConfig>(StringComparer.OrdinalIgnoreCase);
-            foreach (IniSection section in sectionsInFileOrder)
+            string tempPath = iniFilePath + ".tmp";
+            try
             {
-                byName[section.SectionName] = section.Config;
-            }
+                byte[] raw = File.ReadAllBytes(iniFilePath);
+                bool hasBom = raw.Length >= 3 && raw[0] == 0xEF && raw[1] == 0xBB && raw[2] == 0xBF;
+                string content = hasBom ? Encoding.UTF8.GetString(raw, 3, raw.Length - 3) : Encoding.UTF8.GetString(raw);
+                string newline = content.Contains("\r\n") ? "\r\n" : "\n";
+                string[] lines = content.Replace("\r\n", "\n").Replace("\r", "\n").Split('\n');
 
-            List<string> output = new List<string>(lines.Length + 16);
-            bool inButtonSection = false;
-            IniConfig currentConfig = null;
-            HashSet<string> seenKeys = null;
-            HashSet<string> seenSections = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-
-            foreach (string line in lines)
-            {
-                string trimmed = line.Trim();
-
-                if (trimmed.Length > 2 && trimmed.StartsWith("[") && trimmed.EndsWith("]"))
+                // 段名 -> 该段应写入的配置（可视段已被重排为新顺序）
+                Dictionary<string, IniConfig> byName = new Dictionary<string, IniConfig>(StringComparer.OrdinalIgnoreCase);
+                foreach (IniSection section in sectionsInFileOrder)
                 {
-                    AppendMissingKeys(output, inButtonSection, currentConfig, seenKeys);
+                    byName[section.SectionName] = section.Config;
+                }
 
-                    string sectionName = trimmed.Substring(1, trimmed.Length - 2).Trim();
-                    inButtonSection = sectionName.StartsWith("Button_", StringComparison.OrdinalIgnoreCase);
-                    if (inButtonSection)
+                List<string> output = new List<string>(lines.Length + 16);
+                bool inButtonSection = false;
+                IniConfig currentConfig = null;
+                HashSet<string> seenKeys = null;
+                HashSet<string> seenSections = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+                foreach (string line in lines)
+                {
+                    string trimmed = line.Trim();
+
+                    if (trimmed.Length > 2 && trimmed.StartsWith("[") && trimmed.EndsWith("]"))
                     {
-                        seenSections.Add(sectionName);
-                        byName.TryGetValue(sectionName, out currentConfig);
-                        seenKeys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+                        AppendMissingKeys(output, inButtonSection, currentConfig, seenKeys);
+
+                        string sectionName = trimmed.Substring(1, trimmed.Length - 2).Trim();
+                        inButtonSection = sectionName.StartsWith("Button_", StringComparison.OrdinalIgnoreCase);
+                        if (inButtonSection)
+                        {
+                            seenSections.Add(sectionName);
+                            byName.TryGetValue(sectionName, out currentConfig);
+                            seenKeys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+                        }
+                        else
+                        {
+                            currentConfig = null;
+                            seenKeys = null;
+                        }
+
+                        output.Add(line);
+                        continue;
                     }
-                    else
+
+                    if (inButtonSection && null != currentConfig)
                     {
-                        currentConfig = null;
-                        seenKeys = null;
+                        int eq = trimmed.IndexOf('=');
+                        if (eq > 0)
+                        {
+                            string key = trimmed.Substring(0, eq).Trim();
+                            string canonicalKey = ToCanonicalKey(key);
+                            if (null != canonicalKey)
+                            {
+                                seenKeys.Add(canonicalKey);
+                                output.Add(canonicalKey + "=" + GetConfigValue(currentConfig, canonicalKey));
+                                continue;
+                            }
+                        }
+                        // 段内的注释行/空行/未知行原样保留
                     }
 
                     output.Add(line);
-                    continue;
                 }
 
-                if (inButtonSection && null != currentConfig)
+                AppendMissingKeys(output, inButtonSection, currentConfig, seenKeys);
+
+                // 文件里不存在的按钮段（如旧 ini 升级到更多按钮）追加到文件末尾
+                foreach (IniSection section in sectionsInFileOrder)
                 {
-                    int eq = trimmed.IndexOf('=');
-                    if (eq > 0)
+                    if (!seenSections.Contains(section.SectionName))
                     {
-                        string key = trimmed.Substring(0, eq).Trim();
-                        string canonicalKey = ToCanonicalKey(key);
-                        if (null != canonicalKey)
+                        output.Add("");
+                        output.Add("[" + section.SectionName + "]");
+                        foreach (string key in BUTTON_KEYS)
                         {
-                            seenKeys.Add(canonicalKey);
-                            output.Add(canonicalKey + "=" + GetConfigValue(currentConfig, canonicalKey));
-                            continue;
+                            output.Add(key + "=" + GetConfigValue(section.Config, key));
                         }
                     }
-                    // 段内的注释行/空行/未知行原样保留
                 }
 
-                output.Add(line);
-            }
+                string result = string.Join(newline, output);
+                File.WriteAllText(tempPath, result, hasBom ? new UTF8Encoding(true) : new UTF8Encoding(false));
 
-            AppendMissingKeys(output, inButtonSection, currentConfig, seenKeys);
-
-            // 文件里不存在的按钮段（如旧 ini 升级到更多按钮）追加到文件末尾
-            foreach (IniSection section in sectionsInFileOrder)
-            {
-                if (!seenSections.Contains(section.SectionName))
+                // 原子替换：替换前原文件始终存在，替换失败也不会丢失配置文件
+                try
                 {
-                    output.Add("");
-                    output.Add("[" + section.SectionName + "]");
-                    foreach (string key in BUTTON_KEYS)
-                    {
-                        output.Add(key + "=" + GetConfigValue(section.Config, key));
-                    }
+                    File.Replace(tempPath, iniFilePath, null);
                 }
-            }
-
-            string result = string.Join(newline, output);
-            string tempPath = iniFilePath + ".tmp";
-            File.WriteAllText(tempPath, result, hasBom ? new UTF8Encoding(true) : new UTF8Encoding(false));
-
-            try
-            {
-                if (File.Exists(iniFilePath))
+                catch (Exception)
                 {
-                    File.Delete(iniFilePath);
+                    // 个别文件系统（FAT/网络盘）不支持原子替换时退回覆盖写，原文件始终保留
+                    File.Copy(tempPath, iniFilePath, true);
                 }
-                File.Move(tempPath, iniFilePath);
+                return true;
             }
-            catch
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
             {
                 try
                 {
@@ -142,14 +152,11 @@ namespace QuickStart
                         File.Delete(tempPath);
                     }
                 }
-                catch
+                catch (Exception)
                 {
                     ;
                 }
-                return false;
             }
-
-            return true;
         }
 
         private static string ToCanonicalKey(string key)
