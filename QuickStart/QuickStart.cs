@@ -1126,7 +1126,7 @@ namespace QuickStart
                 return null;
             }
 
-            return t.Substring(1, iEnd - 1);
+            return t.Substring(1, iEnd - 1).Trim();
         }
 
         // ini 缺失 [System_Info] 段时，在文件第一行插入与模板完全一致的完整块：
@@ -1656,10 +1656,11 @@ namespace QuickStart
             string content;
             while ((content = streamReader.ReadLine()) != null)
             {
-                if (content.StartsWith("[Button_"))
+                string strLineSection = toSectionNameOfLine(content);
+                if (strLineSection != null && strLineSection.StartsWith("Button_", StringComparison.OrdinalIgnoreCase))
                 {
                     ini = new IniConfig();
-                    strSection = content.Replace("[", "").Replace("]", "");
+                    strSection = strLineSection;
 
                     ini.Button_Name = OperateIniFile.ReadIniData(strSection, Button_Name, "", strIniFilePath, "utf-8", 1024);
                     ini.Button_Visible = OperateIniFile.ReadIniData(strSection, Button_Visible, "0", strIniFilePath);

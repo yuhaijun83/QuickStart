@@ -65,12 +65,13 @@ namespace QuickStart
                 foreach (string line in lines)
                 {
                     string trimmed = line.Trim();
+                    int iSectionEnd = trimmed.IndexOf(']');
 
-                    if (trimmed.Length > 2 && trimmed.StartsWith("[") && trimmed.EndsWith("]"))
+                    if (trimmed.Length > 2 && trimmed[0] == '[' && iSectionEnd > 0)
                     {
                         AppendMissingKeys(output, inButtonSection, currentConfig, seenKeys);
 
-                        string sectionName = trimmed.Substring(1, trimmed.Length - 2).Trim();
+                        string sectionName = trimmed.Substring(1, iSectionEnd - 1).Trim();
                         inButtonSection = sectionName.StartsWith("Button_", StringComparison.OrdinalIgnoreCase);
                         if (inButtonSection)
                         {
