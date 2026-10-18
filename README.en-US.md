@@ -34,23 +34,23 @@ A quick-launch tool that gathers your frequently used programs and commands in o
   
        7.Ini file configuration example:
         #############################################
-        #[Button_01] - [Button_64] up to 64 buttons supported, beyond 64 ignored
+        # [Button_01] - [Button_64] up to 64 buttons supported, beyond 64 ignored (no need to modify)
         [Button_XX]
-        #Button display name【line breaks supported via </br>, <br>, <br/> or \n; text wider than one line wraps automatically at spaces, and an ellipsis ... is shown when the lines exceed the button height】
+        # Button display name【line breaks supported via </br>, <br>, <br/> or \n; text wider than one line wraps automatically at spaces, and an ellipsis ... is shown when the lines exceed the button height】
         Button_Name=
-        #Button visibility【1: visible; anything else: hidden; default: empty = hidden】
+        # Button visibility【1: visible; anything else: hidden; default: empty = hidden】
         Button_Visible=
-        #Button enabled/disabled【1: enabled; anything else: disabled; default: empty = disabled】
+        # Button enabled/disabled【1: enabled; anything else: disabled; default: empty = disabled】
         Button_Enable=
-        #Button background color【value is an English color name】
+        # Button background color【value is an English color name】(see the color names in Sample_ini/Color.html)
         Button_BackColor=
-        #Button text color【value is an English color name】
+        # Button text color【value is an English color name】(see the color names in Sample_ini/Color.html)
         Button_TextColor=
-        #Full path and name of the program to launch
+        # Full path and name of the program to launch
         Program_Name=
-        #Launch type【exe: executable file; cmd: cmd command or *.cmd, *.bat file; default: exe】
+        # Launch type【exe: executable file; cmd: cmd command or *.cmd, *.bat file; default: exe】
         Program_Type=
-        #Launch arguments
+        # Launch arguments
         Program_Param=
         #############################################
 
@@ -66,19 +66,14 @@ A quick-launch tool that gathers your frequently used programs and commands in o
 
       8.Autostart can be configured from the system tray menu.
 
-      9.Only one instance of this program can run at a time.
+      9.Only one instance of this program can run at a time. (To run multiple instances, copy the entire folder and rename the copied exe file)
 
       10.Button background and text colors can be customized (see the color names in Sample_ini/Color.html).
 
       11.Drag & drop to reorder buttons: enable【Edit mode】in the taskbar tray menu【Edit mode】, or
         long-press any button for 3 seconds to enter edit mode;
-        press and hold a button, drag it onto the target button and release to move it (iOS-style insertion,
-        other buttons shift accordingly); the change applies immediately and is written back to the ini file
-        (the order of [Button_XX] sections matches the on-screen order, while comments, blank lines and
-        hidden-button settings inside sections are preserved). No restart needed.
-        Exit via the tray menu【Edit mode - off】when done, or right-click anywhere inside the window to exit immediately;
-        edit mode auto-exits after 8 seconds without
-        any order change; clicking buttons in edit mode does not launch programs.
+        press and hold a button, drag it onto the target button and release to move it (iOS-style insertion, other buttons shift accordingly); the change applies immediately and is written back to the ini file (the order of [Button_XX] sections matches the on-screen order, while comments, blank lines and hidden-button settings inside sections are preserved). No restart needed.
+        Exit via the tray menu【Edit mode - off】when done, or right-click anywhere inside the window to exit immediately; edit mode auto-exits after 8 seconds without any order change; clicking buttons in edit mode does not launch programs.
   
       12.High-DPI displays supported: PerMonitorV2 DPI awareness enabled, rendering natively at the
         display's real resolution with no blurring from system bitmap scaling; after switching displays or
@@ -110,20 +105,7 @@ A quick-launch tool that gathers your frequently used programs and commands in o
         Release builds no longer generate the QuickStart.pdb debug symbols file (Debug unaffected)
         Added program icon at the top-left of each button: system icon of the exe/cmd/bat/msc/lnk configured in ini Program_Name is extracted automatically, bare commands resolved via PATH, no icon when program is missing, ini hot-reload supported
         Added program icon display switch: MainForm_ShowProgramIcon=Off in the [System_Info] ini section hides the icons (default On, hot-reload supported; auto-added on startup when missing from older ini files)
-        Added a "Program Icon" submenu (On/Off) to the tray menu; toggling applies instantly and is written back to ini
-        Program icons are now extracted asynchronously in the background: the window appears first and icons fade in shortly after, without delaying startup
-        Added cross-reload icon cache: extracted icons are reused across ini hot reloads and icon toggling (automatically re-extracted when the program file changes)
-        When the [System_Info] section is missing, a complete block identical to the template (System Config comment banner + section + 6 keys in fixed order) is now inserted at the first line of the file on startup, instead of being appended at the end
-        Fixed: when [System_Info] is the first line of a UTF-8 BOM ini, settings became unreadable and a duplicate section was appended at the end (a banner comment is now auto-inserted above the section); ANSI/GBK-encoded or read-only ini files are now skipped safely instead of being corrupted or crashing startup
         Added system theme following: ini [System_Info] MainForm_Theme=Auto/Light/Dark (default Auto follows the system light/dark theme; the key is auto-added to old ini files at startup)
-        Added a "Theme" submenu to the tray menu (Follow System / Light / Dark); switching applies instantly and is written back to ini
-        The title bar follows the theme too (dark title bar in dark mode); in dark mode button and text colors are auto-converted to dark-friendly tones while explicitly configured ini colors keep their hue
-        In light mode, ini background/text colors apply unchanged; changing the Theme key supports hot reload
-        When the system switches between light and dark themes, running windows follow in real time without restart
-        In dark mode, dialogs such as exit confirmation use a dark-styled custom message box; light mode keeps the native system dialog
-        The About window follows the light/dark theme as well (window, title bar, button and link all dark-styled in dark mode)
-        In dark mode, the tray right-click menu is dark-styled too (including submenus, separators, check marks and arrows); light mode keeps the native menu
-        Runtime requirement clarified as .NET Framework 4.7.2 (compile target lowered from 4.8 to 4.7.2, compiler-enforced verification that no newer APIs are used)
 
       10.v26.11
         Max buttons raised from 48 to 64 (8 rows × 8 columns); older ini files auto-completed with missing sections (hidden by default)

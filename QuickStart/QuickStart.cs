@@ -2455,11 +2455,51 @@ namespace QuickStart
             lstConfig.RemoveAt(iFrom);
             lstConfig.Insert(iTo, moved);
 
+            this.toRemapButtonIconsAfterReorder(iFrom, iTo);
+
             this.RenderButtons();
             this.toSaveButtonOrder();
 
             // 顺序有变动，重置 8 秒自动退出计时
             this.toRestartEditIdle();
+        }
+
+        // 拖拽换位后同步重排图标映射：buttonIcons 以按钮控件为键，若不随 lstConfig 一起换位，
+        // 图标会留在旧位置，直到 ini 热重载（约 600ms 防抖）才被纠正，视觉上拖拽结果"停顿一下"；
+        // 纯字典换位零提取开销，图标与文字同帧更新。同时递增代数，丢弃换位前在途的后台提取结果，
+        // 避免过期结果回填旧映射
+        private void toRemapButtonIconsAfterReorder(int iFrom, int iTo)
+        {
+            this.iconGeneration++;
+
+            if (this.buttonIcons.Count == 0)
+            {
+                return;
+            }
+
+            List<Bitmap> iconsByIndex = new List<Bitmap>();
+            foreach (Button btn in this.buttonList)
+            {
+                Bitmap bmp;
+                this.buttonIcons.TryGetValue(btn, out bmp);
+                iconsByIndex.Add(bmp);
+            }
+
+            Bitmap movedIcon = iconsByIndex[iFrom];
+            iconsByIndex.RemoveAt(iFrom);
+            iconsByIndex.Insert(iTo, movedIcon);
+
+            Dictionary<Button, Bitmap> remapped = new Dictionary<Button, Bitmap>();
+            for (int i = 0; i < this.buttonList.Count; i++)
+            {
+                if (iconsByIndex[i] != null)
+                {
+                    remapped[this.buttonList[i]] = iconsByIndex[i];
+                }
+            }
+
+            this.buttonIcons = remapped;
+            this.toInvalidateButtons();
         }
 
         private void toHighlightTarget(Button target)
