@@ -129,6 +129,9 @@ namespace QuickStart
             this.toolStripMenuItem_Theme_Auto = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Theme_Light = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Theme_Dark = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_ProgramIcon = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_ProgramIcon_On = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_ProgramIcon_Off = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem_About = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -606,6 +609,7 @@ namespace QuickStart
             this.toolStripMenuItem_Language,
             this.toolStripMenuItem_EditMode,
             this.toolStripMenuItem_Theme,
+            this.toolStripMenuItem_ProgramIcon,
             this.toolStripSeparator2,
             this.toolStripMenuItem_About,
             this.toolStripSeparator1,
@@ -823,6 +827,26 @@ namespace QuickStart
             resources.ApplyResources(this.toolStripMenuItem_Theme_Dark, "toolStripMenuItem_Theme_Dark");
             this.toolStripMenuItem_Theme_Dark.Click += new System.EventHandler(this.toolStripMenuItem_Theme_Dark_Click);
             // 
+            // toolStripMenuItem_ProgramIcon
+            // 
+            this.toolStripMenuItem_ProgramIcon.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem_ProgramIcon_On,
+            this.toolStripMenuItem_ProgramIcon_Off});
+            this.toolStripMenuItem_ProgramIcon.Name = "toolStripMenuItem_ProgramIcon";
+            resources.ApplyResources(this.toolStripMenuItem_ProgramIcon, "toolStripMenuItem_ProgramIcon");
+            // 
+            // toolStripMenuItem_ProgramIcon_On
+            // 
+            this.toolStripMenuItem_ProgramIcon_On.Name = "toolStripMenuItem_ProgramIcon_On";
+            resources.ApplyResources(this.toolStripMenuItem_ProgramIcon_On, "toolStripMenuItem_ProgramIcon_On");
+            this.toolStripMenuItem_ProgramIcon_On.Click += new System.EventHandler(this.toolStripMenuItem_ProgramIcon_On_Click);
+            // 
+            // toolStripMenuItem_ProgramIcon_Off
+            // 
+            this.toolStripMenuItem_ProgramIcon_Off.Name = "toolStripMenuItem_ProgramIcon_Off";
+            resources.ApplyResources(this.toolStripMenuItem_ProgramIcon_Off, "toolStripMenuItem_ProgramIcon_Off");
+            this.toolStripMenuItem_ProgramIcon_Off.Click += new System.EventHandler(this.toolStripMenuItem_ProgramIcon_Off_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -1031,6 +1055,9 @@ namespace QuickStart
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Theme_Auto;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Theme_Light;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Theme_Dark;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_ProgramIcon;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_ProgramIcon_On;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_ProgramIcon_Off;
     }
 }
 

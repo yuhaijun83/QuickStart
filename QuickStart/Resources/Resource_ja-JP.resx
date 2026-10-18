@@ -192,4 +192,13 @@
   <data name="toolStripMenuItem_Theme_Dark_Text" xml:space="preserve">
     <value>ダーク</value>
   </data>
+  <data name="toolStripMenuItem_ProgramIcon_Text" xml:space="preserve">
+    <value>プログラムアイコン</value>
+  </data>
+  <data name="toolStripMenuItem_ProgramIcon_On_Text" xml:space="preserve">
+    <value>開ける</value>
+  </data>
+  <data name="toolStripMenuItem_ProgramIcon_Off_Text" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
 </root>

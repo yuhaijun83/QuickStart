@@ -87,7 +87,7 @@
       14.단추 좌측 상단에 실행 프로그램 아이콘 자동 표시: ini의 Program_Name에 설정된 프로그램(exe/cmd/bat/msc/lnk 등)
         의 시스템 연결 아이콘을 자동 추출하여 표시; 명령어만 입력한 경우(shutdown, notepad 등)는 PATH에서 자동 검색;
         프로그램이 없거나 미설정 시 아이콘 미표시; ini 변경 후 자동 재추출, 재시작 불필요;
-        [System_Info] 섹션에서 MainForm_ShowProgramIcon=Off로 설정하면 아이콘 표시를 끌 수 있습니다(기본 On, 저장 후 자동 반영).
+        [System_Info] 섹션에서 MainForm_ShowProgramIcon=Off로 설정하면 아이콘 표시를 끌 수 있습니다(기본 On, 저장 후 자동 반영). 트레이의 [프로그램 아이콘] 하위 메뉴에서도 언제든 켜고 끌 수 있으며, 선택 후 즉시 반영되어 ini에 저장됩니다.
 
       15.시스템 명암 테마 추종 지원: ini [System_Info] 섹션에서 MainForm_Theme=Auto/Light/Dark 설정
         (기본 Auto는 시스템 테마 자동 추종, 시스템 명암 전환 시 창이 재시작 없이 실시간 추종);
@@ -104,6 +104,7 @@
         Release 빌드에서 QuickStart.pdb 디버그 기호 파일 생성하지 않음(Debug 영향 없음)
         단추 좌측 상단 실행 프로그램 아이콘 자동 표시 추가: ini Program_Name의 exe/cmd/bat/msc/lnk 등 시스템 아이콘 자동 추출, 명령어만 입력 시 PATH 검색, 프로그램 없으면 미표시, ini 핫릴로드 지원
         프로그램 아이콘 표시 스위치 추가: ini [System_Info] 섹션의 MainForm_ShowProgramIcon=Off로 아이콘 표시 끄기 가능(기본 On, 핫릴로드 지원, 구버전 ini에 키 없으면 시작 시 자동 추가)
+        트레이 메뉴에 "프로그램 아이콘" 하위 메뉴(켜기/끄기) 추가, 전환 즉시 적용되고 ini에 저장
         버튼 아이콘을 백그라운드 비동기 추출로 변경: 창이 먼저 표시되고 아이콘은 곧바로 나타남, 시작 대기 없음
         핫릴로드 간 아이콘 캐시 추가: 추출된 아이콘은 ini 핫릴로드 및 아이콘 토글 후에도 재사용(프로그램 업데이트 시 자동 재추출)
         [System_Info] 섹션이 없으면 시작 시 템플릿과 완전히 동일한 블록(System Config 주석 배너 + 섹션 + 6개 키 고정 순서)을 파일 첫 줄에 자동 삽입(기존에는 끝에 추가됨)

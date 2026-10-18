@@ -192,4 +192,13 @@
   <data name="toolStripMenuItem_Theme_Dark_Text" xml:space="preserve">
     <value>Dark</value>
   </data>
+  <data name="toolStripMenuItem_ProgramIcon_Text" xml:space="preserve">
+    <value>Program Icon</value>
+  </data>
+  <data name="toolStripMenuItem_ProgramIcon_On_Text" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="toolStripMenuItem_ProgramIcon_Off_Text" xml:space="preserve">
+    <value>Off</value>
+  </data>
 </root>

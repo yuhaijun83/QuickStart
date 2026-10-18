@@ -92,7 +92,7 @@ A quick-launch tool that gathers your frequently used programs and commands in o
       14.Program icon shown automatically at the top-left of each button: the system-associated icon of the program
         configured in Program_Name (exe/cmd/bat/msc/lnk etc.) is extracted and displayed automatically;
         bare commands (e.g. shutdown, notepad) are resolved via PATH; no icon is shown when the program is missing or not configured; icons are re-extracted automatically after ini changes, no restart needed;
-        set MainForm_ShowProgramIcon=Off in the [System_Info] section to hide the icons (default On, takes effect automatically after saving).
+        set MainForm_ShowProgramIcon=Off in the [System_Info] section to hide the icons (default On, takes effect automatically after saving). You can also toggle it anytime from the tray [Program Icon] submenu; the change applies instantly and is written back to the ini.
 
       15.System light/dark theme following supported: set MainForm_Theme=Auto/Light/Dark in the
         [System_Info] section (default Auto follows the system theme; the window follows system theme
@@ -110,6 +110,7 @@ A quick-launch tool that gathers your frequently used programs and commands in o
         Release builds no longer generate the QuickStart.pdb debug symbols file (Debug unaffected)
         Added program icon at the top-left of each button: system icon of the exe/cmd/bat/msc/lnk configured in ini Program_Name is extracted automatically, bare commands resolved via PATH, no icon when program is missing, ini hot-reload supported
         Added program icon display switch: MainForm_ShowProgramIcon=Off in the [System_Info] ini section hides the icons (default On, hot-reload supported; auto-added on startup when missing from older ini files)
+        Added a "Program Icon" submenu (On/Off) to the tray menu; toggling applies instantly and is written back to ini
         Program icons are now extracted asynchronously in the background: the window appears first and icons fade in shortly after, without delaying startup
         Added cross-reload icon cache: extracted icons are reused across ini hot reloads and icon toggling (automatically re-extracted when the program file changes)
         When the [System_Info] section is missing, a complete block identical to the template (System Config comment banner + section + 6 keys in fixed order) is now inserted at the first line of the file on startup, instead of being appended at the end

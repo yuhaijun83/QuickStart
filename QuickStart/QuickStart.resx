@@ -5996,4 +5996,22 @@
   <data name="toolStripMenuItem_Theme_Dark.Text" xml:space="preserve">
     <value>Dark</value>
   </data>
+  <data name="toolStripMenuItem_ProgramIcon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 24</value>
+  </data>
+  <data name="toolStripMenuItem_ProgramIcon.Text" xml:space="preserve">
+    <value>Program Icon</value>
+  </data>
+  <data name="toolStripMenuItem_ProgramIcon_On.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 26</value>
+  </data>
+  <data name="toolStripMenuItem_ProgramIcon_On.Text" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="toolStripMenuItem_ProgramIcon_Off.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 26</value>
+  </data>
+  <data name="toolStripMenuItem_ProgramIcon_Off.Text" xml:space="preserve">
+    <value>Off</value>
+  </data>
 </root>

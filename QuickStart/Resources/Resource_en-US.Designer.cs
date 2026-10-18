@@ -284,5 +284,32 @@ namespace QuickStart.Resources {
             }
         }
         
+        /// <summary>
+        ///   Look up a localized string similar to Program Icon menu item.
+        /// </summary>
+        internal static string toolStripMenuItem_ProgramIcon_Text {
+            get {
+                return ResourceManager.GetString("toolStripMenuItem_ProgramIcon_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Look up a localized string similar to Program Icon menu item.
+        /// </summary>
+        internal static string toolStripMenuItem_ProgramIcon_On_Text {
+            get {
+                return ResourceManager.GetString("toolStripMenuItem_ProgramIcon_On_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Look up a localized string similar to Program Icon menu item.
+        /// </summary>
+        internal static string toolStripMenuItem_ProgramIcon_Off_Text {
+            get {
+                return ResourceManager.GetString("toolStripMenuItem_ProgramIcon_Off_Text", resourceCulture);
+            }
+        }
+        
 }
 }

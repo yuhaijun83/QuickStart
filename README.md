@@ -86,7 +86,7 @@
       14.按钮左上角自动显示启动程序的图标：根据 ini 中 Program_Name 配置的程序（exe/cmd/bat/msc/lnk 等）
         自动提取系统关联图标显示；裸命令（如 shutdown、notepad）按 PATH 自动查找对应程序；
         程序不存在或未配置时不显示图标；ini 修改后自动重新提取，无需重启；
-        可在 [System_Info] 段设置 MainForm_ShowProgramIcon=Off 关闭图标显示（默认 On，修改保存后自动生效）。
+        可在 [System_Info] 段设置 MainForm_ShowProgramIcon=Off 关闭图标显示（默认 On，修改保存后自动生效）；也可通过托盘【程序图标】菜单随时开/关，选择后立即生效并写回 ini。
 
       15.支持跟随系统明暗主题：ini [System_Info] 段 MainForm_Theme=Auto/Light/Dark（默认 Auto 自动跟随
         系统主题，系统切换明暗时窗体实时跟随，无需重启）；也可通过托盘【主题】菜单随时切换
@@ -102,6 +102,7 @@
         Release 编译不再生成 QuickStart.pdb 调试符号文件（Debug 不受影响）
         新增按钮左上角自动显示启动程序图标：按 ini 的 Program_Name 自动提取 exe/cmd/bat/msc/lnk 等程序的系统图标，裸命令按 PATH 查找，程序不存在时不显示，支持 ini 热重载自动更新
         新增程序图标显示开关：ini [System_Info] 段 MainForm_ShowProgramIcon=Off 可关闭图标显示（默认 On，支持热重载；旧版 ini 缺失该键时启动自动补写）
+        托盘菜单新增"程序图标"子菜单（开/关），切换立即生效并写回 ini
         按钮程序图标改为后台异步提取：启动时窗体先显示、图标随后浮现，不再等待图标提取完成
         新增图标跨热重载缓存：ini 热重载或切换图标开关后，已提取的图标直接复用（程序文件更新后自动重新提取）
         ini 缺失 [System_Info] 段时，启动自动在文件第一行插入与模板完全一致的完整块（System Config 注释横幅 + 段 + 6 个键固定顺序），不再追加到文件末尾

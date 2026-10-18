@@ -192,4 +192,13 @@
   <data name="toolStripMenuItem_Theme_Dark_Text" xml:space="preserve">
     <value>深色</value>
   </data>
+  <data name="toolStripMenuItem_ProgramIcon_Text" xml:space="preserve">
+    <value>程序图标</value>
+  </data>
+  <data name="toolStripMenuItem_ProgramIcon_On_Text" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="toolStripMenuItem_ProgramIcon_Off_Text" xml:space="preserve">
+    <value>关</value>
+  </data>
 </root>

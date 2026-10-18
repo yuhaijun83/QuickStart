@@ -86,7 +86,7 @@
       14.按鈕左上角自動顯示啟動程式的圖示：根據 ini 中 Program_Name 設定的程式（exe/cmd/bat/msc/lnk 等）
         自動擷取系統關聯圖示顯示；裸命令（如 shutdown、notepad）依 PATH 自動尋找對應程式；
         程式不存在或未設定時不顯示圖示；ini 修改後自動重新擷取，無需重啟；
-        可在 [System_Info] 段設定 MainForm_ShowProgramIcon=Off 關閉圖示顯示（預設 On，修改儲存後自動生效）。
+        可在 [System_Info] 段設定 MainForm_ShowProgramIcon=Off 關閉圖示顯示（預設 On，修改儲存後自動生效）；亦可透過託盤【程式圖示】選單隨時開/關，選擇後立即生效並寫回 ini。
 
       15.支援跟隨系統明暗主題：ini [System_Info] 段 MainForm_Theme=Auto/Light/Dark（預設 Auto 自動跟隨
         系統主題，系統切換明暗時視窗即時跟隨，無需重新啟動）；亦可透過託盤【主題】選單隨時切換
@@ -102,6 +102,7 @@
         Release 編譯不再生成 QuickStart.pdb 除錯符號檔案（Debug 不受影響）
         新增按鈕左上角自動顯示啟動程式圖示：依 ini 的 Program_Name 自動擷取 exe/cmd/bat/msc/lnk 等程式的系統圖示，裸命令依 PATH 尋找，程式不存在時不顯示，支援 ini 熱重載自動更新
         新增程式圖示顯示開關：ini [System_Info] 段 MainForm_ShowProgramIcon=Off 可關閉圖示顯示（預設 On，支援熱重載；舊版 ini 缺失該鍵時啟動自動補寫）
+        託盤選單新增「程式圖示」子選單（開/關），切換立即生效並寫回 ini
         按鈕程式圖示改為背景非同步擷取：啟動時視窗先顯示、圖示隨後浮現，不再等待圖示擷取完成
         新增圖示跨熱重載快取：ini 熱重載或切換圖示開關後，已擷取的圖示直接複用（程式檔案更新後自動重新擷取）
         ini 缺失 [System_Info] 段時，啟動自動在檔案第一行插入與範本完全一致的完整塊（System Config 註釋橫幅 + 段 + 6 個鍵固定順序），不再追加到檔案末尾

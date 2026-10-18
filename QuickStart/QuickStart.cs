@@ -1071,6 +1071,22 @@ namespace QuickStart
             this.toSetAutoRun(false);
         }
 
+        private void toolStripMenuItem_ProgramIcon_On_Click(object sender, EventArgs e)
+        {
+            this.toolStripMenuItem_ProgramIcon_On.Checked = true;
+            this.toolStripMenuItem_ProgramIcon_Off.Checked = false;
+            OperateIniFile.WriteIniData(System_Info, MainForm_ShowProgramIcon, "On", strIniFilePath);
+            this.RebuildButtonIcons();
+        }
+
+        private void toolStripMenuItem_ProgramIcon_Off_Click(object sender, EventArgs e)
+        {
+            this.toolStripMenuItem_ProgramIcon_On.Checked = false;
+            this.toolStripMenuItem_ProgramIcon_Off.Checked = true;
+            OperateIniFile.WriteIniData(System_Info, MainForm_ShowProgramIcon, "Off", strIniFilePath);
+            this.RebuildButtonIcons();
+        }
+
         private void toolStripMenuItem_EditMode_On_Click(object sender, EventArgs e)
         {
             this.SetEditMode(true);
@@ -1343,6 +1359,23 @@ namespace QuickStart
             if (strShowIcon == "")
             {
                 OperateIniFile.WriteIniData(System_Info, MainForm_ShowProgramIcon, "On", strIniFilePath);
+            }
+            this.toUpdateProgramIconMenuCheck();
+        }
+
+        // 按 ini 当前值同步托盘菜单"程序图标"的勾选状态（启动与热重载时调用；空/非法值按 On 处理）
+        private void toUpdateProgramIconMenuCheck()
+        {
+            string strShowIcon = OperateIniFile.ReadIniData(System_Info, MainForm_ShowProgramIcon, "On", strIniFilePath).Trim().ToUpper();
+            if ("OFF".Equals(strShowIcon))
+            {
+                this.toolStripMenuItem_ProgramIcon_On.Checked = false;
+                this.toolStripMenuItem_ProgramIcon_Off.Checked = true;
+            }
+            else
+            {
+                this.toolStripMenuItem_ProgramIcon_On.Checked = true;
+                this.toolStripMenuItem_ProgramIcon_Off.Checked = false;
             }
         }
 
@@ -1761,6 +1794,7 @@ namespace QuickStart
             }
 
             this.RebuildButtonIcons();
+            this.toUpdateProgramIconMenuCheck();
             this.RenderButtons();
             this.toRecalcClientSize();
         }
@@ -2740,6 +2774,9 @@ namespace QuickStart
                     this.toolStripMenuItem_Theme_Auto.Text = Resources.Resource_zh_CN.toolStripMenuItem_Theme_Auto_Text;
                     this.toolStripMenuItem_Theme_Light.Text = Resources.Resource_zh_CN.toolStripMenuItem_Theme_Light_Text;
                     this.toolStripMenuItem_Theme_Dark.Text = Resources.Resource_zh_CN.toolStripMenuItem_Theme_Dark_Text;
+                    this.toolStripMenuItem_ProgramIcon.Text = Resources.Resource_zh_CN.toolStripMenuItem_ProgramIcon_Text;
+                    this.toolStripMenuItem_ProgramIcon_On.Text = Resources.Resource_zh_CN.toolStripMenuItem_ProgramIcon_On_Text;
+                    this.toolStripMenuItem_ProgramIcon_Off.Text = Resources.Resource_zh_CN.toolStripMenuItem_ProgramIcon_Off_Text;
                     break;
 
                 case MultilingualConfig.Language_zh_TW:
@@ -2766,6 +2803,9 @@ namespace QuickStart
                     this.toolStripMenuItem_Theme_Auto.Text = Resources.Resource_zh_TW.toolStripMenuItem_Theme_Auto_Text;
                     this.toolStripMenuItem_Theme_Light.Text = Resources.Resource_zh_TW.toolStripMenuItem_Theme_Light_Text;
                     this.toolStripMenuItem_Theme_Dark.Text = Resources.Resource_zh_TW.toolStripMenuItem_Theme_Dark_Text;
+                    this.toolStripMenuItem_ProgramIcon.Text = Resources.Resource_zh_TW.toolStripMenuItem_ProgramIcon_Text;
+                    this.toolStripMenuItem_ProgramIcon_On.Text = Resources.Resource_zh_TW.toolStripMenuItem_ProgramIcon_On_Text;
+                    this.toolStripMenuItem_ProgramIcon_Off.Text = Resources.Resource_zh_TW.toolStripMenuItem_ProgramIcon_Off_Text;
                     break;
 
                 case MultilingualConfig.Language_en_US:
@@ -2792,6 +2832,9 @@ namespace QuickStart
                     this.toolStripMenuItem_Theme_Auto.Text = Resources.Resource_en_US.toolStripMenuItem_Theme_Auto_Text;
                     this.toolStripMenuItem_Theme_Light.Text = Resources.Resource_en_US.toolStripMenuItem_Theme_Light_Text;
                     this.toolStripMenuItem_Theme_Dark.Text = Resources.Resource_en_US.toolStripMenuItem_Theme_Dark_Text;
+                    this.toolStripMenuItem_ProgramIcon.Text = Resources.Resource_en_US.toolStripMenuItem_ProgramIcon_Text;
+                    this.toolStripMenuItem_ProgramIcon_On.Text = Resources.Resource_en_US.toolStripMenuItem_ProgramIcon_On_Text;
+                    this.toolStripMenuItem_ProgramIcon_Off.Text = Resources.Resource_en_US.toolStripMenuItem_ProgramIcon_Off_Text;
                     break;
 
                 case MultilingualConfig.Language_ja_JP:
@@ -2818,6 +2861,9 @@ namespace QuickStart
                     this.toolStripMenuItem_Theme_Auto.Text = Resources.Resource_ja_JP.toolStripMenuItem_Theme_Auto_Text;
                     this.toolStripMenuItem_Theme_Light.Text = Resources.Resource_ja_JP.toolStripMenuItem_Theme_Light_Text;
                     this.toolStripMenuItem_Theme_Dark.Text = Resources.Resource_ja_JP.toolStripMenuItem_Theme_Dark_Text;
+                    this.toolStripMenuItem_ProgramIcon.Text = Resources.Resource_ja_JP.toolStripMenuItem_ProgramIcon_Text;
+                    this.toolStripMenuItem_ProgramIcon_On.Text = Resources.Resource_ja_JP.toolStripMenuItem_ProgramIcon_On_Text;
+                    this.toolStripMenuItem_ProgramIcon_Off.Text = Resources.Resource_ja_JP.toolStripMenuItem_ProgramIcon_Off_Text;
                     break;
 
                 case MultilingualConfig.Language_ko_KR:
@@ -2844,6 +2890,9 @@ namespace QuickStart
                     this.toolStripMenuItem_Theme_Auto.Text = Resources.Resource_ko_KR.toolStripMenuItem_Theme_Auto_Text;
                     this.toolStripMenuItem_Theme_Light.Text = Resources.Resource_ko_KR.toolStripMenuItem_Theme_Light_Text;
                     this.toolStripMenuItem_Theme_Dark.Text = Resources.Resource_ko_KR.toolStripMenuItem_Theme_Dark_Text;
+                    this.toolStripMenuItem_ProgramIcon.Text = Resources.Resource_ko_KR.toolStripMenuItem_ProgramIcon_Text;
+                    this.toolStripMenuItem_ProgramIcon_On.Text = Resources.Resource_ko_KR.toolStripMenuItem_ProgramIcon_On_Text;
+                    this.toolStripMenuItem_ProgramIcon_Off.Text = Resources.Resource_ko_KR.toolStripMenuItem_ProgramIcon_Off_Text;
                     break;
 
                 default:

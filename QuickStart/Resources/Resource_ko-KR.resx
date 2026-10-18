@@ -192,4 +192,13 @@
   <data name="toolStripMenuItem_Theme_Dark_Text" xml:space="preserve">
     <value>어둡게</value>
   </data>
+  <data name="toolStripMenuItem_ProgramIcon_Text" xml:space="preserve">
+    <value>프로그램 아이콘</value>
+  </data>
+  <data name="toolStripMenuItem_ProgramIcon_On_Text" xml:space="preserve">
+    <value>열려있는</value>
+  </data>
+  <data name="toolStripMenuItem_ProgramIcon_Off_Text" xml:space="preserve">
+    <value>폐쇄</value>
+  </data>
 </root>
