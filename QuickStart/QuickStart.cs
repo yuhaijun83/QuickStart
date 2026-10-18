@@ -220,13 +220,15 @@ namespace QuickStart
                 g.FillRectangle(bg, r);
             }
 
-            float dpi = btn.DeviceDpi / 96f;
-            int radius = Math.Max(4, (int)Math.Round(6 * dpi));
+            // 按按钮实际（已随 DPI 缩放）尺寸推导比例；不再依赖受 app.config 影响的 DeviceDpi，
+            // 保证原版与改名副本渲染一致（59 为按钮设计高度）
+            float scale = r.Height / 59f;
+            int radius = Math.Max(4, (int)Math.Round(6 * scale));
 
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
             // 键帽式立体：顶面下方露出实心灰色侧壁形成物理厚度；按下时顶面下沉、侧壁消失、面变暗
-            int thickness = pressed ? 1 : Math.Max(2, (int)Math.Round(3 * dpi));
+            int thickness = pressed ? 1 : Math.Max(2, (int)Math.Round(3 * scale));
             int faceY = pressed ? 1 : 0;
 
             Rectangle sideRect = new Rectangle(r.X, r.Y + thickness, r.Width - 1, r.Height - 1 - thickness);
@@ -261,8 +263,8 @@ namespace QuickStart
             Bitmap iconBmp;
             if (this.buttonIcons.TryGetValue(btn, out iconBmp) && iconBmp != null)
             {
-                int iconSize = Math.Max(14, (int)Math.Round(20 * dpi));
-                int iconMargin = Math.Max(2, (int)Math.Round(4 * dpi));
+                int iconSize = Math.Max(14, (int)Math.Round(16 * scale));
+                int iconMargin = Math.Max(2, (int)Math.Round(4 * scale));
                 Rectangle iconRect = new Rectangle(r.X + iconMargin, r.Y + faceY + iconMargin, iconSize, iconSize);
 
                 System.Drawing.Drawing2D.InterpolationMode oldInterp = g.InterpolationMode;
@@ -288,7 +290,7 @@ namespace QuickStart
             else
             {
                 int bobY = ReferenceEquals(this.hoverAnimButton, btn)
-                    ? (int)Math.Round(2 * dpi * Math.Sin(Environment.TickCount * 0.006))
+                    ? (int)Math.Round(2 * scale * Math.Sin(Environment.TickCount * 0.006))
                     : 0;
                 textRect = new Rectangle(r.X, r.Y + bobY, r.Width, r.Height);
             }
