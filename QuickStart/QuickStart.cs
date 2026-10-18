@@ -7,6 +7,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -1290,19 +1291,26 @@ namespace QuickStart
             {
                 try
                 {
-                    dMainForm_Opacity = double.Parse(strMainForm_Opacity) / 100;
-                    if (dMainForm_Opacity < 0D)
+                    double dPercent;
+                    if (!double.TryParse(strMainForm_Opacity, NumberStyles.Any, CultureInfo.InvariantCulture, out dPercent))
                     {
-
-                        this.toSetOpacity("10");
-                    }
-                    else if (dMainForm_Opacity > 1D)
-                    {
-
                         this.toSetOpacity("100");
-                    } else
+                    }
+                    else
                     {
-                        this.Opacity = dMainForm_Opacity;
+                        dMainForm_Opacity = dPercent / 100;
+                        if (dMainForm_Opacity <= 0D)
+                        {
+                            this.toSetOpacity("10");
+                        }
+                        else if (dMainForm_Opacity > 1D)
+                        {
+                            this.toSetOpacity("100");
+                        }
+                        else
+                        {
+                            this.Opacity = dMainForm_Opacity;
+                        }
                     }
                 }
                 catch
@@ -2052,6 +2060,13 @@ namespace QuickStart
             this.toInvalidateButtons();
         }
 
+        // ini 中的颜色名非法（拼错）时 Color.FromName 会返回全透明色，这里校验并按默认色回退
+        private static Color toParseColor(string name, Color fallback)
+        {
+            Color color = Color.FromName(name);
+            return color.IsKnownColor ? color : fallback;
+        }
+
         private void RenderButtons()
         {
             for (int i = 0; i < BUTTON_MAX_SIZE; i++)
@@ -2069,7 +2084,7 @@ namespace QuickStart
 
                     if (ini.Button_BackColor != "")
                     {
-                        btn.BackColor = Color.FromName(ini.Button_BackColor);
+                        btn.BackColor = toParseColor(ini.Button_BackColor, this.buttonDefaultBackColors[i]);
                     }
                     else
                     {
@@ -2078,7 +2093,7 @@ namespace QuickStart
 
                     if (ini.Button_TextColor != "")
                     {
-                        btn.ForeColor = Color.FromName(ini.Button_TextColor);
+                        btn.ForeColor = toParseColor(ini.Button_TextColor, this.buttonDefaultForeColors[i]);
                     }
                     else
                     {
