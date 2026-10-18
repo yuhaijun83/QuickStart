@@ -12,7 +12,7 @@ namespace QuickStart
     {
         #region
         [DllImport("kernel32")]
-        private static extern long WritePrivateProfileString(string section, string key, string val, string filePath);
+        private static extern int WritePrivateProfileString(string section, string key, string val, string filePath);
 
         [DllImport("kernel32")]
         private static extern int GetPrivateProfileString(string section, string key, string def, StringBuilder retVal, int size, string filePath);
@@ -39,7 +39,7 @@ namespace QuickStart
         {
             if (File.Exists(iniFilePath))
             {
-                long OpStation = WritePrivateProfileString(Section, Key, Value, iniFilePath);
+                int OpStation = WritePrivateProfileString(Section, Key, Value, iniFilePath);
                 if (OpStation == 0)
                 {
                     return false;
