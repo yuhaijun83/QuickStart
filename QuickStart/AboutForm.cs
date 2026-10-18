@@ -113,7 +113,17 @@ namespace QuickStart
         private void linkLabel_GitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             String strTargetUrl = "https://github.com/yuhaijun83/QuickStart";
-            System.Diagnostics.Process.Start("iexplore.exe", strTargetUrl);
+            try
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(strTargetUrl)
+                {
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception)
+            {
+                ;
+            }
         }
 
         #region Me
