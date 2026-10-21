@@ -2989,17 +2989,6 @@ namespace QuickStart
             this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width / 4, Screen.PrimaryScreen.WorkingArea.Height / 4);
         }
 
-        protected override void OnActivated(EventArgs e)
-        {
-            base.OnActivated(e);
-
-            // 停靠时从任务栏激活：走托盘“显示”的同一逻辑，取消停靠并显示
-            if (this.iStopMode != 0 && !this.stopWorkingArea.IsEmpty)
-            {
-                this.toShowMainForm();
-            }
-        }
-
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == WM_SYSCOMMAND)

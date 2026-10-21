@@ -93,9 +93,6 @@
   
 【版本更新】：
 
-      12.v27.01
-        移除視窗標題列的最小化按鈕，以強化視窗停靠。（避免按下 Win + D 鍵或工作列最右邊的顯示桌面按鈕等，使視窗最小化後導致停靠功能失效）
-
       11.v26.12
         Release 編譯時自動將工程 QuickStart.ini 額外複製為輸出目錄的 QuickStart_Template.ini（範本設定，Debug 不產生）
         Release 編譯時自動將 5 個語言 README 與 LICENSE 複製到輸出目錄的 Readme 資料夾（Debug 不產生）

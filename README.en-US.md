@@ -98,9 +98,6 @@ A quick-launch tool that gathers your frequently used programs and commands in o
   
 【Changelog】：
 
-      12.v27.01
-        Removed the minimize button from the window title bar to strengthen window docking (prevents docking from breaking when the window is minimized by Win + D or the Show Desktop button at the far right of the taskbar)
-
       11.v26.12
         Release builds now also copy the project QuickStart.ini to the output as QuickStart_Template.ini (template config; not generated in Debug)
         Release builds now also copy the 5 localized README files and LICENSE to the output Readme folder (not generated in Debug)
