@@ -1,0 +1,8 @@
+Button_Name=ChatGPT<br>(Codex)
+Button_Visible=1
+Button_Enable=1
+Button_BackColor=
+Button_TextColor=
+Program_Name=powershell.exe
+Program_Type=exe
+Program_Param=Start-Process "shell:AppsFolder\OpenAI.Codex_2p2nqsd0c76g0!App"
