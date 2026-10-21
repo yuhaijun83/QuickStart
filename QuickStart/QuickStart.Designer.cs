@@ -940,6 +940,7 @@ namespace QuickStart
             this.Controls.Add(this.button_64);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "mainForm";
             this.Opacity = 0D;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);

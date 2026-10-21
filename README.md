@@ -93,6 +93,9 @@
   
 【版本更新】：
 
+      12.v27.01
+        去掉窗体标题栏的最小化按钮，以强化窗体停靠。（避免按下Win + D键或者任务栏最右边的显示桌面按钮等，使窗体最小化后导致的停靠功能失效）
+
       11.v26.12
         Release 编译时自动把工程 QuickStart.ini 额外复制为输出目录的 QuickStart_Template.ini（模板配置，Debug 不生成）
         Release 编译时自动把 5 个语言 README 与 LICENSE 复制到输出目录的 Readme 文件夹（Debug 不生成）

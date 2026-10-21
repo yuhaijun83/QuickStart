@@ -96,6 +96,9 @@
   
 【버전 업데이트】：
 
+      12.v27.01
+        창 제목 표시줄의 최소화 버튼을 제거하여 창 도킹을 강화 (Win + D 키 또는 작업 표시줄 오른쪽 끝의 '바탕 화면 표시' 버튼 등으로 창을 최소화했을 때 도킹 기능이 무효화되는 것을 방지)
+
       11.v26.12
         Release 빌드 시 프로젝트 QuickStart.ini를 출력 폴더에 QuickStart_Template.ini로 추가 복사(템플릿 설정, Debug에서는 생성 안 함)
         Release 빌드 시 5개 언어 README와 LICENSE를 출력 폴더의 Readme 폴더에 복사(Debug에서는 생성 안 함)
