@@ -96,6 +96,10 @@
   
 【更新履歴】：
 
+      12.v27.01
+        リモート接続を切断して高解像度ディスプレイに切り替えた際、ウィンドウ右側に大きな空白が生じる問題を修正
+        app.config の PerMonitorV2 スイッチを復元し、WinForms のモニター間自動スケーリングを有効化；DPI 変更後にボタンの実寸でクライアント領域を再調整
+
       11.v26.12
         Release ビルド時にプロジェクトの QuickStart.ini を出力先に QuickStart_Template.ini として追加コピー（テンプレート設定、Debug では生成しない）
         Release ビルド時に 5 言語の README と LICENSE を出力先の Readme フォルダにコピー（Debug では生成しない）

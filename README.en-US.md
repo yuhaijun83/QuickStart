@@ -98,6 +98,10 @@ A quick-launch tool that gathers your frequently used programs and commands in o
   
 【Changelog】：
 
+      12.v27.01
+        Fixed a large blank area on the right side of the window when disconnecting an RDP session and switching to a high-DPI display
+        Restored the PerMonitorV2 switch in app.config to enable WinForms per-monitor auto-scaling; the client area is recalibrated from the buttons' actual size after a DPI change
+
       11.v26.12
         Release builds now also copy the project QuickStart.ini to the output as QuickStart_Template.ini (template config; not generated in Debug)
         Release builds now also copy the 5 localized README files and LICENSE to the output Readme folder (not generated in Debug)

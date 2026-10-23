@@ -93,6 +93,10 @@
   
 【版本更新】：
 
+      12.v27.01
+        修復中斷遠端連線後切換到高解析度螢幕時視窗右側出現大片空白的問題
+        恢復 app.config 的 PerMonitorV2 開關，啟用 WinForms 跨顯示器自動縮放；DPI 變化後按按鈕實際尺寸重新校準客戶區大小
+
       11.v26.12
         Release 編譯時自動將工程 QuickStart.ini 額外複製為輸出目錄的 QuickStart_Template.ini（範本設定，Debug 不產生）
         Release 編譯時自動將 5 個語言 README 與 LICENSE 複製到輸出目錄的 Readme 資料夾（Debug 不產生）

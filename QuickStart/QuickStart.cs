@@ -454,8 +454,26 @@ namespace QuickStart
             this.InitAutoRun();
             this.toStartIniWatcher();
 
-            // 跨显示器/系统缩放比例变化导致控件重新缩放后，同样强制重绘，避免残留陈旧画面
-            this.DpiChanged += (s, ev) => this.toInvalidateButtons();
+            // 跨显示器/系统缩放比例变化：DpiChanged 可能早于子控件完成缩放，
+            // 因此延后到消息队列空闲时，按缩放后的按钮实际几何校准客户区大小，并强制重绘避免残留陈旧画面
+            this.DpiChanged += (s, ev) =>
+            {
+                if (!this.IsHandleCreated)
+                {
+                    return;
+                }
+
+                this.BeginInvoke(new Action(() =>
+                {
+                    if (this.IsDisposed || this.Disposing)
+                    {
+                        return;
+                    }
+
+                    this.toRecalcClientSize();
+                    this.toInvalidateButtons();
+                }));
+            };
         }
 
         // 保险：窗体显示后强制重绘一次按钮。

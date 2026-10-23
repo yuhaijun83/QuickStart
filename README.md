@@ -93,6 +93,10 @@
   
 【版本更新】：
 
+      12.v27.01
+        修复断开远程连接后切换到高分屏时窗体右侧出现大片空白的问题
+        恢复 app.config 的 PerMonitorV2 开关，启用 WinForms 跨显示器自动缩放；DPI 变化后按按钮实际尺寸重新校准客户区大小
+
       11.v26.12
         Release 编译时自动把工程 QuickStart.ini 额外复制为输出目录的 QuickStart_Template.ini（模板配置，Debug 不生成）
         Release 编译时自动把 5 个语言 README 与 LICENSE 复制到输出目录的 Readme 文件夹（Debug 不生成）

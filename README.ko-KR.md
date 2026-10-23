@@ -96,6 +96,10 @@
   
 【버전 업데이트】：
 
+      12.v27.01
+        원격 연결을 끊고 고해상도 디스플레이로 전환할 때 창 오른쪽에 큰 빈 공간이 생기는 문제 수정
+        app.config의 PerMonitorV2 스위치를 복원해 WinForms 모니터 간 자동 확장 활성화; DPI 변경 후 버튼 실제 크기로 클라이언트 영역 재보정
+
       11.v26.12
         Release 빌드 시 프로젝트 QuickStart.ini를 출력 폴더에 QuickStart_Template.ini로 추가 복사(템플릿 설정, Debug에서는 생성 안 함)
         Release 빌드 시 5개 언어 README와 LICENSE를 출력 폴더의 Readme 폴더에 복사(Debug에서는 생성 안 함)
